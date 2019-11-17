@@ -60,15 +60,14 @@
             
     <li class="toctree-l2"><a href="#_1">登录</a></li>
     
-        <ul>
-        
-            <li><a class="toctree-l3" href="#_2">地址</a></li>
-        
-            <li><a class="toctree-l3" href="#_3">方法</a></li>
-        
-            <li><a class="toctree-l3" href="#_4">请求参数</a></li>
-        
-        </ul>
+
+    <li class="toctree-l2"><a href="#_2">查询用户信息</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">停用账号</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_4">启用账号</a></li>
     
 
     </ul>
@@ -112,13 +111,73 @@
             <div class="section">
               
                 <h1 id="_1">登录</h1>
-<h2 id="_2">地址</h2>
-<p>/users/login</p>
-<h2 id="_3">方法</h2>
-<p>POST</p>
-<h2 id="_4">请求参数</h2>
-<p>username
-password</p>
+<p>url:/users/login</p>
+<p>方法:POST</p>
+<p>请求参数:<br>
+用户名：username<br>
+密码：password</p>
+<p>返回信息示例：</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: {
+        &quot;user_id&quot;: 1,
+        &quot;user_name&quot;: &quot;sunbo&quot;,
+        &quot;session_id&quot;: &quot;44ohfud9s6kkjfo3m5a3olr42mu5w2pp&quot;
+    },
+    &quot;msg&quot;: &quot;登录成功&quot;
+}
+</code></pre>
+
+<h1 id="_2">查询用户信息</h1>
+<p>url: users/userInfo/</p>
+<p>方法：GET</p>
+<p>参数:
+用户id：id</p>
+<p>返回示例：<br>
+user_is_active: 账号是否激活，False表示账号被停用<br>
+user_status: 账号角色；1管理员，2用户，3游客<br>
+user_name: 用户名<br>
+user_group: 组<br>
+user_depart: 部门<br></p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: {
+        &quot;user_name&quot;: &quot;sunbo&quot;,
+        &quot;user_telephone&quot;: &quot;15268117291&quot;,
+        &quot;user_is_active&quot;: true,
+        &quot;user_status&quot;: 1,
+        &quot;user_group&quot;: &quot;华为数据组&quot;,
+        &quot;user_depart&quot;: &quot;核心网运行部&quot;
+    },
+    &quot;msg&quot;: &quot;查询成功&quot;
+}
+</code></pre>
+
+<h1 id="_3">停用账号</h1>
+<p>url: users/stop<br>
+方法: POST<br>
+参数:<br>
+用户名: name
+示例</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: null,
+    &quot;msg&quot;: &quot;账号停用成功&quot;
+}
+</code></pre>
+
+<h1 id="_4">启用账号</h1>
+<p>url: users/reuse<br>
+方法: POST<br>
+参数:<br>
+用户名: username<br>
+示例</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: null,
+    &quot;msg&quot;: &quot;账号已启用&quot;
+}
+</code></pre>
               
             </div>
           </div>
