@@ -70,6 +70,18 @@
     <li class="toctree-l2"><a href="#_4">启用账号</a></li>
     
 
+    <li class="toctree-l2"><a href="#_5">修改角色</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_6">添加部门</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_7">添加组</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_8">添加部门</a></li>
+    
+
     </ul>
 	    </li>
           
@@ -176,6 +188,75 @@ user_depart: 部门<br></p>
     &quot;status&quot;: 1,
     &quot;data&quot;: null,
     &quot;msg&quot;: &quot;账号已启用&quot;
+}
+</code></pre>
+
+<h1 id="_5">修改角色</h1>
+<p>url: users/role<br>
+方法: POST<br>
+参数:<br>
+用户名: username<br>
+角色: status<br>
+1 管理员  2 用户 3 游客
+示例</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: null,
+    &quot;msg&quot;: &quot;修改成功&quot;
+}
+</code></pre>
+
+<h1 id="_6">添加部门</h1>
+<p>url: users/department<br>
+方法: POST<br>
+参数:<br>
+部门名: name<br>
+示例</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: {
+        &quot;id&quot;: 6,
+        &quot;name&quot;: &quot;test&quot;
+    },
+    &quot;msg&quot;: &quot;添加成功&quot;
+}
+</code></pre>
+
+<p>id 部门id<br>
+name 部门名字<br></p>
+<h1 id="_7">添加组</h1>
+<p>url: users/group<br>
+方法: POST<br>
+参数:<br>
+组名: group_name<br>
+部门id: depart_id<br>
+示例</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: {
+        &quot;group_name&quot;: &quot;test&quot;,
+        &quot;depart_id&quot;: &quot;6&quot;,
+        &quot;id&quot;: 8
+    },
+    &quot;msg&quot;: &quot;添加成功&quot;
+}
+</code></pre>
+
+<h1 id="_8">添加部门</h1>
+<p>url: users/group<br>
+方法: POST<br>
+参数:<br>
+组名: group_name<br>
+部门id: depart_id<br>
+示例</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: {
+        &quot;group_name&quot;: &quot;test&quot;,
+        &quot;depart_id&quot;: &quot;6&quot;,
+        &quot;id&quot;: 8
+    },
+    &quot;msg&quot;: &quot;添加成功&quot;
 }
 </code></pre>
               
