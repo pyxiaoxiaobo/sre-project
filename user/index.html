@@ -61,34 +61,37 @@
     <li class="toctree-l2"><a href="#_1">登录</a></li>
     
 
-    <li class="toctree-l2"><a href="#_2">查询用户信息</a></li>
+    <li class="toctree-l2"><a href="#_2">用户注册</a></li>
     
 
-    <li class="toctree-l2"><a href="#_3">停用账号</a></li>
+    <li class="toctree-l2"><a href="#_3">查询用户信息</a></li>
     
 
-    <li class="toctree-l2"><a href="#_4">启用账号</a></li>
+    <li class="toctree-l2"><a href="#_4">停用账号</a></li>
     
 
-    <li class="toctree-l2"><a href="#_5">修改角色</a></li>
+    <li class="toctree-l2"><a href="#_5">启用账号</a></li>
     
 
-    <li class="toctree-l2"><a href="#_6">添加部门</a></li>
+    <li class="toctree-l2"><a href="#_6">修改角色</a></li>
     
 
-    <li class="toctree-l2"><a href="#_7">添加组</a></li>
+    <li class="toctree-l2"><a href="#_7">添加部门</a></li>
     
 
-    <li class="toctree-l2"><a href="#_8">查询所有部门</a></li>
+    <li class="toctree-l2"><a href="#_8">添加组</a></li>
     
 
-    <li class="toctree-l2"><a href="#_9">查询部门下所有组</a></li>
+    <li class="toctree-l2"><a href="#_9">查询所有部门</a></li>
     
 
-    <li class="toctree-l2"><a href="#_10">查询组下所有工具</a></li>
+    <li class="toctree-l2"><a href="#_10">查询部门下所有组</a></li>
     
 
-    <li class="toctree-l2"><a href="#_11">查询组下所有成员</a></li>
+    <li class="toctree-l2"><a href="#_11">查询组下所有工具</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_12">查询组下所有成员</a></li>
     
 
     </ul>
@@ -132,7 +135,7 @@
             <div class="section">
               
                 <h1 id="_1">登录</h1>
-<p>url:/users/login</p>
+<p>url:/users/login/</p>
 <p>方法:POST</p>
 <p>请求参数:<br>
 用户名：username<br>
@@ -149,7 +152,28 @@
 }
 </code></pre>
 
-<h1 id="_2">查询用户信息</h1>
+<h1 id="_2">用户注册</h1>
+<p>url:/users/register/</p>
+<p>方法:POST</p>
+<p>请求参数:<br>
+用户名：username<br>
+密码：password<br>
+角色: role<br>
+组名: group_name<br>
+手机号: phone_number<br></p>
+<p>返回信息示例：</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: {
+        &quot;username&quot;: &quot;sunbo3&quot;,
+        &quot;phone&quot;: &quot;test&quot;,
+        &quot;role&quot;: &quot;1&quot;
+    },
+    &quot;msg&quot;: &quot;注册成功&quot;
+}
+</code></pre>
+
+<h1 id="_3">查询用户信息</h1>
 <p>url: users/userInfo/</p>
 <p>方法：GET</p>
 <p>参数:
@@ -174,7 +198,7 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_3">停用账号</h1>
+<h1 id="_4">停用账号</h1>
 <p>url: users/stop<br>
 方法: POST<br>
 参数:<br>
@@ -187,7 +211,7 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_4">启用账号</h1>
+<h1 id="_5">启用账号</h1>
 <p>url: users/reuse<br>
 方法: POST<br>
 参数:<br>
@@ -200,7 +224,7 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_5">修改角色</h1>
+<h1 id="_6">修改角色</h1>
 <p>url: users/role<br>
 方法: POST<br>
 参数:<br>
@@ -215,7 +239,7 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_6">添加部门</h1>
+<h1 id="_7">添加部门</h1>
 <p>url: users/department<br>
 方法: POST<br>
 参数:<br>
@@ -233,7 +257,7 @@ user_depart: 部门<br></p>
 
 <p>id 部门id<br>
 name 部门名字<br></p>
-<h1 id="_7">添加组</h1>
+<h1 id="_8">添加组</h1>
 <p>url: users/group<br>
 方法: POST<br>
 参数:<br>
@@ -251,7 +275,7 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_8">查询所有部门</h1>
+<h1 id="_9">查询所有部门</h1>
 <p>url: users/departments/<br>
 方法: GET<br>
 示例</p>
@@ -283,7 +307,7 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_9">查询部门下所有组</h1>
+<h1 id="_10">查询部门下所有组</h1>
 <p>url: users/department/group/<br>
 方法: GET<br>
 参数:<br>
@@ -305,12 +329,12 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_10">查询组下所有工具</h1>
+<h1 id="_11">查询组下所有工具</h1>
 <p>url: users/group/tools/<br>
 方法: GET<br>
 参数:<br>
 组名: group_name<br></p>
-<h1 id="_11">查询组下所有成员</h1>
+<h1 id="_12">查询组下所有成员</h1>
 <p>url: users/group/users/<br>
 方法: GET<br>
 参数:<br>
