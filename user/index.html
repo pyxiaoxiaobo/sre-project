@@ -79,7 +79,16 @@
     <li class="toctree-l2"><a href="#_7">添加组</a></li>
     
 
-    <li class="toctree-l2"><a href="#_8">添加部门</a></li>
+    <li class="toctree-l2"><a href="#_8">查询所有部门</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_9">查询部门下所有组</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_10">查询组下所有工具</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_11">查询组下所有成员</a></li>
     
 
     </ul>
@@ -242,23 +251,70 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_8">添加部门</h1>
-<p>url: users/group<br>
-方法: POST<br>
-参数:<br>
-组名: group_name<br>
-部门id: depart_id<br>
+<h1 id="_8">查询所有部门</h1>
+<p>url: users/departments/<br>
+方法: GET<br>
 示例</p>
 <pre><code>{
     &quot;status&quot;: 1,
-    &quot;data&quot;: {
-        &quot;group_name&quot;: &quot;test&quot;,
-        &quot;depart_id&quot;: &quot;6&quot;,
-        &quot;id&quot;: 8
-    },
-    &quot;msg&quot;: &quot;添加成功&quot;
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 2,
+            &quot;group_name&quot;: &quot;核心网运行部&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;group_name&quot;: &quot;监控部&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;group_name&quot;: &quot;业务系统运行部&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;group_name&quot;: &quot;移动互联网&quot;
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;group_name&quot;: &quot;test&quot;
+        }
+    ],
+    &quot;msg&quot;: &quot;查询成功&quot;
 }
 </code></pre>
+
+<h1 id="_9">查询部门下所有组</h1>
+<p>url: users/department/group/<br>
+方法: GET<br>
+参数:<br>
+部门: depart_name<br>
+示例</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 2,
+            &quot;group_name&quot;: &quot;华为数据组&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;group_name&quot;: &quot;诺基亚组&quot;
+        }
+    ],
+    &quot;msg&quot;: &quot;查询成功&quot;
+}
+</code></pre>
+
+<h1 id="_10">查询组下所有工具</h1>
+<p>url: users/group/tools/<br>
+方法: GET<br>
+参数:<br>
+组名: group_name<br></p>
+<h1 id="_11">查询组下所有成员</h1>
+<p>url: users/group/users/<br>
+方法: GET<br>
+参数:<br>
+组名: group_name<br></p>
               
             </div>
           </div>
