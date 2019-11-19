@@ -61,37 +61,49 @@
     <li class="toctree-l2"><a href="#_1">登录</a></li>
     
 
+    <li class="toctree-l2"><a href="#csrf_token">获取csrf_token</a></li>
+    
+
     <li class="toctree-l2"><a href="#_2">用户注册</a></li>
     
 
     <li class="toctree-l2"><a href="#_3">查询用户信息</a></li>
     
 
-    <li class="toctree-l2"><a href="#_4">停用账号</a></li>
+    <li class="toctree-l2"><a href="#_4">删除用户信息</a></li>
     
 
-    <li class="toctree-l2"><a href="#_5">启用账号</a></li>
+    <li class="toctree-l2"><a href="#_5">用户列表</a></li>
     
 
-    <li class="toctree-l2"><a href="#_6">修改角色</a></li>
+    <li class="toctree-l2"><a href="#_6">停用账号</a></li>
     
 
-    <li class="toctree-l2"><a href="#_7">添加部门</a></li>
+    <li class="toctree-l2"><a href="#_7">启用账号</a></li>
     
 
-    <li class="toctree-l2"><a href="#_8">添加组</a></li>
+    <li class="toctree-l2"><a href="#_8">修改角色</a></li>
     
 
-    <li class="toctree-l2"><a href="#_9">查询所有部门</a></li>
+    <li class="toctree-l2"><a href="#_9">添加部门</a></li>
     
 
-    <li class="toctree-l2"><a href="#_10">查询部门下所有组</a></li>
+    <li class="toctree-l2"><a href="#_10">添加组</a></li>
     
 
-    <li class="toctree-l2"><a href="#_11">查询组下所有工具</a></li>
+    <li class="toctree-l2"><a href="#_11">查询所有部门</a></li>
     
 
-    <li class="toctree-l2"><a href="#_12">查询组下所有成员</a></li>
+    <li class="toctree-l2"><a href="#_12">查询部门下所有组</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_13">查询组下所有工具</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_14">查询组下所有成员</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_15">首页部门组合工具信息接口</a></li>
     
 
     </ul>
@@ -152,6 +164,9 @@
 }
 </code></pre>
 
+<h1 id="csrf_token">获取csrf_token</h1>
+<p>url:/users/csrftoken/<br>
+方法:GET<br></p>
 <h1 id="_2">用户注册</h1>
 <p>url:/users/register/</p>
 <p>方法:POST</p>
@@ -198,7 +213,57 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_4">停用账号</h1>
+<h1 id="_4">删除用户信息</h1>
+<p>url: users/userInfo/</p>
+<p>方法：DELETE</p>
+<p>参数:
+用户：username</p>
+<h1 id="_5">用户列表</h1>
+<p>url: users/all/<br>
+方法: GET<br></p>
+<p>参数:<br>
+用户：username<br></p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;role&quot;: &quot;管理员&quot;,
+            &quot;username&quot;: &quot;sunbo&quot;,
+            &quot;status&quot;: true,
+            &quot;group&quot;: &quot;华为数据组&quot;,
+            &quot;depart&quot;: &quot;核心网运行部&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;role&quot;: &quot;管理员&quot;,
+            &quot;username&quot;: &quot;sunbo2&quot;,
+            &quot;status&quot;: true,
+            &quot;group&quot;: &quot;test&quot;,
+            &quot;depart&quot;: &quot;test&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;role&quot;: &quot;管理员&quot;,
+            &quot;username&quot;: &quot;sunbo3&quot;,
+            &quot;status&quot;: true,
+            &quot;group&quot;: &quot;test&quot;,
+            &quot;depart&quot;: &quot;test&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;role&quot;: &quot;管理员&quot;,
+            &quot;username&quot;: &quot;zz&quot;,
+            &quot;status&quot;: true,
+            &quot;group&quot;: &quot;华为数据组&quot;,
+            &quot;depart&quot;: &quot;核心网运行部&quot;
+        }
+    ],
+    &quot;msg&quot;: &quot;查询成功&quot;
+}
+</code></pre>
+
+<h1 id="_6">停用账号</h1>
 <p>url: users/stop<br>
 方法: POST<br>
 参数:<br>
@@ -211,7 +276,7 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_5">启用账号</h1>
+<h1 id="_7">启用账号</h1>
 <p>url: users/reuse<br>
 方法: POST<br>
 参数:<br>
@@ -224,7 +289,7 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_6">修改角色</h1>
+<h1 id="_8">修改角色</h1>
 <p>url: users/role<br>
 方法: POST<br>
 参数:<br>
@@ -239,7 +304,7 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_7">添加部门</h1>
+<h1 id="_9">添加部门</h1>
 <p>url: users/department<br>
 方法: POST<br>
 参数:<br>
@@ -257,7 +322,7 @@ user_depart: 部门<br></p>
 
 <p>id 部门id<br>
 name 部门名字<br></p>
-<h1 id="_8">添加组</h1>
+<h1 id="_10">添加组</h1>
 <p>url: users/group<br>
 方法: POST<br>
 参数:<br>
@@ -275,7 +340,7 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_9">查询所有部门</h1>
+<h1 id="_11">查询所有部门</h1>
 <p>url: users/departments/<br>
 方法: GET<br>
 示例</p>
@@ -307,8 +372,8 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_10">查询部门下所有组</h1>
-<p>url: users/department/group/<br>
+<h1 id="_12">查询部门下所有组</h1>
+<p>url: users/department/groups/<br>
 方法: GET<br>
 参数:<br>
 部门: depart_name<br>
@@ -329,16 +394,109 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_11">查询组下所有工具</h1>
+<h1 id="_13">查询组下所有工具</h1>
 <p>url: users/group/tools/<br>
 方法: GET<br>
 参数:<br>
 组名: group_name<br></p>
-<h1 id="_12">查询组下所有成员</h1>
+<h1 id="_14">查询组下所有成员</h1>
 <p>url: users/group/users/<br>
 方法: GET<br>
 参数:<br>
 组名: group_name<br></p>
+<h1 id="_15">首页部门组合工具信息接口</h1>
+<p>url: users/detailInfo/<br>
+方法: GET<br>
+参数:无<br></p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;name&quot;: &quot;核心网运行部&quot;,
+            &quot;key&quot;: &quot;front_one&quot;,
+            &quot;id&quot;: 2,
+            &quot;children&quot;: [
+                {
+                    &quot;name&quot;: &quot;华为数据组&quot;,
+                    &quot;key&quot;: &quot;front_two&quot;,
+                    &quot;id&quot;: 2,
+                    &quot;children&quot;: []
+                },
+                {
+                    &quot;name&quot;: &quot;诺基亚组&quot;,
+                    &quot;key&quot;: &quot;front_two&quot;,
+                    &quot;id&quot;: 3,
+                    &quot;children&quot;: []
+                }
+            ]
+        },
+        {
+            &quot;name&quot;: &quot;监控部&quot;,
+            &quot;key&quot;: &quot;front_one&quot;,
+            &quot;id&quot;: 3,
+            &quot;children&quot;: [
+                {
+                    &quot;name&quot;: &quot;chatops小组&quot;,
+                    &quot;key&quot;: &quot;front_two&quot;,
+                    &quot;id&quot;: 4,
+                    &quot;children&quot;: []
+                },
+                {
+                    &quot;name&quot;: &quot;C&amp;M小组&quot;,
+                    &quot;key&quot;: &quot;front_two&quot;,
+                    &quot;id&quot;: 5,
+                    &quot;children&quot;: []
+                }
+            ]
+        },
+        {
+            &quot;name&quot;: &quot;业务系统运行部&quot;,
+            &quot;key&quot;: &quot;front_one&quot;,
+            &quot;id&quot;: 4,
+            &quot;children&quot;: []
+        },
+        {
+            &quot;name&quot;: &quot;移动互联网&quot;,
+            &quot;key&quot;: &quot;front_one&quot;,
+            &quot;id&quot;: 5,
+            &quot;children&quot;: [
+                {
+                    &quot;name&quot;: &quot;EPC组&quot;,
+                    &quot;key&quot;: &quot;front_two&quot;,
+                    &quot;id&quot;: 6,
+                    &quot;children&quot;: []
+                },
+                {
+                    &quot;name&quot;: &quot;大IP组&quot;,
+                    &quot;key&quot;: &quot;front_two&quot;,
+                    &quot;id&quot;: 7,
+                    &quot;children&quot;: []
+                }
+            ]
+        },
+        {
+            &quot;name&quot;: &quot;test&quot;,
+            &quot;key&quot;: &quot;front_one&quot;,
+            &quot;id&quot;: 6,
+            &quot;children&quot;: [
+                {
+                    &quot;name&quot;: &quot;test&quot;,
+                    &quot;key&quot;: &quot;front_two&quot;,
+                    &quot;id&quot;: 8,
+                    &quot;children&quot;: []
+                },
+                {
+                    &quot;name&quot;: &quot;test2&quot;,
+                    &quot;key&quot;: &quot;front_two&quot;,
+                    &quot;id&quot;: 9,
+                    &quot;children&quot;: []
+                }
+            ]
+        }
+    ],
+    &quot;msg&quot;: &quot;请求成功&quot;
+}
+</code></pre>
               
             </div>
           </div>
