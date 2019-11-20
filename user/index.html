@@ -70,40 +70,43 @@
     <li class="toctree-l2"><a href="#_3">查询用户信息</a></li>
     
 
-    <li class="toctree-l2"><a href="#_4">删除用户信息</a></li>
+    <li class="toctree-l2"><a href="#_4">编辑账号信息</a></li>
     
 
-    <li class="toctree-l2"><a href="#_5">用户列表</a></li>
+    <li class="toctree-l2"><a href="#_5">删除用户信息</a></li>
     
 
-    <li class="toctree-l2"><a href="#_6">停用账号</a></li>
+    <li class="toctree-l2"><a href="#_6">用户列表</a></li>
     
 
-    <li class="toctree-l2"><a href="#_7">启用账号</a></li>
+    <li class="toctree-l2"><a href="#_7">停用账号</a></li>
     
 
-    <li class="toctree-l2"><a href="#_8">修改角色</a></li>
+    <li class="toctree-l2"><a href="#_8">启用账号</a></li>
     
 
-    <li class="toctree-l2"><a href="#_9">添加部门</a></li>
+    <li class="toctree-l2"><a href="#_9">修改角色</a></li>
     
 
-    <li class="toctree-l2"><a href="#_10">添加组</a></li>
+    <li class="toctree-l2"><a href="#_10">添加部门</a></li>
     
 
-    <li class="toctree-l2"><a href="#_11">查询所有部门</a></li>
+    <li class="toctree-l2"><a href="#_11">添加组</a></li>
     
 
-    <li class="toctree-l2"><a href="#_12">查询部门下所有组</a></li>
+    <li class="toctree-l2"><a href="#_12">查询所有部门</a></li>
     
 
-    <li class="toctree-l2"><a href="#_13">查询组下所有工具</a></li>
+    <li class="toctree-l2"><a href="#_13">查询部门下所有组</a></li>
     
 
-    <li class="toctree-l2"><a href="#_14">查询组下所有成员</a></li>
+    <li class="toctree-l2"><a href="#_14">查询组下所有工具</a></li>
     
 
-    <li class="toctree-l2"><a href="#_15">首页部门组合工具信息接口</a></li>
+    <li class="toctree-l2"><a href="#_15">查询组下所有成员</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_16">首页部门组合工具信息接口</a></li>
     
 
     </ul>
@@ -213,12 +216,21 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_4">删除用户信息</h1>
+<h1 id="_4">编辑账号信息</h1>
+<p>url: users/userInfo/</p>
+<p>方法：PUT</p>
+<p>参数:
+username:用户名<br>
+password:密码<br>
+phone:手机号<br>
+group_id:组id<br>
+role:角色（1，2，3）<br></p>
+<h1 id="_5">删除用户信息</h1>
 <p>url: users/userInfo/</p>
 <p>方法：DELETE</p>
 <p>参数:
 用户：username</p>
-<h1 id="_5">用户列表</h1>
+<h1 id="_6">用户列表</h1>
 <p>url: users/all/<br>
 方法: GET<br></p>
 <p>参数:<br>
@@ -263,7 +275,7 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_6">停用账号</h1>
+<h1 id="_7">停用账号</h1>
 <p>url: users/stop<br>
 方法: POST<br>
 参数:<br>
@@ -276,7 +288,7 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_7">启用账号</h1>
+<h1 id="_8">启用账号</h1>
 <p>url: users/reuse<br>
 方法: POST<br>
 参数:<br>
@@ -289,7 +301,7 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_8">修改角色</h1>
+<h1 id="_9">修改角色</h1>
 <p>url: users/role<br>
 方法: POST<br>
 参数:<br>
@@ -304,7 +316,7 @@ user_depart: 部门<br></p>
 }
 </code></pre>
 
-<h1 id="_9">添加部门</h1>
+<h1 id="_10">添加部门</h1>
 <p>url: users/department<br>
 方法: POST<br>
 参数:<br>
@@ -322,7 +334,7 @@ user_depart: 部门<br></p>
 
 <p>id 部门id<br>
 name 部门名字<br></p>
-<h1 id="_10">添加组</h1>
+<h1 id="_11">添加组</h1>
 <p>url: users/group<br>
 方法: POST<br>
 参数:<br>
@@ -340,7 +352,7 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_11">查询所有部门</h1>
+<h1 id="_12">查询所有部门</h1>
 <p>url: users/departments/<br>
 方法: GET<br>
 示例</p>
@@ -372,7 +384,7 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_12">查询部门下所有组</h1>
+<h1 id="_13">查询部门下所有组</h1>
 <p>url: users/department/groups/<br>
 方法: GET<br>
 参数:<br>
@@ -394,17 +406,17 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_13">查询组下所有工具</h1>
+<h1 id="_14">查询组下所有工具</h1>
 <p>url: users/group/tools/<br>
 方法: GET<br>
 参数:<br>
 组名: group_name<br></p>
-<h1 id="_14">查询组下所有成员</h1>
+<h1 id="_15">查询组下所有成员</h1>
 <p>url: users/group/users/<br>
 方法: GET<br>
 参数:<br>
 组名: group_name<br></p>
-<h1 id="_15">首页部门组合工具信息接口</h1>
+<h1 id="_16">首页部门组合工具信息接口</h1>
 <p>url: users/detailInfo/<br>
 方法: GET<br>
 参数:无<br></p>
