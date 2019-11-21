@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>关于 - SREUDP 接口文档</title>
+  <title>调度 - SREUDP 接口文档</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u5173\u4e8e";
-    var mkdocs_page_input_path = "about.md";
+    var mkdocs_page_name = "\u8c03\u5ea6";
+    var mkdocs_page_input_path = "schedule.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -58,17 +58,23 @@
     <a class="" href="../user/">用户</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../schedule/">调度</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">关于</a>
+    <a class="current" href="./">调度</a>
     <ul class="subnav">
             
+    <li class="toctree-l2"><a href="#_1">运行</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">查询运行状态</a></li>
+    
+
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">关于</a>
 	    </li>
           
         </ul>
@@ -93,7 +99,7 @@
     
       
     
-    <li>关于</li>
+    <li>调度</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -103,7 +109,16 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="_1">运行</h1>
+<p>url:/schedule/run/</p>
+<p>方法:POST</p>
+<p>请求参数:<br>
+tool_name: 工具名<br></p>
+<h1 id="_2">查询运行状态</h1>
+<p>url:/schedule/run/</p>
+<p>方法:GET</p>
+<p>请求参数:<br>
+task_id: 工具名<br></p>
               
             </div>
           </div>
@@ -111,8 +126,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../about/" class="btn btn-neutral float-right" title="关于">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../schedule/" class="btn btn-neutral" title="调度"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../user/" class="btn btn-neutral" title="用户"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -138,8 +155,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../schedule/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../user/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../about/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
