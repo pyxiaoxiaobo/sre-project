@@ -225,16 +225,21 @@ user_depart: 部门<br></p>
 <p>url: users/userInfo/</p>
 <p>方法：PUT</p>
 <p>参数:
-username:用户名<br>
-password:密码<br>
-phone:手机号<br>
-group_id:组id<br>
-role:角色（1，2，3）<br></p>
+id: 被修改账号的id<br>
+username:被修改账号的用户名<br>
+password:被修改账号的密码<br>
+phone:被修改账号的手机号<br>
+group_id:被修改账号的组id<br>
+role:被修改账号的角色（1，2，3）<br>
+1, 管理员<br>
+2, 用户<br>
+3, 游客<br></p>
 <h1 id="_5">删除用户信息</h1>
 <p>url: users/userInfo/</p>
 <p>方法：DELETE</p>
-<p>参数:
-用户：username</p>
+<p>参数:<br>
+用户：id<br>
+需要删除的账号id</p>
 <h1 id="_6">用户列表</h1>
 <p>url: users/all/<br>
 方法: GET<br></p>
