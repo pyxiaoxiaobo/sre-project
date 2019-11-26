@@ -94,28 +94,31 @@
     <li class="toctree-l2"><a href="#_11">用户注册</a></li>
     
 
-    <li class="toctree-l2"><a href="#_12">用户列表</a></li>
+    <li class="toctree-l2"><a href="#_12">账号管理首页模糊查询</a></li>
     
 
-    <li class="toctree-l2"><a href="#_13">添加部门</a></li>
+    <li class="toctree-l2"><a href="#_13">用户列表</a></li>
     
 
-    <li class="toctree-l2"><a href="#_14">添加组</a></li>
+    <li class="toctree-l2"><a href="#_14">添加部门</a></li>
     
 
-    <li class="toctree-l2"><a href="#_15">查询所有部门</a></li>
+    <li class="toctree-l2"><a href="#_15">添加组</a></li>
     
 
-    <li class="toctree-l2"><a href="#_16">查询部门下所有组</a></li>
+    <li class="toctree-l2"><a href="#_16">查询所有部门</a></li>
     
 
-    <li class="toctree-l2"><a href="#_17">查询组下所有工具</a></li>
+    <li class="toctree-l2"><a href="#_17">查询部门下所有组</a></li>
     
 
-    <li class="toctree-l2"><a href="#_18">查询组下所有成员</a></li>
+    <li class="toctree-l2"><a href="#_18">查询组下所有工具</a></li>
     
 
-    <li class="toctree-l2"><a href="#_19">首页部门组合工具信息接口</a></li>
+    <li class="toctree-l2"><a href="#_19">查询组下所有成员</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_20">首页部门组合工具信息接口</a></li>
     
 
     </ul>
@@ -342,11 +345,11 @@ role:状态<br>
 <p>url:/users/register/</p>
 <p>方法:POST</p>
 <p>请求参数:<br>
-username:用户名<br>
-password:密码<br>
-role:角色<br>
-group_name:组名<br>
-phone_number:手机号<br></p>
+username:注册账号用户名<br>
+password:注册账号密码<br>
+role:注册账号密码角色<br>
+group:注册账号组名<br>
+phone:注册账号手机号<br></p>
 <p>返回信息示例：</p>
 <pre><code>{
     &quot;status&quot;: 1,
@@ -359,7 +362,15 @@ phone_number:手机号<br></p>
 }
 </code></pre>
 
-<h1 id="_12">用户列表</h1>
+<h1 id="_12">账号管理首页模糊查询</h1>
+<p>url: users/serInfo/contain/<br>
+方法: GET<br></p>
+<p>参数:<br>
+name: 输入的查询信息<br></p>
+<pre><code>
+</code></pre>
+
+<h1 id="_13">用户列表</h1>
 <p>url: users/all/<br>
 方法: GET<br></p>
 <p>参数:<br>
@@ -404,7 +415,7 @@ phone_number:手机号<br></p>
 }
 </code></pre>
 
-<h1 id="_13">添加部门</h1>
+<h1 id="_14">添加部门</h1>
 <p>url: users/department<br>
 方法: POST<br>
 参数:<br>
@@ -422,7 +433,7 @@ phone_number:手机号<br></p>
 
 <p>id 部门id<br>
 name 部门名字<br></p>
-<h1 id="_14">添加组</h1>
+<h1 id="_15">添加组</h1>
 <p>url: users/group<br>
 方法: POST<br>
 参数:<br>
@@ -440,7 +451,7 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_15">查询所有部门</h1>
+<h1 id="_16">查询所有部门</h1>
 <p>url: users/departments/<br>
 方法: GET<br>
 示例</p>
@@ -472,7 +483,7 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_16">查询部门下所有组</h1>
+<h1 id="_17">查询部门下所有组</h1>
 <p>url: users/department/groups/<br>
 方法: GET<br>
 参数:<br>
@@ -494,17 +505,17 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_17">查询组下所有工具</h1>
+<h1 id="_18">查询组下所有工具</h1>
 <p>url: users/group/tools/<br>
 方法: GET<br>
 参数:<br>
 组名: group_name<br></p>
-<h1 id="_18">查询组下所有成员</h1>
+<h1 id="_19">查询组下所有成员</h1>
 <p>url: users/group/users/<br>
 方法: GET<br>
 参数:<br>
 组名: group_name<br></p>
-<h1 id="_19">首页部门组合工具信息接口</h1>
+<h1 id="_20">首页部门组合工具信息接口</h1>
 <p>url: users/detailInfo/<br>
 方法: GET<br>
 参数:无<br></p>
