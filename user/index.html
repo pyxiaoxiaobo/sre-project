@@ -76,40 +76,46 @@
     <li class="toctree-l2"><a href="#_5">退出登录</a></li>
     
 
-    <li class="toctree-l2"><a href="#_6">启用账号</a></li>
+    <li class="toctree-l2"><a href="#_6">查询所有启用账号信息</a></li>
     
 
-    <li class="toctree-l2"><a href="#_7">停用账号</a></li>
+    <li class="toctree-l2"><a href="#_7">查询所有停用账号信息</a></li>
     
 
-    <li class="toctree-l2"><a href="#_8">修改角色</a></li>
+    <li class="toctree-l2"><a href="#_8">启用账号</a></li>
     
 
-    <li class="toctree-l2"><a href="#_9">用户注册</a></li>
+    <li class="toctree-l2"><a href="#_9">停用账号</a></li>
     
 
-    <li class="toctree-l2"><a href="#_10">用户列表</a></li>
+    <li class="toctree-l2"><a href="#_10">修改角色</a></li>
     
 
-    <li class="toctree-l2"><a href="#_11">添加部门</a></li>
+    <li class="toctree-l2"><a href="#_11">用户注册</a></li>
     
 
-    <li class="toctree-l2"><a href="#_12">添加组</a></li>
+    <li class="toctree-l2"><a href="#_12">用户列表</a></li>
     
 
-    <li class="toctree-l2"><a href="#_13">查询所有部门</a></li>
+    <li class="toctree-l2"><a href="#_13">添加部门</a></li>
     
 
-    <li class="toctree-l2"><a href="#_14">查询部门下所有组</a></li>
+    <li class="toctree-l2"><a href="#_14">添加组</a></li>
     
 
-    <li class="toctree-l2"><a href="#_15">查询组下所有工具</a></li>
+    <li class="toctree-l2"><a href="#_15">查询所有部门</a></li>
     
 
-    <li class="toctree-l2"><a href="#_16">查询组下所有成员</a></li>
+    <li class="toctree-l2"><a href="#_16">查询部门下所有组</a></li>
     
 
-    <li class="toctree-l2"><a href="#_17">首页部门组合工具信息接口</a></li>
+    <li class="toctree-l2"><a href="#_17">查询组下所有工具</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_18">查询组下所有成员</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_19">首页部门组合工具信息接口</a></li>
     
 
     </ul>
@@ -233,26 +239,106 @@ role:被修改账号的角色（1，2，3）<br>
 <p>url:/users/loginout/</p>
 <p>方法:GET</p>
 <p>请求参数: 无</p>
-<h1 id="_6">启用账号</h1>
+<h1 id="_6">查询所有启用账号信息</h1>
+<p>url: users/active/<br>
+方法: GET<br>
+参数:<br>
+is_active: 1代表启用账号<br></p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;username&quot;: &quot;sunbo&quot;,
+            &quot;phone&quot;: &quot;15268117291&quot;,
+            &quot;role&quot;: &quot;用户&quot;,
+            &quot;group&quot;: &quot;test&quot;,
+            &quot;depart&quot;: &quot;test&quot;,
+            &quot;is_active&quot;: true
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;username&quot;: &quot;sunbo2&quot;,
+            &quot;phone&quot;: &quot;test&quot;,
+            &quot;role&quot;: &quot;管理员&quot;,
+            &quot;group&quot;: &quot;test&quot;,
+            &quot;depart&quot;: &quot;test&quot;,
+            &quot;is_active&quot;: true
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;username&quot;: &quot;zz&quot;,
+            &quot;phone&quot;: &quot;15235918053&quot;,
+            &quot;role&quot;: &quot;管理员&quot;,
+            &quot;group&quot;: &quot;华为数据组&quot;,
+            &quot;depart&quot;: &quot;核心网运行部&quot;,
+            &quot;is_active&quot;: true
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;username&quot;: &quot;zzz&quot;,
+            &quot;phone&quot;: &quot;15235918053&quot;,
+            &quot;role&quot;: &quot;管理员&quot;,
+            &quot;group&quot;: &quot;华为数据组&quot;,
+            &quot;depart&quot;: &quot;核心网运行部&quot;,
+            &quot;is_active&quot;: true
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;username&quot;: &quot;zzzzzzz&quot;,
+            &quot;phone&quot;: &quot;15235918053&quot;,
+            &quot;role&quot;: &quot;管理员&quot;,
+            &quot;group&quot;: &quot;chatops小组&quot;,
+            &quot;depart&quot;: &quot;监控部&quot;,
+            &quot;is_active&quot;: true
+        }
+    ],
+    &quot;msg&quot;: &quot;查询成功&quot;
+}
+</code></pre>
+
+<h1 id="_7">查询所有停用账号信息</h1>
+<p>url: users/active/<br>
+方法: GET<br>
+参数:<br>
+is_active: 0代表停用账号<br></p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 3,
+            &quot;username&quot;: &quot;sunbo3&quot;,
+            &quot;phone&quot;: &quot;test&quot;,
+            &quot;role&quot;: &quot;管理员&quot;,
+            &quot;group&quot;: &quot;test&quot;,
+            &quot;depart&quot;: &quot;test&quot;,
+            &quot;is_active&quot;: false
+        }
+    ],
+    &quot;msg&quot;: &quot;查询停用状态账号成功&quot;
+}
+</code></pre>
+
+<h1 id="_8">启用账号</h1>
 <p>url: users/active/<br>
 方法: POST<br>
 参数:<br>
 id: 被修改账号id<br>
 is_active: 1代表启用账号<br></p>
-<h1 id="_7">停用账号</h1>
+<h1 id="_9">停用账号</h1>
 <p>url: users/active/<br>
 方法: POST<br>
 参数:<br>
 id: 被修改账号id<br>
 is_active: 0代表停用账号<br></p>
-<h1 id="_8">修改角色</h1>
+<h1 id="_10">修改角色</h1>
 <p>url: users/role/<br>
 方法: POST<br>
 参数:<br>
 username:用户名<br>
 role:状态<br>
 1 管理员  2 用户 3 游客</p>
-<h1 id="_9">用户注册</h1>
+<h1 id="_11">用户注册</h1>
 <p>url:/users/register/</p>
 <p>方法:POST</p>
 <p>请求参数:<br>
@@ -273,7 +359,7 @@ phone_number:手机号<br></p>
 }
 </code></pre>
 
-<h1 id="_10">用户列表</h1>
+<h1 id="_12">用户列表</h1>
 <p>url: users/all/<br>
 方法: GET<br></p>
 <p>参数:<br>
@@ -318,7 +404,7 @@ phone_number:手机号<br></p>
 }
 </code></pre>
 
-<h1 id="_11">添加部门</h1>
+<h1 id="_13">添加部门</h1>
 <p>url: users/department<br>
 方法: POST<br>
 参数:<br>
@@ -336,7 +422,7 @@ phone_number:手机号<br></p>
 
 <p>id 部门id<br>
 name 部门名字<br></p>
-<h1 id="_12">添加组</h1>
+<h1 id="_14">添加组</h1>
 <p>url: users/group<br>
 方法: POST<br>
 参数:<br>
@@ -354,7 +440,7 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_13">查询所有部门</h1>
+<h1 id="_15">查询所有部门</h1>
 <p>url: users/departments/<br>
 方法: GET<br>
 示例</p>
@@ -386,7 +472,7 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_14">查询部门下所有组</h1>
+<h1 id="_16">查询部门下所有组</h1>
 <p>url: users/department/groups/<br>
 方法: GET<br>
 参数:<br>
@@ -408,17 +494,17 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_15">查询组下所有工具</h1>
+<h1 id="_17">查询组下所有工具</h1>
 <p>url: users/group/tools/<br>
 方法: GET<br>
 参数:<br>
 组名: group_name<br></p>
-<h1 id="_16">查询组下所有成员</h1>
+<h1 id="_18">查询组下所有成员</h1>
 <p>url: users/group/users/<br>
 方法: GET<br>
 参数:<br>
 组名: group_name<br></p>
-<h1 id="_17">首页部门组合工具信息接口</h1>
+<h1 id="_19">首页部门组合工具信息接口</h1>
 <p>url: users/detailInfo/<br>
 方法: GET<br>
 参数:无<br></p>
