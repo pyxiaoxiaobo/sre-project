@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>关于 - SREUDP 接口文档</title>
+  <title>权限 - SREUDP 接口文档</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u5173\u4e8e";
-    var mkdocs_page_input_path = "about.md";
+    var mkdocs_page_name = "\u6743\u9650";
+    var mkdocs_page_input_path = "authority.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -63,17 +63,29 @@
     <a class="" href="../schedule/">调度</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../authority/">权限</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">关于</a>
+    <a class="current" href="./">权限</a>
     <ul class="subnav">
             
+    <li class="toctree-l2"><a href="#_1">查询已被授权人员</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">查询未授权人员</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">为工具添加组的权限</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_4">为工具添加人的权限</a></li>
+    
+
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">关于</a>
 	    </li>
           
         </ul>
@@ -98,7 +110,7 @@
     
       
     
-    <li>关于</li>
+    <li>权限</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -108,7 +120,80 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="_1">查询已被授权人员</h1>
+<p>url:/tools/authorizedUser/</p>
+<p>方法:GET</p>
+<p>请求参数:<br>
+tool_id: 工具id<br></p>
+<p>示例：</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: {
+        &quot;核心网运行部&quot;: [
+            {
+                &quot;华为数据组&quot;: [
+                    &quot;zz&quot;,
+                    &quot;sunbo222&quot;
+                ]
+            },
+            {
+                &quot;诺基亚组&quot;: [
+                    &quot;sunbo&quot;
+                ]
+            }
+        ],
+        &quot;监控部&quot;: [
+            {
+                &quot;C&amp;M小组&quot;: [
+                    &quot;lll&quot;
+                ]
+            }
+        ]
+    },
+    &quot;msg&quot;: &quot;查询成功&quot;
+}
+</code></pre>
+
+<h1 id="_2">查询未授权人员</h1>
+<p>url:/tools/unauthorizedUser/</p>
+<p>方法:GET</p>
+<p>请求参数:<br>
+tool_id: 工具id<br></p>
+<p>示例：</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: {
+        &quot;核心网运行部&quot;: [
+            {
+                &quot;诺基亚组&quot;: [
+                    &quot;sunbo&quot;
+                ]
+            }
+        ],
+        &quot;监控部&quot;: [
+            {
+                &quot;C&amp;M小组&quot;: [
+                    &quot;lll&quot;
+                ]
+            }
+        ]
+    },
+    &quot;msg&quot;: &quot;查询成功&quot;
+}
+</code></pre>
+
+<h1 id="_3">为工具添加组的权限</h1>
+<p>url:/tools/authorityAdd/group/</p>
+<p>方法:POST</p>
+<p>请求参数:<br>
+tool_id: 工具id
+group_id: 组id 【多个组以';'号隔开】<br></p>
+<h1 id="_4">为工具添加人的权限</h1>
+<p>url:/tools/authorityAdd/user/</p>
+<p>方法:POST</p>
+<p>请求参数:<br>
+tool_id: 工具id
+user_id: 人id 【多个人以';'号隔开】<br></p>
               
             </div>
           </div>
@@ -116,8 +201,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../about/" class="btn btn-neutral float-right" title="关于">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../authority/" class="btn btn-neutral" title="权限"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../schedule/" class="btn btn-neutral" title="调度"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -143,8 +230,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../authority/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../schedule/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../about/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
