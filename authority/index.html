@@ -71,13 +71,16 @@
     <li class="toctree-l2"><a href="#_1">查询已被授权人员</a></li>
     
 
-    <li class="toctree-l2"><a href="#_2">查询未授权人员</a></li>
+    <li class="toctree-l2"><a href="#_2">查询已被授权人员列表</a></li>
     
 
-    <li class="toctree-l2"><a href="#_3">为工具添加组的权限</a></li>
+    <li class="toctree-l2"><a href="#_3">查询未授权人员</a></li>
     
 
-    <li class="toctree-l2"><a href="#_4">为工具添加人的权限</a></li>
+    <li class="toctree-l2"><a href="#_4">为工具添加组的权限</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_5">为工具添加人的权限</a></li>
     
 
     </ul>
@@ -154,7 +157,12 @@ tool_id: 工具id<br></p>
 }
 </code></pre>
 
-<h1 id="_2">查询未授权人员</h1>
+<h1 id="_2">查询已被授权人员列表</h1>
+<p>url:/tools/authorizedUser/list</p>
+<p>方法:GET</p>
+<p>请求参数:<br>
+tool_id: 工具id<br></p>
+<h1 id="_3">查询未授权人员</h1>
 <p>url:/tools/unauthorizedUser/</p>
 <p>方法:GET</p>
 <p>请求参数:<br>
@@ -182,13 +190,13 @@ tool_id: 工具id<br></p>
 }
 </code></pre>
 
-<h1 id="_3">为工具添加组的权限</h1>
+<h1 id="_4">为工具添加组的权限</h1>
 <p>url:/tools/authorityAdd/group/</p>
 <p>方法:POST</p>
 <p>请求参数:<br>
 tool_id: 工具id
 group_id: 组id 【多个组以';'号隔开】<br></p>
-<h1 id="_4">为工具添加人的权限</h1>
+<h1 id="_5">为工具添加人的权限</h1>
 <p>url:/tools/authorityAdd/user/</p>
 <p>方法:POST</p>
 <p>请求参数:<br>
