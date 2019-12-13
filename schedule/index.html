@@ -63,10 +63,19 @@
     <a class="current" href="./">调度</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#_1">运行</a></li>
+    <li class="toctree-l2"><a href="#_1">历史工具使用曲线</a></li>
     
 
-    <li class="toctree-l2"><a href="#_2">查询运行状态</a></li>
+    <li class="toctree-l2"><a href="#_2">工具使用排名</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">总使用次数</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_4">运行</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_5">查询运行状态</a></li>
     
 
     </ul>
@@ -114,7 +123,99 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">运行</h1>
+                <h1 id="_1">历史工具使用曲线</h1>
+<p>url:/schedule/number/history/</p>
+<p>方法:GET</p>
+<p>请求参数:<br>
+search_inf: 查询参数<br>
+year 查询最近十二个月的历史数据<br>
+month 查询最近30天的历史数据<br>
+day 查询最近7天历史数据<br>
+不填默认最近7天数据<br></p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;day&quot;: &quot;2019-12-06&quot;,
+            &quot;number&quot;: 6
+        },
+        {
+            &quot;day&quot;: &quot;2019-12-07&quot;,
+            &quot;numbers&quot;: 0
+        },
+        {
+            &quot;day&quot;: &quot;2019-12-08&quot;,
+            &quot;numbers&quot;: 0
+        },
+        {
+            &quot;day&quot;: &quot;2019-12-09&quot;,
+            &quot;number&quot;: 171
+        },
+        {
+            &quot;day&quot;: &quot;2019-12-10&quot;,
+            &quot;number&quot;: 60
+        },
+        {
+            &quot;day&quot;: &quot;2019-12-11&quot;,
+            &quot;numbers&quot;: 0
+        },
+        {
+            &quot;day&quot;: &quot;2019-12-12&quot;,
+            &quot;numbers&quot;: 0
+        },
+        {
+            &quot;day&quot;: &quot;2019-12-13&quot;,
+            &quot;numbers&quot;: 0
+        }
+    ],
+    &quot;msg&quot;: &quot;查询成功&quot;
+}
+</code></pre>
+
+<h1 id="_2">工具使用排名</h1>
+<p>url:/schedule/rank/</p>
+<p>方法:GET</p>
+<p>请求参数:<br>
+order_way: 排序方式<br>
+1 ： 正序<br>
+-1   倒序<br></p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;tool_name&quot;: &quot;工具55555&quot;,
+            &quot;total&quot;: 14
+        },
+        {
+            &quot;tool_name&quot;: &quot;工具1&quot;,
+            &quot;total&quot;: 33
+        },
+        {
+            &quot;tool_name&quot;: &quot;gongju3&quot;,
+            &quot;total&quot;: 188
+        }
+    ],
+    &quot;msg&quot;: &quot;查询成功&quot;
+}
+</code></pre>
+
+<h1 id="_3">总使用次数</h1>
+<p>url:/schedule/number/<br>
+参数: 无<br></p>
+<p>方法:GET<br>
+total_numbers: 总次数<br>
+today_numbers: 今日新增次数<br></p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: {
+        &quot;total_numbers&quot;: 603,
+        &quot;today_numbers&quot;: 0
+    },
+    &quot;msg&quot;: &quot;查询成功&quot;
+}
+</code></pre>
+
+<h1 id="_4">运行</h1>
 <p>url:/schedule/run/</p>
 <p>方法:POST</p>
 <p>请求参数:<br>
@@ -135,7 +236,7 @@ params: 参数 字典格式{}<br></p>
 }
 </code></pre>
 
-<h1 id="_2">查询运行状态</h1>
+<h1 id="_5">查询运行状态</h1>
 <p>url:/schedule/run/</p>
 <p>方法:GET</p>
 <p>请求参数:<br>

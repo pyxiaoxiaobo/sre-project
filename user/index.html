@@ -58,67 +58,70 @@
     <a class="current" href="./">用户</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#_1">查询用户信息</a></li>
+    <li class="toctree-l2"><a href="#_1">实时用户数</a></li>
     
 
-    <li class="toctree-l2"><a href="#_2">编辑账号信息</a></li>
+    <li class="toctree-l2"><a href="#_2">查询用户信息</a></li>
     
 
-    <li class="toctree-l2"><a href="#_3">删除账号</a></li>
+    <li class="toctree-l2"><a href="#_3">编辑账号信息</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_4">删除账号</a></li>
     
 
     <li class="toctree-l2"><a href="#csrf_token">获取csrf_token</a></li>
     
 
-    <li class="toctree-l2"><a href="#_4">登录</a></li>
+    <li class="toctree-l2"><a href="#_5">登录</a></li>
     
 
-    <li class="toctree-l2"><a href="#_5">退出登录</a></li>
+    <li class="toctree-l2"><a href="#_6">退出登录</a></li>
     
 
-    <li class="toctree-l2"><a href="#_6">查询所有启用账号信息</a></li>
+    <li class="toctree-l2"><a href="#_7">查询所有启用账号信息</a></li>
     
 
-    <li class="toctree-l2"><a href="#_7">查询所有停用账号信息</a></li>
+    <li class="toctree-l2"><a href="#_8">查询所有停用账号信息</a></li>
     
 
-    <li class="toctree-l2"><a href="#_8">启用账号</a></li>
+    <li class="toctree-l2"><a href="#_9">启用账号</a></li>
     
 
-    <li class="toctree-l2"><a href="#_9">停用账号</a></li>
+    <li class="toctree-l2"><a href="#_10">停用账号</a></li>
     
 
-    <li class="toctree-l2"><a href="#_10">修改角色</a></li>
+    <li class="toctree-l2"><a href="#_11">修改角色</a></li>
     
 
-    <li class="toctree-l2"><a href="#_11">用户注册</a></li>
+    <li class="toctree-l2"><a href="#_12">用户注册</a></li>
     
 
-    <li class="toctree-l2"><a href="#_12">账号管理首页模糊查询</a></li>
+    <li class="toctree-l2"><a href="#_13">账号管理首页模糊查询</a></li>
     
 
-    <li class="toctree-l2"><a href="#_13">用户列表</a></li>
+    <li class="toctree-l2"><a href="#_14">用户列表</a></li>
     
 
-    <li class="toctree-l2"><a href="#_14">添加部门</a></li>
+    <li class="toctree-l2"><a href="#_15">添加部门</a></li>
     
 
-    <li class="toctree-l2"><a href="#_15">添加组</a></li>
+    <li class="toctree-l2"><a href="#_16">添加组</a></li>
     
 
-    <li class="toctree-l2"><a href="#_16">查询所有部门</a></li>
+    <li class="toctree-l2"><a href="#_17">查询所有部门</a></li>
     
 
-    <li class="toctree-l2"><a href="#_17">查询部门下所有组</a></li>
+    <li class="toctree-l2"><a href="#_18">查询部门下所有组</a></li>
     
 
-    <li class="toctree-l2"><a href="#_18">查询组下所有工具</a></li>
+    <li class="toctree-l2"><a href="#_19">查询组下所有工具</a></li>
     
 
-    <li class="toctree-l2"><a href="#_19">查询组下所有成员</a></li>
+    <li class="toctree-l2"><a href="#_20">查询组下所有成员</a></li>
     
 
-    <li class="toctree-l2"><a href="#_20">首页部门组合工具信息接口</a></li>
+    <li class="toctree-l2"><a href="#_21">首页部门组合工具信息接口</a></li>
     
 
     </ul>
@@ -171,7 +174,22 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">查询用户信息</h1>
+                <h1 id="_1">实时用户数</h1>
+<p>url: users/number/</p>
+<p>方法：GET</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: {
+        &quot;total&quot;: 14,
+        &quot;new&quot;: 0
+    },
+    &quot;msg&quot;: &quot;查询成功&quot;
+}
+</code></pre>
+
+<p>total: 总数量<br>
+new: 今日新增数量<br></p>
+<h1 id="_2">查询用户信息</h1>
 <p>url: users/userInfo/</p>
 <p>方法：GET</p>
 <p>参数:
@@ -199,7 +217,7 @@ phone: 手机号<br></p>
 }
 </code></pre>
 
-<h1 id="_2">编辑账号信息</h1>
+<h1 id="_3">编辑账号信息</h1>
 <p>url: users/userInfo/</p>
 <p>方法：PUT</p>
 <p>参数:
@@ -212,7 +230,7 @@ role:被修改账号的角色（1，2，3）<br>
 1, 管理员<br>
 2, 用户<br>
 3, 游客<br></p>
-<h1 id="_3">删除账号</h1>
+<h1 id="_4">删除账号</h1>
 <p>url: users/userInfo/</p>
 <p>方法：DELETE</p>
 <p>参数:<br>
@@ -221,7 +239,7 @@ role:被修改账号的角色（1，2，3）<br>
 <h1 id="csrf_token">获取csrf_token</h1>
 <p>url:/users/csrftoken/<br>
 方法:GET<br></p>
-<h1 id="_4">登录</h1>
+<h1 id="_5">登录</h1>
 <p>url:/users/login/</p>
 <p>方法:POST</p>
 <p>请求参数:<br>
@@ -243,11 +261,11 @@ role:被修改账号的角色（1，2，3）<br>
 }
 </code></pre>
 
-<h1 id="_5">退出登录</h1>
+<h1 id="_6">退出登录</h1>
 <p>url:/users/loginout/</p>
 <p>方法:GET</p>
 <p>请求参数: 无</p>
-<h1 id="_6">查询所有启用账号信息</h1>
+<h1 id="_7">查询所有启用账号信息</h1>
 <p>url: users/active/<br>
 方法: GET<br>
 参数:<br>
@@ -305,7 +323,7 @@ is_active: 1代表启用账号<br></p>
 }
 </code></pre>
 
-<h1 id="_7">查询所有停用账号信息</h1>
+<h1 id="_8">查询所有停用账号信息</h1>
 <p>url: users/active/<br>
 方法: GET<br>
 参数:<br>
@@ -327,26 +345,26 @@ is_active: 0代表停用账号<br></p>
 }
 </code></pre>
 
-<h1 id="_8">启用账号</h1>
+<h1 id="_9">启用账号</h1>
 <p>url: users/active/<br>
 方法: POST<br>
 参数:<br>
 id: 被修改账号id<br>
 is_active: 1代表启用账号<br></p>
-<h1 id="_9">停用账号</h1>
+<h1 id="_10">停用账号</h1>
 <p>url: users/active/<br>
 方法: POST<br>
 参数:<br>
 id: 被修改账号id<br>
 is_active: 0代表停用账号<br></p>
-<h1 id="_10">修改角色</h1>
+<h1 id="_11">修改角色</h1>
 <p>url: users/role/<br>
 方法: POST<br>
 参数:<br>
 id:用户名<br>
 role:状态<br>
 1 管理员  2 用户 3 游客</p>
-<h1 id="_11">用户注册</h1>
+<h1 id="_12">用户注册</h1>
 <p>url:/users/register/</p>
 <p>方法:POST</p>
 <p>请求参数:<br>
@@ -367,12 +385,12 @@ phone:注册账号手机号<br></p>
 }
 </code></pre>
 
-<h1 id="_12">账号管理首页模糊查询</h1>
+<h1 id="_13">账号管理首页模糊查询</h1>
 <p>url: users/serInfo/contain/<br>
 方法: GET<br></p>
 <p>参数:<br>
 name: 输入的查询信息<br></p>
-<h1 id="_13">用户列表</h1>
+<h1 id="_14">用户列表</h1>
 <p>url: users/all/<br>
 方法: GET<br></p>
 <p>参数:<br>
@@ -417,7 +435,7 @@ name: 输入的查询信息<br></p>
 }
 </code></pre>
 
-<h1 id="_14">添加部门</h1>
+<h1 id="_15">添加部门</h1>
 <p>url: users/department<br>
 方法: POST<br>
 参数:<br>
@@ -435,7 +453,7 @@ name: 输入的查询信息<br></p>
 
 <p>id 部门id<br>
 name 部门名字<br></p>
-<h1 id="_15">添加组</h1>
+<h1 id="_16">添加组</h1>
 <p>url: users/group<br>
 方法: POST<br>
 参数:<br>
@@ -453,7 +471,7 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_16">查询所有部门</h1>
+<h1 id="_17">查询所有部门</h1>
 <p>url: users/departments/<br>
 方法: GET<br>
 示例</p>
@@ -485,7 +503,7 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_17">查询部门下所有组</h1>
+<h1 id="_18">查询部门下所有组</h1>
 <p>url: users/department/groups/<br>
 方法: GET<br>
 参数:<br>
@@ -507,17 +525,17 @@ name 部门名字<br></p>
 }
 </code></pre>
 
-<h1 id="_18">查询组下所有工具</h1>
+<h1 id="_19">查询组下所有工具</h1>
 <p>url: users/group/tools/<br>
 方法: GET<br>
 参数:<br>
 组名: group_name<br></p>
-<h1 id="_19">查询组下所有成员</h1>
+<h1 id="_20">查询组下所有成员</h1>
 <p>url: users/group/users/<br>
 方法: GET<br>
 参数:<br>
 组名: group_name<br></p>
-<h1 id="_20">首页部门组合工具信息接口</h1>
+<h1 id="_21">首页部门组合工具信息接口</h1>
 <p>url: users/detailInfo/<br>
 方法: GET<br>
 参数:无<br></p>
