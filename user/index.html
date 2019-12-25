@@ -201,50 +201,46 @@
 <h1 id="_2">收藏工具查询</h1>
 <p>url: users/collections/</p>
 <p>方法：GET</p>
-<p>参数:无</p>
+<p>参数:无<br>
+每页数据个数：page_size<br>
+当前页：current_page<br>
+不填 默认 6和1<br></p>
 <pre><code>{
     &quot;status&quot;: 1,
-    &quot;data&quot;: [
-        {
-            &quot;tool_id&quot;: 6,
-            &quot;tool_name&quot;: &quot;gongju&quot;,
-            &quot;tup_date&quot;: &quot;2019-11-22&quot;,
-            &quot;tuser&quot;: &quot;zzz&quot;,
-            &quot;group&quot;: &quot;华为数据组&quot;,
-            &quot;depart&quot;: &quot;核心网运行部&quot;,
-            &quot;authoried_name&quot;: [
-                &quot;zzz&quot;
-            ]
-        },
-        {
-            &quot;tool_id&quot;: 15,
-            &quot;tool_name&quot;: &quot;gongju3&quot;,
-            &quot;tup_date&quot;: &quot;2019-11-28&quot;,
-            &quot;tuser&quot;: &quot;zz&quot;,
-            &quot;group&quot;: &quot;EPC组&quot;,
-            &quot;depart&quot;: &quot;移动互联网&quot;,
-            &quot;authoried_name&quot;: [
-                &quot;sunbo&quot;,
-                &quot;用户1&quot;,
-                &quot;yidong&quot;,
-                &quot;zz&quot;,
-                &quot;zzz&quot;,
-                &quot;测试1&quot;,
-                &quot;测试2&quot;
-            ]
-        },
-        {
-            &quot;tool_id&quot;: 16,
-            &quot;tool_name&quot;: &quot;工具55555&quot;,
-            &quot;tup_date&quot;: &quot;2019-11-29&quot;,
-            &quot;tuser&quot;: &quot;zz&quot;,
-            &quot;group&quot;: &quot;EPC组&quot;,
-            &quot;depart&quot;: &quot;移动互联网&quot;,
-            &quot;authoried_name&quot;: [
-                &quot;zzz&quot;
-            ]
-        }
-    ],
+    &quot;data&quot;: {
+        &quot;info&quot;: [
+            {
+                &quot;tool_id&quot;: 6,
+                &quot;tool_name&quot;: &quot;gongju&quot;,
+                &quot;tup_date&quot;: &quot;2019-11-22&quot;,
+                &quot;tuser&quot;: &quot;zzz&quot;,
+                &quot;group&quot;: &quot;华为数据组&quot;,
+                &quot;depart&quot;: &quot;核心网运行部&quot;,
+                &quot;authoried_name&quot;: [
+                    &quot;zzz&quot;
+                ]
+            },
+            {
+                &quot;tool_id&quot;: 15,
+                &quot;tool_name&quot;: &quot;gongju3&quot;,
+                &quot;tup_date&quot;: &quot;2019-11-28&quot;,
+                &quot;tuser&quot;: &quot;zz&quot;,
+                &quot;group&quot;: &quot;EPC组&quot;,
+                &quot;depart&quot;: &quot;移动互联网&quot;,
+                &quot;authoried_name&quot;: [
+                    &quot;sunbo&quot;,
+                    &quot;用户1&quot;,
+                    &quot;yidong&quot;,
+                    &quot;zz&quot;,
+                    &quot;zzz&quot;,
+                    &quot;测试1&quot;,
+                    &quot;测试2&quot;
+                ]
+            }
+        ],
+        &quot;count&quot;: 3,
+        &quot;num_pages&quot;: 2
+    },
     &quot;msg&quot;: &quot;查询成功&quot;
 }
 </code></pre>
