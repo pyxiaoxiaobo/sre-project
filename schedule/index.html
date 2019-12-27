@@ -63,25 +63,28 @@
     <a class="current" href="./">调度</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#_1">最近使用</a></li>
+    <li class="toctree-l2"><a href="#_1">运行日志</a></li>
     
 
     <li class="toctree-l2"><a href="#_2">最近使用</a></li>
     
 
-    <li class="toctree-l2"><a href="#_3">历史工具使用曲线</a></li>
+    <li class="toctree-l2"><a href="#_3">最近使用</a></li>
     
 
-    <li class="toctree-l2"><a href="#_4">工具使用排名</a></li>
+    <li class="toctree-l2"><a href="#_4">历史工具使用曲线</a></li>
     
 
-    <li class="toctree-l2"><a href="#_5">总使用次数</a></li>
+    <li class="toctree-l2"><a href="#_5">工具使用排名</a></li>
     
 
-    <li class="toctree-l2"><a href="#_6">运行</a></li>
+    <li class="toctree-l2"><a href="#_6">总使用次数</a></li>
     
 
-    <li class="toctree-l2"><a href="#_7">查询运行状态</a></li>
+    <li class="toctree-l2"><a href="#_7">运行</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_8">查询运行状态</a></li>
     
 
     </ul>
@@ -129,7 +132,80 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">最近使用</h1>
+                <h1 id="_1">运行日志</h1>
+<p>url:/schedule/log/</p>
+<p>方法:GET</p>
+<p>每页数据个数：page_size<br>
+当前页：current_page<br>
+不填 默认 6和1<br>
+请求参数:无<br></p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: {
+        &quot;count&quot;: 12,
+        &quot;num_pages&quot;: 2,
+        &quot;info&quot;: [
+            {
+                &quot;username&quot;: &quot;sunbo&quot;,
+                &quot;run_time&quot;: &quot;2019-12-26T14:15:14.781&quot;,
+                &quot;tname&quot;: &quot;yidong&quot;,
+                &quot;status&quot;: &quot;SUCCESS&quot;,
+                &quot;id&quot;: 1,
+                &quot;task_id&quot;: &quot;86bc60d6-3f73-4381-97e6-b474305432f5&quot;,
+                &quot;result&quot;: &quot;{\&quot;data\&quot;: [{\&quot;type\&quot;: \&quot;table\&quot;, \&quot;title\&quot;: \&quot;\用\户\信\息\表\&quot;, \&quot;columns\&quot;: [\&quot;\名\称\&quot;, \&quot;\值\&quot;], \&quot;rows\&quot;: [[\&quot;SUBID\&quot;, \&quot;+8657156150671@ims.zj.chinamobile.com\&quot;], [\&quot;CAP\&quot;, \&quot;[201,301]\&quot;], [\&quot;IMPI\&quot;, \&quot;+8657156150671@ims.zj.chinamobile.com\&quot;], [\&quot;IMPU\&quot;, \&quot;[sip:+8657156150671@ims.zj.chinamobile.com,tel:+8657156150671]\&quot;], [\&quot;VNT\&quot;, \&quot;1\&quot;], [\&quot;Sifc\&quot;, \&quot;[91]\&quot;]]}, {\&quot;type\&quot;: \&quot;Histogram\&quot;, \&quot;title\&quot;: \&quot;\用\户\信\息\图\&quot;, \&quot;columns\&quot;: [\&quot;\日\期\&quot;, \&quot;\成\本\&quot;, \&quot;\利\润\&quot;], \&quot;rows\&quot;: [[\&quot;1\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;], [\&quot;2\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;], [\&quot;3\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;]]}]}&quot;
+            },
+            {
+                &quot;username&quot;: &quot;sunbo&quot;,
+                &quot;run_time&quot;: &quot;2019-12-26T14:16:19.463&quot;,
+                &quot;tname&quot;: &quot;yidong&quot;,
+                &quot;status&quot;: &quot;SUCCESS&quot;,
+                &quot;id&quot;: 2,
+                &quot;task_id&quot;: &quot;065f03f5-e70c-4432-9845-d7cb9cdffb1c&quot;,
+                &quot;result&quot;: &quot;{\&quot;data\&quot;: [{\&quot;type\&quot;: \&quot;table\&quot;, \&quot;title\&quot;: \&quot;\用\户\信\息\表\&quot;, \&quot;columns\&quot;: [\&quot;\名\称\&quot;, \&quot;\值\&quot;], \&quot;rows\&quot;: [[\&quot;SUBID\&quot;, \&quot;+8657156150671@ims.zj.chinamobile.com\&quot;], [\&quot;CAP\&quot;, \&quot;[201,301]\&quot;], [\&quot;IMPI\&quot;, \&quot;+8657156150671@ims.zj.chinamobile.com\&quot;], [\&quot;IMPU\&quot;, \&quot;[sip:+8657156150671@ims.zj.chinamobile.com,tel:+8657156150671]\&quot;], [\&quot;VNT\&quot;, \&quot;1\&quot;], [\&quot;Sifc\&quot;, \&quot;[91]\&quot;]]}, {\&quot;type\&quot;: \&quot;Histogram\&quot;, \&quot;title\&quot;: \&quot;\用\户\信\息\图\&quot;, \&quot;columns\&quot;: [\&quot;\日\期\&quot;, \&quot;\成\本\&quot;, \&quot;\利\润\&quot;], \&quot;rows\&quot;: [[\&quot;1\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;], [\&quot;2\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;], [\&quot;3\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;]]}]}&quot;
+            },
+            {
+                &quot;username&quot;: &quot;sunbo&quot;,
+                &quot;run_time&quot;: &quot;2019-12-26T14:16:30.406&quot;,
+                &quot;tname&quot;: &quot;yidong&quot;,
+                &quot;status&quot;: &quot;SUCCESS&quot;,
+                &quot;id&quot;: 3,
+                &quot;task_id&quot;: &quot;379716d1-5abf-484a-a524-8f8c91d518b4&quot;,
+                &quot;result&quot;: &quot;{\&quot;data\&quot;: [{\&quot;type\&quot;: \&quot;table\&quot;, \&quot;title\&quot;: \&quot;\用\户\信\息\表\&quot;, \&quot;columns\&quot;: [\&quot;\名\称\&quot;, \&quot;\值\&quot;], \&quot;rows\&quot;: [[\&quot;SUBID\&quot;, \&quot;+8657156150671@ims.zj.chinamobile.com\&quot;], [\&quot;CAP\&quot;, \&quot;[201,301]\&quot;], [\&quot;IMPI\&quot;, \&quot;+8657156150671@ims.zj.chinamobile.com\&quot;], [\&quot;IMPU\&quot;, \&quot;[sip:+8657156150671@ims.zj.chinamobile.com,tel:+8657156150671]\&quot;], [\&quot;VNT\&quot;, \&quot;1\&quot;], [\&quot;Sifc\&quot;, \&quot;[91]\&quot;]]}, {\&quot;type\&quot;: \&quot;Histogram\&quot;, \&quot;title\&quot;: \&quot;\用\户\信\息\图\&quot;, \&quot;columns\&quot;: [\&quot;\日\期\&quot;, \&quot;\成\本\&quot;, \&quot;\利\润\&quot;], \&quot;rows\&quot;: [[\&quot;1\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;], [\&quot;2\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;], [\&quot;3\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;]]}]}&quot;
+            },
+            {
+                &quot;username&quot;: &quot;sunbo&quot;,
+                &quot;run_time&quot;: &quot;2019-12-26T14:16:58.263&quot;,
+                &quot;tname&quot;: &quot;yidong&quot;,
+                &quot;status&quot;: &quot;SUCCESS&quot;,
+                &quot;id&quot;: 4,
+                &quot;task_id&quot;: &quot;617f85f3-477f-4831-b092-c918f64bafa4&quot;,
+                &quot;result&quot;: &quot;{\&quot;data\&quot;: [{\&quot;type\&quot;: \&quot;table\&quot;, \&quot;title\&quot;: \&quot;\用\户\信\息\表\&quot;, \&quot;columns\&quot;: [\&quot;\名\称\&quot;, \&quot;\值\&quot;], \&quot;rows\&quot;: [[\&quot;SUBID\&quot;, \&quot;+8657156150671@ims.zj.chinamobile.com\&quot;], [\&quot;CAP\&quot;, \&quot;[201,301]\&quot;], [\&quot;IMPI\&quot;, \&quot;+8657156150671@ims.zj.chinamobile.com\&quot;], [\&quot;IMPU\&quot;, \&quot;[sip:+8657156150671@ims.zj.chinamobile.com,tel:+8657156150671]\&quot;], [\&quot;VNT\&quot;, \&quot;1\&quot;], [\&quot;Sifc\&quot;, \&quot;[91]\&quot;]]}, {\&quot;type\&quot;: \&quot;Histogram\&quot;, \&quot;title\&quot;: \&quot;\用\户\信\息\图\&quot;, \&quot;columns\&quot;: [\&quot;\日\期\&quot;, \&quot;\成\本\&quot;, \&quot;\利\润\&quot;], \&quot;rows\&quot;: [[\&quot;1\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;], [\&quot;2\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;], [\&quot;3\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;]]}]}&quot;
+            },
+            {
+                &quot;username&quot;: &quot;sunbo&quot;,
+                &quot;run_time&quot;: &quot;2019-12-26T14:17:21.092&quot;,
+                &quot;tname&quot;: &quot;yidong&quot;,
+                &quot;status&quot;: &quot;SUCCESS&quot;,
+                &quot;id&quot;: 5,
+                &quot;task_id&quot;: &quot;c8903b5e-7df6-4e73-b023-478dc99d3894&quot;,
+                &quot;result&quot;: &quot;{\&quot;data\&quot;: [{\&quot;type\&quot;: \&quot;table\&quot;, \&quot;title\&quot;: \&quot;\用\户\信\息\表\&quot;, \&quot;columns\&quot;: [\&quot;\名\称\&quot;, \&quot;\值\&quot;], \&quot;rows\&quot;: [[\&quot;SUBID\&quot;, \&quot;+8657156150671@ims.zj.chinamobile.com\&quot;], [\&quot;CAP\&quot;, \&quot;[201,301]\&quot;], [\&quot;IMPI\&quot;, \&quot;+8657156150671@ims.zj.chinamobile.com\&quot;], [\&quot;IMPU\&quot;, \&quot;[sip:+8657156150671@ims.zj.chinamobile.com,tel:+8657156150671]\&quot;], [\&quot;VNT\&quot;, \&quot;1\&quot;], [\&quot;Sifc\&quot;, \&quot;[91]\&quot;]]}, {\&quot;type\&quot;: \&quot;Histogram\&quot;, \&quot;title\&quot;: \&quot;\用\户\信\息\图\&quot;, \&quot;columns\&quot;: [\&quot;\日\期\&quot;, \&quot;\成\本\&quot;, \&quot;\利\润\&quot;], \&quot;rows\&quot;: [[\&quot;1\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;], [\&quot;2\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;], [\&quot;3\月\&quot;, \&quot;1523\&quot;, \&quot;1234\&quot;]]}]}&quot;
+            },
+            {
+                &quot;username&quot;: &quot;sunbo&quot;,
+                &quot;run_time&quot;: &quot;2019-12-26T14:48:35.057&quot;,
+                &quot;tname&quot;: &quot;gongju3&quot;,
+                &quot;status&quot;: &quot;FAILURE&quot;,
+                &quot;id&quot;: 30,
+                &quot;task_id&quot;: &quot;e37f6311-6801-42c4-9815-809f0871af69&quot;,
+                &quot;result&quot;: &quot;Traceback (most recent call last):\n  File \&quot;/Users/sunbo/Desktop/sunbo/yidong/sre-udp/celery_tasks/tasks.py\&quot;, line 32, in run_script\n    rl.sace()\nAttributeError: 'RunLog' object has no attribute 'sace'\n&quot;
+            }
+        ]
+    },
+    &quot;msg&quot;: &quot;查询成功&quot;
+}
+</code></pre>
+
+<h1 id="_2">最近使用</h1>
 <p>url:/schedule/log/</p>
 <p>方法:GET</p>
 <p>请求参数:无<br></p>
@@ -137,91 +213,31 @@
     &quot;status&quot;: 1,
     &quot;data&quot;: [
         {
-            &quot;runner&quot;: &quot;sunbo&quot;,
-            &quot;run_time&quot;: &quot;2019-12-26T14:15:14.781&quot;,
-            &quot;tool_name&quot;: &quot;yidong&quot;,
-            &quot;status&quot;: &quot;SUCCESS&quot;,
-            &quot;id&quot;: 1,
-            &quot;task_id&quot;: &quot;86bc60d6-3f73-4381-97e6-b474305432f5&quot;
+            &quot;tool_id&quot;: 32,
+            &quot;tool_name&quot;: &quot;yidong&quot;
         },
         {
-            &quot;runner&quot;: &quot;sunbo&quot;,
-            &quot;run_time&quot;: &quot;2019-12-26T14:16:19.463&quot;,
-            &quot;tool_name&quot;: &quot;yidong&quot;,
-            &quot;status&quot;: &quot;SUCCESS&quot;,
-            &quot;id&quot;: 2,
-            &quot;task_id&quot;: &quot;065f03f5-e70c-4432-9845-d7cb9cdffb1c&quot;
+            &quot;tool_id&quot;: 2,
+            &quot;tool_name&quot;: &quot;工具1&quot;
         },
         {
-            &quot;runner&quot;: &quot;sunbo&quot;,
-            &quot;run_time&quot;: &quot;2019-12-26T14:16:30.406&quot;,
-            &quot;tool_name&quot;: &quot;yidong&quot;,
-            &quot;status&quot;: &quot;SUCCESS&quot;,
-            &quot;id&quot;: 3,
-            &quot;task_id&quot;: &quot;379716d1-5abf-484a-a524-8f8c91d518b4&quot;
+            &quot;tool_id&quot;: 15,
+            &quot;tool_name&quot;: &quot;gongju3&quot;
         },
         {
-            &quot;runner&quot;: &quot;sunbo&quot;,
-            &quot;run_time&quot;: &quot;2019-12-26T14:16:58.263&quot;,
-            &quot;tool_name&quot;: &quot;yidong&quot;,
-            &quot;status&quot;: &quot;SUCCESS&quot;,
-            &quot;id&quot;: 4,
-            &quot;task_id&quot;: &quot;617f85f3-477f-4831-b092-c918f64bafa4&quot;
+            &quot;tool_id&quot;: 32,
+            &quot;tool_name&quot;: &quot;yidong&quot;
         },
         {
-            &quot;runner&quot;: &quot;sunbo&quot;,
-            &quot;run_time&quot;: &quot;2019-12-26T14:17:21.092&quot;,
-            &quot;tool_name&quot;: &quot;yidong&quot;,
-            &quot;status&quot;: &quot;SUCCESS&quot;,
-            &quot;id&quot;: 5,
-            &quot;task_id&quot;: &quot;c8903b5e-7df6-4e73-b023-478dc99d3894&quot;
-        },
-        {
-            &quot;runner&quot;: &quot;sunbo&quot;,
-            &quot;run_time&quot;: &quot;2019-12-26T14:48:35.057&quot;,
-            &quot;tool_name&quot;: &quot;gongju3&quot;,
-            &quot;status&quot;: &quot;FAILURE&quot;,
-            &quot;id&quot;: 30,
-            &quot;task_id&quot;: &quot;e37f6311-6801-42c4-9815-809f0871af69&quot;
-        },
-        {
-            &quot;runner&quot;: &quot;sunbo&quot;,
-            &quot;run_time&quot;: &quot;2019-12-26T15:43:51.941&quot;,
-            &quot;tool_name&quot;: &quot;yidong&quot;,
-            &quot;status&quot;: &quot;SUCCESS&quot;,
-            &quot;id&quot;: 39,
-            &quot;task_id&quot;: &quot;39c6f5ea-d3b7-48be-b4ee-db05d3db6ee6&quot;
-        },
-        {
-            &quot;runner&quot;: &quot;sunbo&quot;,
-            &quot;run_time&quot;: &quot;2019-12-26T15:44:31.632&quot;,
-            &quot;tool_name&quot;: &quot;gongju3&quot;,
-            &quot;status&quot;: &quot;SUCCESS&quot;,
-            &quot;id&quot;: 40,
-            &quot;task_id&quot;: &quot;5e596ed6-88ee-402f-88fc-8faa4cba41f1&quot;
-        },
-        {
-            &quot;runner&quot;: &quot;sunbo&quot;,
-            &quot;run_time&quot;: &quot;2019-12-26T16:21:36.580&quot;,
-            &quot;tool_name&quot;: &quot;yidong&quot;,
-            &quot;status&quot;: &quot;SUCCESS&quot;,
-            &quot;id&quot;: 41,
-            &quot;task_id&quot;: &quot;d50f199f-ff54-4124-8083-5916a26bc0df&quot;
-        },
-        {
-            &quot;runner&quot;: &quot;sunbo&quot;,
-            &quot;run_time&quot;: &quot;2019-12-26T16:22:57.105&quot;,
-            &quot;tool_name&quot;: &quot;gongju3&quot;,
-            &quot;status&quot;: &quot;SUCCESS&quot;,
-            &quot;id&quot;: 42,
-            &quot;task_id&quot;: &quot;20c00302-564b-4f1d-ba3c-feb3bcf63839&quot;
+            &quot;tool_id&quot;: 15,
+            &quot;tool_name&quot;: &quot;gongju3&quot;
         }
     ],
     &quot;msg&quot;: &quot;查询成功&quot;
 }
 </code></pre>
 
-<h1 id="_2">最近使用</h1>
+<h1 id="_3">最近使用</h1>
 <p>url:/schedule/recent/</p>
 <p>方法:GET</p>
 <p>请求参数:无<br></p>
@@ -249,7 +265,7 @@
 }
 </code></pre>
 
-<h1 id="_3">历史工具使用曲线</h1>
+<h1 id="_4">历史工具使用曲线</h1>
 <p>url:/schedule/number/history/</p>
 <p>方法:GET</p>
 <p>请求参数:<br>
@@ -298,7 +314,7 @@ day 查询最近7天历史数据<br>
 }
 </code></pre>
 
-<h1 id="_4">工具使用排名</h1>
+<h1 id="_5">工具使用排名</h1>
 <p>url:/schedule/rank/</p>
 <p>方法:GET</p>
 <p>请求参数:<br>
@@ -325,7 +341,7 @@ order_way: 排序方式<br>
 }
 </code></pre>
 
-<h1 id="_5">总使用次数</h1>
+<h1 id="_6">总使用次数</h1>
 <p>url:/schedule/number/<br>
 参数: 无<br></p>
 <p>方法:GET<br>
@@ -341,7 +357,7 @@ today_numbers: 今日新增次数<br></p>
 }
 </code></pre>
 
-<h1 id="_6">运行</h1>
+<h1 id="_7">运行</h1>
 <p>url:/schedule/run/</p>
 <p>方法:POST</p>
 <p>请求参数:<br>
@@ -362,7 +378,7 @@ params: 参数 字典格式{}<br></p>
 }
 </code></pre>
 
-<h1 id="_7">查询运行状态</h1>
+<h1 id="_8">查询运行状态</h1>
 <p>url:/schedule/run/</p>
 <p>方法:GET</p>
 <p>请求参数:<br>
