@@ -63,25 +63,28 @@
     <a class="current" href="./">调度</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#_1">运行日志</a></li>
+    <li class="toctree-l2"><a href="#_1">上传文件参数</a></li>
     
 
-    <li class="toctree-l2"><a href="#_2">最近使用</a></li>
+    <li class="toctree-l2"><a href="#_2">运行日志</a></li>
     
 
-    <li class="toctree-l2"><a href="#_3">历史工具使用曲线</a></li>
+    <li class="toctree-l2"><a href="#_3">最近使用</a></li>
     
 
-    <li class="toctree-l2"><a href="#_4">工具使用排名</a></li>
+    <li class="toctree-l2"><a href="#_4">历史工具使用曲线</a></li>
     
 
-    <li class="toctree-l2"><a href="#_5">总使用次数</a></li>
+    <li class="toctree-l2"><a href="#_5">工具使用排名</a></li>
     
 
-    <li class="toctree-l2"><a href="#_6">运行</a></li>
+    <li class="toctree-l2"><a href="#_6">总使用次数</a></li>
     
 
-    <li class="toctree-l2"><a href="#_7">查询运行状态</a></li>
+    <li class="toctree-l2"><a href="#_7">运行</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_8">查询运行状态</a></li>
     
 
     </ul>
@@ -129,7 +132,24 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">运行日志</h1>
+                <h1 id="_1">上传文件参数</h1>
+<p>url:/schedule/config/<br>
+方法:POST<br>
+请求参数:<br>
+文件:file<br>
+工具id:tool_id<br>
+返回uuid<br>
+如果用户上传了文件参数，调用运行接口是带着uuid</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;data&quot;: {
+        &quot;uuid&quot;: &quot;3667b61228737d861f961f706d68ba12&quot;
+    },
+    &quot;msg&quot;: &quot;上传成功&quot;
+}
+</code></pre>
+
+<h1 id="_2">运行日志</h1>
 <p>url:/schedule/log/</p>
 <p>方法:GET</p>
 <p>请求参数:<br>
@@ -205,7 +225,7 @@
 }
 </code></pre>
 
-<h1 id="_2">最近使用</h1>
+<h1 id="_3">最近使用</h1>
 <p>url:/schedule/recent/</p>
 <p>方法:GET</p>
 <p>请求参数:无<br></p>
@@ -225,7 +245,7 @@
 }
 </code></pre>
 
-<h1 id="_3">历史工具使用曲线</h1>
+<h1 id="_4">历史工具使用曲线</h1>
 <p>url:/schedule/number/history/</p>
 <p>方法:GET</p>
 <p>请求参数:<br>
@@ -274,7 +294,7 @@ day 查询最近7天历史数据<br>
 }
 </code></pre>
 
-<h1 id="_4">工具使用排名</h1>
+<h1 id="_5">工具使用排名</h1>
 <p>url:/schedule/rank/</p>
 <p>方法:GET</p>
 <p>请求参数:<br>
@@ -301,7 +321,7 @@ order_way: 排序方式<br>
 }
 </code></pre>
 
-<h1 id="_5">总使用次数</h1>
+<h1 id="_6">总使用次数</h1>
 <p>url:/schedule/number/<br>
 参数: 无<br></p>
 <p>方法:GET<br>
@@ -317,12 +337,13 @@ today_numbers: 今日新增次数<br></p>
 }
 </code></pre>
 
-<h1 id="_6">运行</h1>
+<h1 id="_7">运行</h1>
 <p>url:/schedule/run/</p>
 <p>方法:POST</p>
 <p>请求参数:<br>
 id: 工具id<br>
-params: 参数 字典格式{}<br></p>
+params: 参数 字典格式{}<br>
+uuid: 文件参数信息  选传<br></p>
 <p>示例：</p>
 <pre><code>{
     &quot;status&quot;: 1,
@@ -338,7 +359,7 @@ params: 参数 字典格式{}<br></p>
 }
 </code></pre>
 
-<h1 id="_7">查询运行状态</h1>
+<h1 id="_8">查询运行状态</h1>
 <p>url:/schedule/run/</p>
 <p>方法:GET</p>
 <p>请求参数:<br>
