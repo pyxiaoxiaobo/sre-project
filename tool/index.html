@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>工具 - SREUDP 接口文档</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5de5\u5177";
+    var mkdocs_page_input_path = "tool.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> SREUDP 接口文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../user/">用户</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../schedule/">调度</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../authority/">权限</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">工具</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#1">1.工具上传</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#header">header</a></li>
+        
+            <li><a class="toctree-l3" href="#body">body</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#2">2.工具删除</a></li>
+    
+
+    <li class="toctree-l2"><a href="#3">3.个人工具查询</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#return">return：</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#4">4.条件工具查询</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#return_1">return：</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#5">5.工具调用</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#params-idxx">params  id：XX</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#6">6.工具占比数量</a></li>
+    
+
+    <li class="toctree-l2"><a href="#7">7.用户上传排名</a></li>
+    
+
+    <li class="toctree-l2"><a href="#8">8.工具总数</a></li>
+    
+
+    <li class="toctree-l2"><a href="#9">9.工具编辑查询</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#return_2">return</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#10">10.工具编辑修改</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_1">传给我的参数</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">关于</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">SREUDP 接口文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>工具</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="1">1.工具上传</h1>
+<ul>
+<li>1.POST http://127.0.0.1:8000/tools/</li>
+</ul>
+<h3 id="header">header</h3>
+<p>Content-Type ：multipart/form-data</p>
+<h3 id="body">body</h3>
+<ul>
+<li>username：用户名</li>
+<li>tname ： 文件名</li>
+<li>myfile ： 文件</li>
+<li>main_file 入口文件</li>
+<li>main_method 入口方法</li>
+<li>params ： 参数</li>
+<li>describe ： 描述</li>
+</ul>
+<h1 id="2">2.工具删除</h1>
+<ul>
+<li>1.Delete http://127.0.0.1:8000/tools/？tname=工具名</li>
+<li>params：tname ： 工具名</li>
+</ul>
+<h1 id="3">3.个人工具查询</h1>
+<ul>
+<li>1.GET http://127.0.0.1:8000/tools/</li>
+</ul>
+<h2 id="return">return：</h2>
+<pre><code class="python">    '工具序号': id,
+    '工具名': tname,
+    '工具上传时间': tup_date,
+    '工具更新时间':update_time
+    '运行次数':run_count
+</code></pre>
+
+<h1 id="4">4.条件工具查询</h1>
+<ul>
+<li>1.POST http://127.0.0.1:8000/tools/toolsquery/</li>
+</ul>
+<h2 id="return_1">return：</h2>
+<pre><code class="python">    '工具序号': id,
+    '工具名': tname,
+    '工具上传时间': tup_date,
+    '工具入口文件地址': main_file,
+    '工具入口方法': main_method,
+    '工具参数':params,
+    '工具描述':describe
+    '工具更新时间':update_time
+    '运行次数':run_count
+</code></pre>
+
+<h1 id="5">5.工具调用</h1>
+<ul>
+<li>GET  http://127.0.0.1:8000/tools/toolsuse/?id=2</li>
+</ul>
+<h3 id="params-idxx">params  id：XX</h3>
+<p>return：</p>
+<pre><code class="python">        '工具序号': id,
+        '工具名': tname,
+        '工具上传时间': tup_date,
+        '工具入口文件地址': main_file,
+        '工具入口方法': main_method,
+        '工具参数': params,
+        '工具描述': describe
+</code></pre>
+
+<h1 id="6">6.工具占比数量</h1>
+<pre><code class="python">GET  http://127.0.0.1:8000/tools/toolspercent/
+</code></pre>
+
+<h1 id="7">7.用户上传排名</h1>
+<pre><code class="python">POST  http://127.0.0.1:8000/tools/toolspercent/
+
+order_way  1正序  -1倒序
+</code></pre>
+
+<h1 id="8">8.工具总数</h1>
+<pre><code class="python">GET http://127.0.0.1:8000/tools/toolstotal/
+</code></pre>
+
+<h1 id="9">9.工具编辑查询</h1>
+<p>GET  http://127.0.0.1:8000/tools/toolsEditor/?id=2</p>
+<h2 id="return_2">return</h2>
+<pre><code class="python">    '工具序号': id,
+    '工具名':tname,
+    '工具上传时间':tup_date,
+    '工具入口文件地址':main_file,
+    '工具入口方法': main_method,
+    '工具参数':params,
+    '工具描述':describe
+    '工具最近更新时间':update_time
+    '上传文件的窗口显示内容':upload_file
+</code></pre>
+
+<h1 id="10">10.工具编辑修改</h1>
+<p>POST  http://127.0.0.1:8000/tools/toolsEditor/</p>
+<h2 id="_1">传给我的参数</h2>
+<pre><code class="python">        id:&quot;工具id&quot;
+        username:&quot;当前用户的用户名&quot;
+        tname:&quot;文件名&quot;
+        main_file:&quot;入口文件&quot; 
+        main_method:&quot;入口方法&quot; 
+        params:&quot;参数&quot; 
+        describe:&quot;工具描述&quot;
+        myfile:&quot;上传的工具压缩包&quot;
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../about/" class="btn btn-neutral float-right" title="关于">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../authority/" class="btn btn-neutral" title="权限"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../authority/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../about/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
