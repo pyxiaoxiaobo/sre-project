@@ -170,21 +170,21 @@
     &quot;data&quot;:{
         &quot;corporate&quot;:[{
             &quot;id&quot;:1,
-            &quot;name&quot;:&quot;华为组&quot;，
+            &quot;name&quot;:&quot;华为组&quot;,
             &quot;children&quot;:[{
                 &quot;id&quot;:1,
-                &quot;name&quot;: &quot;张三&quot;，
+                &quot;name&quot;: &quot;张三&quot;,
                 &quot;img&quot;:&quot;http&quot;,
                 &quot;phone&quot;:&quot;15268117291&quot;
             }]
         }]
-    }，
+    },
     &quot;group&quot;:[{
         &quot;id&quot;:1,
         &quot;name&quot;:&quot;组1&quot;,
         &quot;children&quot;:[{
             &quot;id&quot;:1,
-            &quot;name&quot;:&quot;张三&quot;，
+            &quot;name&quot;:&quot;张三&quot;,
             &quot;img&quot;:&quot;http&quot;,
             &quot;phone&quot;:&quot;15268117291&quot;
         }]
@@ -202,7 +202,7 @@
 <p>url:/confapp/contact/create_conf/<br>
 方法:post<br>
 参数:<br>
-attendee:与会人，[{"num": "15268117291"，"name": "孙博",}]<br>
+attendee:与会人,[{"num": "15268117291","name": "孙博",}]<br>
 theme: 会议主题<br>
 password:密码<br>
 主席位: 格式同与会人<br>
@@ -224,7 +224,7 @@ time: 预约会议开始时间<br></p>
     &quot;code&quot;: 1,
     &quot;data&quot;:{
         &quot;meeting&quot;:{
-            &quot;themet&quot;:&quot;会议1&quot;，
+            &quot;themet&quot;:&quot;会议1&quot;,
             &quot;attendee&quot;:[{
                 &quot;id&quot;:1,
                 &quot;name&quot;:&quot;张三&quot;,
@@ -303,7 +303,7 @@ attendee:组内成员 选填<br></p>
     &quot;msg&quot;: success,
     &quot;code&quot;:1,
     &quot;data&quot;:{
-        &quot;group_name&quot;:&quot;群组&quot;，
+        &quot;group_name&quot;:&quot;群组&quot;,
         &quot;members&quot;:[
             {
                 &quot;name&quot;:&quot;张三&quot;,
@@ -337,13 +337,13 @@ attendee: 组内成员<br></p>
     &quot;code&quot;: 1,
     &quot;data&quot;:[{
         &quot;id&quot;:1,
-        &quot;name&quot;:&quot;成员1&quot;，
+        &quot;name&quot;:&quot;成员1&quot;,
         &quot;phone&quot;:&quot;15268117291&quot;,
         &quot;img&quot;:&quot;http&quot;,
         &quot;chairman&quot;: True,
         &quot;speaker&quot;: True
         &quot;mike&quot;: True,
-        &quot;hands&quot;: True，
+        &quot;hands&quot;: True,
         &quot;approval&quot;: True
     }]
 }
@@ -360,7 +360,7 @@ ex_chariman: True 除主席和发言人全部闭麦<br>
 <pre><code>返回信息:
 {
     &quot;msg&quot;: &quot;success&quot;,
-    &quot;code&quot;: 1，
+    &quot;code&quot;: 1,
     &quot;data&quot;: &quot;&quot;
 }
 </code></pre>
