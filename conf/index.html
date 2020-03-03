@@ -163,7 +163,7 @@
 <p>url:/confapp/contact/<br>
 方法:get<br>
 参数:type 1企业通讯录、2群、 3个人、不填默认全部<br></p>
-<pre><code>返回信息：
+<pre><code>返回信息:
 {
     &quot;msg&quot;: &quot;success&quot;,
     &quot;code&quot;: 1,
@@ -174,12 +174,12 @@
             &quot;children&quot;:[{
                 &quot;id&quot;:1,
                 &quot;name&quot;: &quot;张三&quot;，
-                ”img“:&quot;http&quot;,
+                &quot;img&quot;:&quot;http&quot;,
                 &quot;phone&quot;:&quot;15268117291&quot;
             }]
         }]
     }，
-    ”group“:[{
+    &quot;group&quot;:[{
         &quot;id&quot;:1,
         &quot;name&quot;:&quot;组1&quot;,
         &quot;children&quot;:[{
@@ -201,18 +201,18 @@
 <h3 id="_3">发起会议</h3>
 <p>url:/confapp/contact/create_conf/<br>
 方法:post<br>
-参数：<br>
+参数:<br>
 attendee:与会人，[{"num": "15268117291"，"name": "孙博",}]<br>
 theme: 会议主题<br>
 password:密码<br>
 主席位: 格式同与会人<br>
 type: 1 立即会议 2 预约会议<br>
 time: 预约会议开始时间<br></p>
-<pre><code>返回信息：
+<pre><code>返回信息:
 {
     &quot;msg&quot;: &quot;success&quot;,
     &quot;code&quot;: 1,
-    data:&quot;&quot;,
+    &quot;data&quot;:&quot;&quot;,
 }
 </code></pre>
 
@@ -225,7 +225,7 @@ time: 预约会议开始时间<br></p>
     &quot;data&quot;:{
         &quot;meeting&quot;:{
             &quot;themet&quot;:&quot;会议1&quot;，
-            ”attendee“:[{
+            &quot;attendee&quot;:[{
                 &quot;id&quot;:1,
                 &quot;name&quot;:&quot;张三&quot;,
                 &quot;phone&quot;: &quot;15268117291&quot;,
@@ -259,7 +259,7 @@ time: 预约会议开始时间<br></p>
 <h3 id="_6">编辑个人通讯录</h3>
 <p>url: /confapp/contact/person/edit/<br>
 方法:post<br>
-参数：<br>
+参数:<br>
 id 通讯录id<br>
 name 姓名<br>
 phone 电话<br></p>
@@ -277,7 +277,7 @@ phone 电话<br></p>
 <h3 id="_7">新增个人通讯录</h3>
 <p>url: /confapp/contact/person/add/<br>
 方法:post<br>
-参数：<br>
+参数:<br>
 name 姓名<br>
 phone 电话<br></p>
 <pre><code>返回信息:
@@ -304,7 +304,7 @@ attendee:组内成员 选填<br></p>
     &quot;code&quot;:1,
     &quot;data&quot;:{
         &quot;group_name&quot;:&quot;群组&quot;，
-        ”members“:[
+        &quot;members&quot;:[
             {
                 &quot;name&quot;:&quot;张三&quot;,
                 &quot;phone&quot;:&quot;15268117291&quot;,
@@ -351,7 +351,7 @@ attendee: 组内成员<br></p>
 
 <h3 id="_12">开麦闭麦</h3>
 <p>url:/conapp/control/mike/<br>
-方法：post<br>
+方法:post<br>
 参数:<br>
 id:成员[{"name":"张三", "num":"15268117291"}] 选传 指定人员开麦闭麦<br>
 type: 必传 1全部闭麦 2全部开麦 <br>
@@ -396,8 +396,8 @@ confid: 会议id<br></p>
 
 <h3 id="_15">复制会议连接</h3>
 <p>url:/confapp/control/address/<br>
-方法：get<br>
-参数：<br>
+方法:get<br>
+参数:<br>
 confid:会议id<br></p>
 <pre><code>返回信息:
 {
