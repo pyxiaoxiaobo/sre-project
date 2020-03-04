@@ -94,36 +94,42 @@
         
             <li><a class="toctree-l3" href="#_7">取消预约会议</a></li>
         
-            <li><a class="toctree-l3" href="#_8">编辑预约会议</a></li>
+            <li><a class="toctree-l3" href="#_8">获取会议信息</a></li>
         
-            <li><a class="toctree-l3" href="#_9">编辑个人通讯录</a></li>
+            <li><a class="toctree-l3" href="#_9">编辑预约会议</a></li>
         
-            <li><a class="toctree-l3" href="#_10">新增个人通讯录</a></li>
+            <li><a class="toctree-l3" href="#_10">获取个人通讯录详细信息</a></li>
         
-            <li><a class="toctree-l3" href="#_11">删除个人通讯录</a></li>
+            <li><a class="toctree-l3" href="#_11">编辑个人通讯录</a></li>
         
-            <li><a class="toctree-l3" href="#_12">编辑群组</a></li>
+            <li><a class="toctree-l3" href="#_12">新增个人通讯录</a></li>
         
-            <li><a class="toctree-l3" href="#_13">新增群组</a></li>
+            <li><a class="toctree-l3" href="#_13">删除个人通讯录</a></li>
         
-            <li><a class="toctree-l3" href="#_14">删除群组</a></li>
+            <li><a class="toctree-l3" href="#_14">获取群组详细信息</a></li>
+        
+            <li><a class="toctree-l3" href="#_15">编辑群组</a></li>
+        
+            <li><a class="toctree-l3" href="#_16">新增群组</a></li>
+        
+            <li><a class="toctree-l3" href="#_17">删除群组</a></li>
         
         </ul>
     
 
-    <li class="toctree-l2"><a href="#_15">会议控制</a></li>
+    <li class="toctree-l2"><a href="#_18">会议控制</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#_16">获取参会人员</a></li>
+            <li><a class="toctree-l3" href="#_19">获取参会人员</a></li>
         
-            <li><a class="toctree-l3" href="#_17">开麦闭麦</a></li>
+            <li><a class="toctree-l3" href="#_20">开麦闭麦</a></li>
         
-            <li><a class="toctree-l3" href="#_18">会议中途加人</a></li>
+            <li><a class="toctree-l3" href="#_21">会议中途加人</a></li>
         
-            <li><a class="toctree-l3" href="#_19">结束会议</a></li>
+            <li><a class="toctree-l3" href="#_22">结束会议</a></li>
         
-            <li><a class="toctree-l3" href="#_20">复制会议连接</a></li>
+            <li><a class="toctree-l3" href="#_23">复制会议连接</a></li>
         
         </ul>
     
@@ -331,7 +337,30 @@ confid 会议id 【必填】<br></p>
 }
 </code></pre>
 
-<h3 id="_8">编辑预约会议</h3>
+<h3 id="_8">获取会议信息</h3>
+<p>url:/confapp/contact/confinfo/<br>
+方法:get<br>
+参数:<br>
+confid:会议id【必填】<br></p>
+<pre><code>{
+    &quot;msg&quot;:&quot;success&quot;,
+    &quot;code&quot;:1,
+    &quot;data&quot;:{
+        &quot;attendee&quot;:[{
+                &quot;id&quot;:1,
+                &quot;name&quot;:&quot;张三&quot;,
+                &quot;phone&quot;: &quot;15268117291&quot;,
+                &quot;img&quot;:&quot;http&quot;
+            }],
+        &quot;theme&quot;: &quot;会议名称&quot;,
+        &quot;chairman&quot;: &quot;李四&quot;,
+        &quot;password&quot;: &quot;&quot;
+    }
+
+}
+</code></pre>
+
+<h3 id="_9">编辑预约会议</h3>
 <p>url:/confapp/contact/edit_conf/<br>
 方法:post<br>
 参数:<br>
@@ -351,7 +380,24 @@ time: 预约会议开始时间 格式为2020-03-03 19:30:36【选填 预约会�
 }
 </code></pre>
 
-<h3 id="_9">编辑个人通讯录</h3>
+<h3 id="_10">获取个人通讯录详细信息</h3>
+<p>url: /confapp/contact/person/info/<br>
+方法:get<br>
+参数:<br>
+id:用户id【必填】<br>
+contact_id 通讯录id【必填】<br></p>
+<pre><code>返回信息:
+{
+    &quot;msg&quot;:&quot;success&quot;,
+    &quot;code&quot;:1,
+    &quot;data&quot;:{
+        &quot;name&quot;:&quot;张三&quot;,
+        &quot;phone&quot;:&quot;15268117291&quot;
+    }
+}
+</code></pre>
+
+<h3 id="_11">编辑个人通讯录</h3>
 <p>url: /confapp/contact/person/edit/<br>
 方法:post<br>
 参数:<br>
@@ -370,7 +416,7 @@ phone 电话【选填】<br></p>
 }
 </code></pre>
 
-<h3 id="_10">新增个人通讯录</h3>
+<h3 id="_12">新增个人通讯录</h3>
 <p>url: /confapp/contact/person/add/<br>
 方法:post<br>
 参数:<br>
@@ -388,7 +434,7 @@ phone 电话【必填】<br></p>
 }
 </code></pre>
 
-<h3 id="_11">删除个人通讯录</h3>
+<h3 id="_13">删除个人通讯录</h3>
 <p>url: /confapp/contact/person/delete/<br>
 方法:post<br>
 参数:<br>
@@ -402,7 +448,30 @@ contact_id 联系人id【必填】<br></p>
 }
 </code></pre>
 
-<h3 id="_12">编辑群组</h3>
+<h3 id="_14">获取群组详细信息</h3>
+<p>url: /confapp/contact/group/info/<br>
+方法:post<br>
+参数:<br>
+id:用户id 【必填】<br>
+group_id:群组id 【必填】<br></p>
+<pre><code>返回信息:
+{
+    &quot;msg&quot;: success,
+    &quot;code&quot;:1,
+    &quot;data&quot;:{
+        &quot;group_name&quot;:&quot;群组&quot;,
+        &quot;members&quot;:[
+            {
+                &quot;name&quot;:&quot;张三&quot;,
+                &quot;phone&quot;:&quot;15268117291&quot;,
+                &quot;img&quot;:'http'
+            }
+        ]
+    }
+}
+</code></pre>
+
+<h3 id="_15">编辑群组</h3>
 <p>url: /confapp/contact/group/edit/<br>
 方法:post<br>
 参数:<br>
@@ -427,7 +496,7 @@ attendee:组内成员 【选填】<br></p>
 }
 </code></pre>
 
-<h3 id="_13">新增群组</h3>
+<h3 id="_16">新增群组</h3>
 <p>url: /confapp/contact/group/add/<br>
 方法:post<br>
 参数: <br>
@@ -440,7 +509,7 @@ attendee: 组内成员【必填】<br></p>
 }
 </code></pre>
 
-<h3 id="_14">删除群组</h3>
+<h3 id="_17">删除群组</h3>
 <p>url: /confapp/contact/group/delete/<br>
 方法:post<br>
 参数: <br>
@@ -452,8 +521,8 @@ group_id: 群id【必填】<br></p>
 }
 </code></pre>
 
-<h1 id="_15">会议控制</h1>
-<h3 id="_16">获取参会人员</h3>
+<h1 id="_18">会议控制</h1>
+<h3 id="_19">获取参会人员</h3>
 <p>url: /confapp/control/attendee_info/<br>
 方法:get<br>
 参数: <br>
@@ -476,7 +545,7 @@ confid 会议id<br></p>
 }
 </code></pre>
 
-<h3 id="_17">开麦闭麦</h3>
+<h3 id="_20">开麦闭麦</h3>
 <p>url:/conapp/control/mike/<br>
 方法:post<br>
 参数:<br>
@@ -494,7 +563,7 @@ ex_chariman: True 除主席和发言人全部闭麦【选填】<br>
 }
 </code></pre>
 
-<h3 id="_18">会议中途加人</h3>
+<h3 id="_21">会议中途加人</h3>
 <p>url:/conapp/control/add_attendee/<br>
 方法: post<br>
 参数:<br>
@@ -510,7 +579,7 @@ attendee: 人员 [{"name":"张三", "num":"15268117291"}]【必填】<br></p>
 }
 </code></pre>
 
-<h3 id="_19">结束会议</h3>
+<h3 id="_22">结束会议</h3>
 <p>url:/conapp/control/end/<br>
 方法: post<br>
 参数:<br>
@@ -525,7 +594,7 @@ confid: 会议id【必填】<br></p>
 }
 </code></pre>
 
-<h3 id="_20">复制会议连接</h3>
+<h3 id="_23">复制会议连接</h3>
 <p>url:/confapp/control/address/<br>
 方法:get<br>
 参数:<br>
