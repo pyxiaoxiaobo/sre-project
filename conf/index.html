@@ -171,7 +171,7 @@
                 <h1 id="_1">通讯录</h1>
 <h3 id="_2">注册接口</h3>
 <p>url:/confapp/contact/registre/<br>
-方法:get<br>
+方法:post<br>
 参数:<br>
 weixin_id:微信id 【必填】<br>
 phone:手机号【必填】<br>
@@ -190,7 +190,7 @@ head_picture:头像【必填】<br></p>
 方法:get<br>
 参数:<br>
 id:用户id【必填】<br>
-info: 可以是电话、手机号、部门信【必填】<br></p>
+info: 可以是电话、手机号、部门信息【必填】<br></p>
 <pre><code>返回信息：
 如果搜索信息是姓名/手机号，返回信息只有name和phone,group和corporate信息为空；
 如果搜索的信息是组，返回信息只有group有信息，name/phone/corporate信息为空
