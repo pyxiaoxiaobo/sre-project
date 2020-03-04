@@ -199,8 +199,10 @@ info: 可以是电话、手机号、部门信息【必填】<br></p>
     &quot;msg&quot;: &quot;success&quot;,
     &quot;code&quot;: 1,
     &quot;data&quot;:{
+        &quot;id&quot;:1,
         &quot;name&quot;:&quot;张三&quot;,
         &quot;phone&quot;:&quot;15268117291&quot;，
+        &quot;img&quot;:&quot;http&quot;,
         &quot;group&quot;:[{
             &quot;id&quot;:1,
             &quot;name&quot;:&quot;组1&quot;,
@@ -272,7 +274,7 @@ id:用户id 【必填】<br>
 attendee:与会人,[{"num": "15268117291","name": "孙博",}] 【必填】<br>
 theme: 会议主题 默认是发起者的会议【选填】<br>
 password:密码【选填】<br>
-主席位: 即会议发起人格式同与会人【必填】<br>
+chairman:主席位 即会议发起人格式同与会人【必填】<br>
 type: 1 立即会议 2 预约会议【选填 默认是1】<br>
 time: 预约会议开始时间 格式为2020-03-03 19:30:36【选填 预约会议必填】<br></p>
 <pre><code>返回信息:
@@ -333,11 +335,12 @@ confid 会议id 【必填】<br></p>
 <p>url:/confapp/contact/edit_conf/<br>
 方法:post<br>
 参数:<br>
+confid:会议id【必填】<br>
 id:用户id【必填】<br>
 attendee:与会人,[{"num": "15268117291","name": "孙博",}] 【选填】<br>
 theme: 会议主题 默认是发起者的会议【选填】<br>
 password:密码【选填】<br>
-主席位: 即会议发起人格式同与会人【必填】<br>
+chairman: 主席位: 即会议发起人格式同与会人【必填】<br>
 type: 1 立即会议 2 预约会议【选填 默认是1】<br>
 time: 预约会议开始时间 格式为2020-03-03 19:30:36【选填 预约会议必填】<br></p>
 <pre><code>返回信息:
@@ -479,7 +482,7 @@ confid 会议id<br></p>
 参数:<br>
 id:用户id【必填】<br>
 confid:会议id【必填】<br>
-id:成员[{"name":"张三", "num":"15268117291"}] 选传 指定人员开麦闭麦【选填】<br>
+attendee:成员[{"name":"张三", "num":"15268117291"}] 选传 指定人员开麦闭麦【选填】<br>
 type: 1全部闭麦 2全部开麦 【必填】<br>
 ex_chariman: True 除主席和发言人全部闭麦【选填】<br>
 同时存在ex_chariman优先级大于id<br></p>
