@@ -82,38 +82,48 @@
     
         <ul>
         
-            <li><a class="toctree-l3" href="#_2">首页通讯录展示</a></li>
+            <li><a class="toctree-l3" href="#_2">注册接口</a></li>
         
-            <li><a class="toctree-l3" href="#_3">发起会议</a></li>
+            <li><a class="toctree-l3" href="#_3">首页搜索功能</a></li>
         
-            <li><a class="toctree-l3" href="#_4">我的会议</a></li>
+            <li><a class="toctree-l3" href="#_4">首页通讯录展示</a></li>
         
-            <li><a class="toctree-l3" href="#_5">取消预约会议</a></li>
+            <li><a class="toctree-l3" href="#_5">发起会议</a></li>
         
-            <li><a class="toctree-l3" href="#_6">编辑个人通讯录</a></li>
+            <li><a class="toctree-l3" href="#_6">我的会议</a></li>
         
-            <li><a class="toctree-l3" href="#_7">新增个人通讯录</a></li>
+            <li><a class="toctree-l3" href="#_7">取消预约会议</a></li>
         
-            <li><a class="toctree-l3" href="#_8">编辑群组</a></li>
+            <li><a class="toctree-l3" href="#_8">编辑预约会议</a></li>
         
-            <li><a class="toctree-l3" href="#_9">新增群组</a></li>
+            <li><a class="toctree-l3" href="#_9">编辑个人通讯录</a></li>
+        
+            <li><a class="toctree-l3" href="#_10">新增个人通讯录</a></li>
+        
+            <li><a class="toctree-l3" href="#_11">删除个人通讯录</a></li>
+        
+            <li><a class="toctree-l3" href="#_12">编辑群组</a></li>
+        
+            <li><a class="toctree-l3" href="#_13">新增群组</a></li>
+        
+            <li><a class="toctree-l3" href="#_14">删除群组</a></li>
         
         </ul>
     
 
-    <li class="toctree-l2"><a href="#_10">会议控制</a></li>
+    <li class="toctree-l2"><a href="#_15">会议控制</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#_11">获取参会人员</a></li>
+            <li><a class="toctree-l3" href="#_16">获取参会人员</a></li>
         
-            <li><a class="toctree-l3" href="#_12">开麦闭麦</a></li>
+            <li><a class="toctree-l3" href="#_17">开麦闭麦</a></li>
         
-            <li><a class="toctree-l3" href="#_13">会议中途加人</a></li>
+            <li><a class="toctree-l3" href="#_18">会议中途加人</a></li>
         
-            <li><a class="toctree-l3" href="#_14">结束会议</a></li>
+            <li><a class="toctree-l3" href="#_19">结束会议</a></li>
         
-            <li><a class="toctree-l3" href="#_15">复制会议连接</a></li>
+            <li><a class="toctree-l3" href="#_20">复制会议连接</a></li>
         
         </ul>
     
@@ -159,10 +169,66 @@
             <div class="section">
               
                 <h1 id="_1">通讯录</h1>
-<h3 id="_2">首页通讯录展示</h3>
+<h3 id="_2">注册接口</h3>
+<p>url:/confapp/contact/registre/<br>
+方法:get<br>
+参数:<br>
+weixin_id:微信id 【必填】<br>
+phone:手机号【必填】<br>
+head_picture:头像【必填】<br></p>
+<pre><code>返回信息：
+{
+    &quot;msg&quot;:&quot;success&quot;,
+    &quot;code&quot;:1,
+    &quot;data&quot;:&quot;&quot;,
+}
+
+</code></pre>
+
+<h3 id="_3">首页搜索功能</h3>
+<p>url:/confapp/contact/search/<br>
+方法:get<br>
+参数:<br>
+id:用户id【必填】<br>
+info: 可以是电话、手机号、部门信【必填】<br></p>
+<pre><code>返回信息：
+如果搜索信息是姓名/手机号，返回信息只有name和phone,group和corporate信息为空；
+如果搜索的信息是组，返回信息只有group有信息，name/phone/corporate信息为空
+同理搜搜企业信息也是如此
+{
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;code&quot;: 1,
+    &quot;data&quot;:{
+        &quot;name&quot;:&quot;张三&quot;,
+        &quot;phone&quot;:&quot;15268117291&quot;，
+        &quot;group&quot;:[{
+            &quot;id&quot;:1,
+            &quot;name&quot;:&quot;组1&quot;,
+            &quot;children&quot;:[{
+                &quot;id&quot;:1,
+                &quot;name&quot;:&quot;张三&quot;,
+                &quot;img&quot;:&quot;http&quot;,
+                &quot;phone&quot;:&quot;15268117291&quot;
+        }],
+        &quot;corporate&quot;:[{
+            &quot;id&quot;:1,
+            &quot;name&quot;:&quot;华为组&quot;,
+            &quot;children&quot;:[{
+                &quot;id&quot;:1,
+                &quot;name&quot;: &quot;张三&quot;,
+                &quot;img&quot;:&quot;http&quot;,
+                &quot;phone&quot;:&quot;15268117291&quot;          
+        }]
+    }
+}
+</code></pre>
+
+<h3 id="_4">首页通讯录展示</h3>
 <p>url:/confapp/contact/<br>
 方法:get<br>
-参数:type 1企业通讯录、2群、 3个人、不填默认全部<br></p>
+参数:<br>
+id 用户id【必填】<br>
+type 1企业通讯录、2群、 3个人、不填默认全部【选填】<br></p>
 <pre><code>返回信息:
 {
     &quot;msg&quot;: &quot;success&quot;,
@@ -198,16 +264,17 @@
 }
 </code></pre>
 
-<h3 id="_3">发起会议</h3>
+<h3 id="_5">发起会议</h3>
 <p>url:/confapp/contact/create_conf/<br>
 方法:post<br>
 参数:<br>
-attendee:与会人,[{"num": "15268117291","name": "孙博",}]<br>
-theme: 会议主题<br>
-password:密码<br>
-主席位: 格式同与会人<br>
-type: 1 立即会议 2 预约会议<br>
-time: 预约会议开始时间<br></p>
+id:用户id 【必填】<br>
+attendee:与会人,[{"num": "15268117291","name": "孙博",}] 【必填】<br>
+theme: 会议主题 默认是发起者的会议【选填】<br>
+password:密码【选填】<br>
+主席位: 即会议发起人格式同与会人【必填】<br>
+type: 1 立即会议 2 预约会议【选填 默认是1】<br>
+time: 预约会议开始时间 格式为2020-03-03 19:30:36【选填 预约会议必填】<br></p>
 <pre><code>返回信息:
 {
     &quot;msg&quot;: &quot;success&quot;,
@@ -216,15 +283,18 @@ time: 预约会议开始时间<br></p>
 }
 </code></pre>
 
-<h3 id="_4">我的会议</h3>
+<h3 id="_6">我的会议</h3>
 <p>url:/confapp/contact/myconf/<br>
-方法:get<br></p>
+方法:get<br>
+参数:<br>
+id:用户id【必填】<br></p>
 <pre><code>{
     &quot;msg&quot;: &quot;success&quot;,
     &quot;code&quot;: 1,
     &quot;data&quot;:{
         &quot;meeting&quot;:{
-            &quot;themet&quot;:&quot;会议1&quot;,
+            &quot;confid&quot;:&quot;0570&quot;,
+            &quot;theme&quot;:&quot;会议1&quot;,
             &quot;attendee&quot;:[{
                 &quot;id&quot;:1,
                 &quot;name&quot;:&quot;张三&quot;,
@@ -233,6 +303,7 @@ time: 预约会议开始时间<br></p>
             }]
         },
         &quot;schedule&quot;:[{
+            &quot;confid&quot;:&quot;0571&quot;,
             &quot;theme&quot;:&quot;预约会议1&quot;,
             &quot;attendee&quot;:[{
                 &quot;id&quot;:1,
@@ -244,10 +315,12 @@ time: 预约会议开始时间<br></p>
 }
 </code></pre>
 
-<h3 id="_5">取消预约会议</h3>
+<h3 id="_7">取消预约会议</h3>
 <p>url: /confapp/contact/cancel_meeting/<br>
 方法:post<br>
-参数:confid 会议id<br></p>
+参数:<br>
+id:用户id【必填】<br>
+confid 会议id 【必填】<br></p>
 <pre><code>返回信息:
 {
     &quot;msg&quot;: &quot;success&quot;,
@@ -256,13 +329,33 @@ time: 预约会议开始时间<br></p>
 }
 </code></pre>
 
-<h3 id="_6">编辑个人通讯录</h3>
+<h3 id="_8">编辑预约会议</h3>
+<p>url:/confapp/contact/edit_conf/<br>
+方法:post<br>
+参数:<br>
+id:用户id【必填】<br>
+attendee:与会人,[{"num": "15268117291","name": "孙博",}] 【选填】<br>
+theme: 会议主题 默认是发起者的会议【选填】<br>
+password:密码【选填】<br>
+主席位: 即会议发起人格式同与会人【必填】<br>
+type: 1 立即会议 2 预约会议【选填 默认是1】<br>
+time: 预约会议开始时间 格式为2020-03-03 19:30:36【选填 预约会议必填】<br></p>
+<pre><code>返回信息:
+{
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;code&quot;: 1,
+    &quot;data&quot;:&quot;&quot;,
+}
+</code></pre>
+
+<h3 id="_9">编辑个人通讯录</h3>
 <p>url: /confapp/contact/person/edit/<br>
 方法:post<br>
 参数:<br>
-id 通讯录id<br>
-name 姓名<br>
-phone 电话<br></p>
+id:用户id【必填】<br>
+contact_id 通讯录id【必填】<br>
+name 姓名【选填】<br>
+phone 电话【选填】<br></p>
 <pre><code>返回信息:
 {
     &quot;msg&quot;:&quot;success&quot;,
@@ -274,12 +367,13 @@ phone 电话<br></p>
 }
 </code></pre>
 
-<h3 id="_7">新增个人通讯录</h3>
+<h3 id="_10">新增个人通讯录</h3>
 <p>url: /confapp/contact/person/add/<br>
 方法:post<br>
 参数:<br>
-name 姓名<br>
-phone 电话<br></p>
+id:用户id【必填】<br>
+name 姓名【必填】<br>
+phone 电话【必填】<br></p>
 <pre><code>返回信息:
 {
     &quot;msg&quot;:&quot;success&quot;,
@@ -291,13 +385,28 @@ phone 电话<br></p>
 }
 </code></pre>
 
-<h3 id="_8">编辑群组</h3>
+<h3 id="_11">删除个人通讯录</h3>
+<p>url: /confapp/contact/person/delete/<br>
+方法:post<br>
+参数:<br>
+id:用户id【必填】<br>
+contact_id 联系人id【必填】<br></p>
+<pre><code>返回信息:
+{
+    &quot;msg&quot;:&quot;success&quot;,
+    &quot;code&quot;:1,
+    &quot;data&quot;:&quot;&quot;,
+}
+</code></pre>
+
+<h3 id="_12">编辑群组</h3>
 <p>url: /confapp/contact/group/edit/<br>
 方法:post<br>
-参数:
-id:群组id 必填<br>
-group_name:组名 选填<br>
-attendee:组内成员 选填<br></p>
+参数:<br>
+id:用户id 【必填】<br>
+group_id:群组id 【必填】<br>
+group_name:组名 【选填】<br>
+attendee:组内成员 【选填】<br></p>
 <pre><code>返回信息:
 {
     &quot;msg&quot;: success,
@@ -315,23 +424,38 @@ attendee:组内成员 选填<br></p>
 }
 </code></pre>
 
-<h3 id="_9">新增群组</h3>
+<h3 id="_13">新增群组</h3>
 <p>url: /confapp/contact/group/add/<br>
 方法:post<br>
-参数: 
-group_name: 群组名<br>
-attendee: 组内成员<br></p>
+参数: <br>
+id:用户id 【必填】<br>
+group_name: 群组名【必填】<br>
+attendee: 组内成员【必填】<br></p>
 <pre><code>{
     &quot;msg&quot;: &quot;success&quot;,
     &quot;code&quot;: 1
 }
 </code></pre>
 
-<h1 id="_10">会议控制</h1>
-<h3 id="_11">获取参会人员</h3>
+<h3 id="_14">删除群组</h3>
+<p>url: /confapp/contact/group/delete/<br>
+方法:post<br>
+参数: <br>
+id:用户id 【必填】<br>
+group_id: 群id【必填】<br></p>
+<pre><code>{
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;code&quot;: 1
+}
+</code></pre>
+
+<h1 id="_15">会议控制</h1>
+<h3 id="_16">获取参会人员</h3>
 <p>url: /confapp/control/attendee_info/<br>
 方法:get<br>
-参数: confid 会议id<br></p>
+参数: <br>
+id:用户id<br>
+confid 会议id<br></p>
 <pre><code>{
     &quot;msg&quot;:&quot;success&quot;,
     &quot;code&quot;: 1,
@@ -349,13 +473,15 @@ attendee: 组内成员<br></p>
 }
 </code></pre>
 
-<h3 id="_12">开麦闭麦</h3>
+<h3 id="_17">开麦闭麦</h3>
 <p>url:/conapp/control/mike/<br>
 方法:post<br>
 参数:<br>
-id:成员[{"name":"张三", "num":"15268117291"}] 选传 指定人员开麦闭麦<br>
-type: 必传 1全部闭麦 2全部开麦 <br>
-ex_chariman: True 除主席和发言人全部闭麦<br>
+id:用户id【必填】<br>
+confid:会议id【必填】<br>
+id:成员[{"name":"张三", "num":"15268117291"}] 选传 指定人员开麦闭麦【选填】<br>
+type: 1全部闭麦 2全部开麦 【必填】<br>
+ex_chariman: True 除主席和发言人全部闭麦【选填】<br>
 同时存在ex_chariman优先级大于id<br></p>
 <pre><code>返回信息:
 {
@@ -365,12 +491,13 @@ ex_chariman: True 除主席和发言人全部闭麦<br>
 }
 </code></pre>
 
-<h3 id="_13">会议中途加人</h3>
+<h3 id="_18">会议中途加人</h3>
 <p>url:/conapp/control/add_attendee/<br>
 方法: post<br>
 参数:<br>
-confid: 会议id<br>
-attendee: 人员 [{"name":"张三", "num":"15268117291"}]<br></p>
+id:用户id【必填】<br>
+confid: 会议id【必填】<br>
+attendee: 人员 [{"name":"张三", "num":"15268117291"}]【必填】<br></p>
 <pre><code>返回信息:
 {
     &quot;msg&quot;: &quot;success&quot;,
@@ -380,11 +507,12 @@ attendee: 人员 [{"name":"张三", "num":"15268117291"}]<br></p>
 }
 </code></pre>
 
-<h3 id="_14">结束会议</h3>
+<h3 id="_19">结束会议</h3>
 <p>url:/conapp/control/end/<br>
 方法: post<br>
 参数:<br>
-confid: 会议id<br></p>
+id:用户id【必填】<br>
+confid: 会议id【必填】<br></p>
 <pre><code>返回信息:
 {
     &quot;msg&quot;: &quot;success&quot;,
@@ -394,11 +522,12 @@ confid: 会议id<br></p>
 }
 </code></pre>
 
-<h3 id="_15">复制会议连接</h3>
+<h3 id="_20">复制会议连接</h3>
 <p>url:/confapp/control/address/<br>
 方法:get<br>
 参数:<br>
-confid:会议id<br></p>
+id:用户id【必填】<br>
+confid:会议id【必填】<br></p>
 <pre><code>返回信息:
 {
     &quot;msg&quot;: &quot;success&quot;,
