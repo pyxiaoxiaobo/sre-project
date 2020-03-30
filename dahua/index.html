@@ -1,0 +1,7773 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>大话 - SREUDP 接口文档</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5927\u8bdd";
+    var mkdocs_page_input_path = "dahua.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> SREUDP 接口文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../user/">用户</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../schedule/">调度</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../authority/">权限</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../tool/">工具</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../conf/">小程序</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">大话</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">简介</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_2">说明</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#_3">协议</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#general">general</a></li>
+        
+            <li><a class="toctree-l3" href="#_4">立即开始会议</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#_5">错误码</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_6">会议参数</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">关于</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">SREUDP 接口文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>大话</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">简介</h1>
+<h2 id="_2">说明</h2>
+<p>本片的协议均使用<a href="https://www.jsonrpc.org/specification">jsonrpc2.0</a>格式进行通信  </p>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">=&gt; {&quot;method&quot;:&quot;math.sum&quot;, &quot;params&quot;:&quot;{&quot;a&quot;:1, &quot;b&quot;:2}&quot;, &quot;id&quot;:1}
+&lt;= {&quot;result&quot;:3, &quot;id&quot;:1}
+</code></pre>
+
+<pre><code class="javascript">=&gt; {&quot;method&quot;:&quot;math.sumxxx&quot;, &quot;params&quot;:&quot;{&quot;a&quot;:1, &quot;b&quot;:2}&quot;,&quot;id&quot;:2}
+&lt;= {&quot;error&quot;:{&quot;code&quot;:1, &quot;message&quot;:&quot;unknow method&quot;}, &quot;id&quot;:2}
+</code></pre>
+
+<pre><code class="javascript">=&gt; {&quot;method&quot;:&quot;hitry.hello&quot;, &quot;id&quot;:3}
+&lt;= {&quot;id&quot;:3}
+</code></pre>
+
+<pre><code class="javascript">=&gt; {&quot;method&quot;:&quot;hitry.notify.hello&quot;}
+</code></pre>
+
+<pre><code class="javascript">=&gt; [{&quot;method&quot;:&quot;math.sum&quot;, &quot;params&quot;:&quot;{&quot;a&quot;:1, &quot;b&quot;:2}&quot;, &quot;id&quot;:1},{&quot;method&quot;:&quot;math.sumxxx&quot;, &quot;params&quot;:&quot;{&quot;a&quot;:1, &quot;b&quot;:2}&quot;,&quot;id&quot;:2}]
+&lt;= [{&quot;result&quot;:3, &quot;id&quot;:1},{&quot;error&quot;:{&quot;code&quot;:1, &quot;message&quot;:&quot;unknow method&quot;}, &quot;id&quot;:2}]
+</code></pre>
+
+<blockquote>
+<p>Q: 是否支持并发操作<br />
+A: 如果不考虑业务互斥,所有协议均可以并发操作</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<p>Q: 并发下怎么保证请求和回复的一一对应<br />
+A: jsonrpc中有个标准的id序列字段, 来做来回匹配</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<p>Q: id字段谁维护 <br />
+A: 发起方维护自己的id, 回复方按发起方的id进行回复</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<p>Q: 我想发送通知(即不需要对方回复的), 怎么表达<br />
+A: 发送的协议中不带id即表示通知</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<p>Q: 怎么区分是请求还是回复<br />
+A: 有method字段的是请求(或通知), 没有method的回复</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<p>Q: 怎么区分请求和通知<br />
+A: 有id的是请求, 没有id的是通知</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<p>Q: params一定需要是object么<br />
+A: 不一定, 看业务需求, 可以直接填string或者number, 也可以没这个字段</p>
+</blockquote>
+<p><br></p>
+<blockquote>
+<p>Q: 回复中result的格式呢, 一定要有么<br />
+A: result按业务需求返回格式, 可以没有该字段  </p>
+</blockquote>
+<p><br></p>
+<h1 id="_3">协议</h1>
+<p>下面是业务协议, 我们对协议名(method)的取名做了如下统一约定:<br />
+请求消息: {模块名}.{具体事情}, (如果是大模块嵌入小模块,中间可以再嵌入{模块名})  <br />
+通知消息: {模块名}.notify.{具体事情}  </p>
+<p><br><br></p>
+<hr />
+<h2 id="general">general</h2>
+<p>通用模块的协议  </p>
+<hr />
+<h3 id="generalkeeplive">general.keeplive</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client -&gt; agent  </li>
+<li><strong>Description:</strong><br />
+  心跳    </li>
+<li><strong>Params</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>expires</td>
+<td>int</td>
+<td>Yes</td>
+<td>单位:秒  [0, 3600]</td>
+<td>超时时间<br>(超过该时间没有和服务交互数据, 客户端会被踢掉)</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string</td>
+<td>Yes</td>
+<td>"YYYY-MM-DD hh:mm:ss"</td>
+<td>客户端当前时区的时间</td>
+</tr>
+<tr>
+<td>zone</td>
+<td>int</td>
+<td>No</td>
+<td>默认:登录时用的时区 [-12,12]</td>
+<td>客户端当前的时区</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td>string</td>
+<td>Yes</td>
+<td>"YYYY-MM-DD hh:mm:ss"</td>
+<td>以客户端时区为时区的服务器时间</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<pre><code class="javascript">{// 请求
+    &quot;method&quot;:&quot;general.keeplive&quot;,
+    &quot;id&quot;:1,
+    &quot;params&quot;:{
+        &quot;expires&quot;:60,
+        &quot;date&quot;:&quot;2018-12-26 10:00:00&quot;  //客户端当前时区时间
+   }
+}
+{// 回复
+   &quot;id&quot;:1,
+    &quot;result&quot;:{
+        &quot;date&quot;:&quot;2018-12-26 10:00:01&quot;  // 服务端时间转化成客户端时区后的时间
+   }
+}
+</code></pre>
+
+<p>Note:
+1.所有客户端(包括web管理端)都需要发送心跳<br />
+2.expires建议填60  (即60秒)
+3.心跳建议间隔时间:(expires)/3 -1, 比如:60秒超时的情况, 19秒发一次心跳  </p>
+<hr />
+<h3 id="generalupgrade">general.upgrade</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client -&gt; agent  </li>
+<li><strong>Description:</strong><br />
+  管理员操作 升级 </li>
+<li><strong>Params</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nids</td>
+<td>array</td>
+<td>Yes</td>
+<td>个人号码</td>
+<td>通知某些账号升级</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<pre><code class="javascript"> {
+    &quot;method&quot;: &quot;general.upgrade&quot;,
+    &quot;params&quot;: {
+       &quot;nids&quot;:[&quot;1231&quot;,&quot;123123&quot;,&quot;1231232&quot;]
+    },
+    &quot;id&quot;: 1
+  }
+</code></pre>
+
+<hr />
+<h3 id="eventgeneraldisconnect">event.general.disconnect</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent -&gt; client</li>
+<li><strong>Description:</strong><br />
+  断线通知  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reason</td>
+<td>int</td>
+<td>Yes</td>
+<td>0:unknow<br>1:无权限<br>2:被抢登<br>3:服务器能力不足<br>4:心跳超时<br>5:密码被修改</td>
+<td>断线原因</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>No</td>
+<td>见:补充1</td>
+<td>断线时的一些附带信息</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>addr</td>
+<td>string</td>
+<td>No</td>
+<td>例:"13.44.31.2:4456"</td>
+<td>对方的地址<br>当reason==2时有该字段</td>
+</tr>
+<tr>
+<td>* <strong>Example</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{// 通知
+  &quot;method&quot;:&quot;event.general.disconnect&quot;,
+  &quot;params&quot;:{
+    &quot;reason&quot;:2,
+    &quot;data&quot;:{
+      &quot;addr&quot;:&quot;12.44.55.11&quot;
+    }
+  }
+}
+</code></pre>
+
+<hr />
+<h3 id="notifygeneralfoundationchanged">notify.general.foundationChanged</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent -&gt; client</li>
+<li><strong>Description:</strong><br />
+<em>agent -&gt; client:</em><br />
+    基建版本更新通知,目的是让客户端修改基建(即升级基建)    <br />
+<strong>*Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Note: 暂时没有删除</p>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<p><em>agent -&gt; client:</em>  </p>
+<pre><code class="javascript">{
+    &quot;method&quot;: &quot;notify.general.foundationChanged&quot;,
+    &quot;params&quot;: {
+
+    },
+    &quot;id&quot;: 1
+}
+</code></pre>
+
+<hr />
+<h3 id="notifygeneralmodifyfoundation">notify.general.modifyFoundation</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent &lt;-&gt; client</li>
+<li>
+<p><strong>Description:</strong><br />
+<em>agent -&gt; client:</em><br />
+    基建版本更新通知,目的是让客户端修改基建(即升级基建)<br />
+    注: 只有用了官方基建的才会收到该通知  </p>
+<p><em>client -&gt; agent:</em><br />
+管理员要求某些终端(组下面的终端)进行基建升级<br />
+* <strong>Params</strong></p>
+</li>
+</ul>
+<p><em>agent -&gt; client:</em>  </p>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>服务端上存储的客户端基建的版本号</td>
+</tr>
+</tbody>
+</table>
+<p><em>client -&gt; agent:</em>  </p>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gids</td>
+<td>array</td>
+<td>No</td>
+<td>gid数组</td>
+<td>要求这些组下面的所有客户端进行基建升级</td>
+</tr>
+<tr>
+<td>nids</td>
+<td>array</td>
+<td>No</td>
+<td>nid数组</td>
+<td>要求这些组客户端进行基建升级</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<p><em>agent -&gt; client:</em>  </p>
+<pre><code class="javascript">{
+  &quot;method&quot;:&quot;notify.general.modifyFoundation&quot;,
+  &quot;params&quot;:{
+    &quot;version&quot;:&quot;1.1.1&quot;
+  }
+}
+</code></pre>
+
+<p><em>client -&gt; agent:</em>    </p>
+<pre><code class="javascript">{// 升级2个组下面的所有客户端  
+  &quot;method&quot;:&quot;notify.general.modifyFoundation&quot;,
+  &quot;params&quot;:{
+    &quot;gids&quot;:[&quot;rwa32r23rr2r23r23r&quot;, &quot;23r23r23r2r2r&quot;]
+  }
+}
+</code></pre>
+
+<pre><code class="javascript">{// 升级2个客户端  
+  &quot;method&quot;:&quot;notify.general.modifyFoundation&quot;,
+  &quot;params&quot;:{
+    &quot;nids&quot;:[&quot;1111111111&quot;, &quot;2222222222&quot;]
+  }
+}
+</code></pre>
+
+<hr />
+<h3 id="contactcreateuser">contact.createUser</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  创建用户   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>No</td>
+<td>默认:nid</td>
+<td>用户名称</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>所在组的id</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Yes</td>
+<td>用MD5加密的密码, 例:MD5("123456")<br>默认:MD5("123456")</td>
+<td>用户密码</td>
+</tr>
+<tr>
+<td>level</td>
+<td>int</td>
+<td>No</td>
+<td>[1, 5], 默认:1</td>
+<td>用户等级, 越高能力越强</td>
+</tr>
+<tr>
+<td>bUpLimit</td>
+<td>int</td>
+<td>No</td>
+<td>-1 或 [500, ], 默认:不限制, -1: 不限制 , 单位:kb</td>
+<td>上行流限制</td>
+</tr>
+<tr>
+<td>bDownLimit</td>
+<td>int</td>
+<td>No</td>
+<td>-1 或 [500, ], 默认:不限制, -1: 不限制 , 单位:kb</td>
+<td>下行流限制</td>
+</tr>
+<tr>
+<td>extend</td>
+<td>string</td>
+<td>No</td>
+<td>&lt;10kb</td>
+<td>扩展信息</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>用户号码, 可以用于登录和互相拨号</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="contactmodifyuser">contact.modifyUser</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  修改用户信息  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>用户ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>No</td>
+<td>默认:不修改</td>
+<td>用户名称</td>
+</tr>
+<tr>
+<td>level</td>
+<td>int</td>
+<td>No</td>
+<td>默认:不修改</td>
+<td>用户等级</td>
+</tr>
+<tr>
+<td>bUpLimit</td>
+<td>int</td>
+<td>No</td>
+<td>-1 或 [500, ], 默认:不修改, -1: 不限制 , 单位:kb</td>
+<td>上行流限制</td>
+</tr>
+<tr>
+<td>bDownLimit</td>
+<td>int</td>
+<td>No</td>
+<td>-1 或 [500, ], 默认:不修改, -1: 不限制 , 单位:kb</td>
+<td>下行流限制</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>No</td>
+<td>用MD5加密的密码, 例:MD5("123456")<br>默认:不修改</td>
+<td>用户密码</td>
+</tr>
+<tr>
+<td>extend</td>
+<td>string</td>
+<td>No</td>
+<td>&lt;10kb</td>
+<td>扩展信息</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="contactdeleteuser">contact.deleteUser</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  删除用户   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>用户id</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="contactgetuserinfo">contact.getUserInfo</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  删除用户   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td></td>
+<td>用户号码</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td></td>
+<td>用户号码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>用户名称</td>
+</tr>
+<tr>
+<td>level</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>用户等级</td>
+</tr>
+<tr>
+<td>bUpLimit</td>
+<td>int</td>
+<td>No</td>
+<td>-1 或 [500, ], 默认:不限制, -1: 不限制 , 单位:kb</td>
+<td>上行流限制</td>
+</tr>
+<tr>
+<td>bDownLimit</td>
+<td>int</td>
+<td>No</td>
+<td>-1 或 [500, ], 默认:不限制, -1: 不限制 , 单位:kb</td>
+<td>下行流限制</td>
+</tr>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>所在组的id</td>
+</tr>
+<tr>
+<td>origin</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>所在顶级组的 id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>Yes</td>
+<td>0:离线，1：在线</td>
+<td>用户在离线状态</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>string</td>
+<td>No</td>
+<td></td>
+<td>手机号码</td>
+</tr>
+<tr>
+<td>mail</td>
+<td>string</td>
+<td>No</td>
+<td></td>
+<td>邮箱地址(未实现)</td>
+</tr>
+<tr>
+<td>extend</td>
+<td>string</td>
+<td>No</td>
+<td>&lt;10kb</td>
+<td>扩展信息 (未实现)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="contactcreategroup">contact.createGroup</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  创建组   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>组名</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>所在组的id</td>
+</tr>
+<tr>
+<td>independent</td>
+<td>bool</td>
+<td>No</td>
+<td>默认：false</td>
+<td>是否是独立组(即：是否和上级无关)</td>
+</tr>
+<tr>
+<td>extend</td>
+<td>string</td>
+<td>No</td>
+<td>&lt;10kb</td>
+<td>扩展信息</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>组id</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="contactmodifygroup">contact.modifyGroup</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  修改组   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>组id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>No</td>
+<td>默认: 不修改</td>
+<td>组名</td>
+</tr>
+<tr>
+<td>independent</td>
+<td>bool</td>
+<td>No</td>
+<td>默认：不修改</td>
+<td>是否是独立组(即：是否和上级无关)</td>
+</tr>
+<tr>
+<td>extend</td>
+<td>string</td>
+<td>No</td>
+<td>&lt;10kb</td>
+<td>扩展信息</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="contactdeletegroup">contact.deleteGroup</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  删除组   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>组id</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="contactgetgroupinfo">contact.getGroupInfo</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  获取组信息   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>组id</td>
+</tr>
+<tr>
+<td>* <strong>Result</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td>默认: 不修改</td>
+<td>组名</td>
+</tr>
+<tr>
+<td>independent</td>
+<td>bool</td>
+<td>Yes</td>
+<td></td>
+<td>是否是独立组(即：是否和上级无关)</td>
+</tr>
+<tr>
+<td>ulen</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>该组下的用户数</td>
+</tr>
+<tr>
+<td>glen</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>该组下的组数</td>
+</tr>
+<tr>
+<td>clen</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>该组下的所有用户数，包含所有子组织的用户数</td>
+</tr>
+<tr>
+<td>extend</td>
+<td>string</td>
+<td>No</td>
+<td>&lt;10K</td>
+<td>扩展信息</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="contactgetuserlist">contact.getUserList</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  获取组下面的用户列表   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>组id</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>[补充1]</td>
+<td>Yes</td>
+<td>见<a href="./#contactgetuserinfo">contact.getUserInfo</a></td>
+<td>用户列表</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="contactgetgrouplist">contact.getGroupList</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  获取组下面的组列表   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>组id</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>[补充1]</td>
+<td>Yes</td>
+<td></td>
+<td>用户列表</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="contactsearch">contact.search</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  联系人搜索   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>no</td>
+<td></td>
+<td>组id</td>
+</tr>
+<tr>
+<td>fuzzyCondition</td>
+<td>object</td>
+<td>no</td>
+<td>见补充1</td>
+<td>模糊搜索</td>
+</tr>
+<tr>
+<td>location</td>
+<td>object</td>
+<td>no</td>
+<td>见补充2</td>
+<td>结果定位</td>
+</tr>
+<tr>
+<td>initial</td>
+<td>string</td>
+<td>no</td>
+<td>a-z 0-1 不区分大小写</td>
+<td>用户名的拼音首字母或者英文首字母</td>
+</tr>
+<tr>
+<td>levels</td>
+<td>array</td>
+<td>no</td>
+<td>1,2,3,4,5</td>
+<td>用户的level</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>no</td>
+<td>补充1字段中有且仅有一个有值</td>
+<td>nid中模糊搜索</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>no</td>
+<td>补充1字段中有且仅有一个有值</td>
+<td>name中模糊搜索</td>
+</tr>
+<tr>
+<td>any</td>
+<td>string</td>
+<td>no</td>
+<td>补充1字段中有且仅有一个有值</td>
+<td>nid或者name中模糊搜索</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>begin</td>
+<td>int</td>
+<td>yes</td>
+<td>返回全部搜索数据中的开始位置</td>
+<td></td>
+</tr>
+<tr>
+<td>end</td>
+<td>int</td>
+<td>yes</td>
+<td>返回全部搜索数据中的结束位置</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>total</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>数据库中符合查询条件的结果总数</td>
+</tr>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>查询结果所在gid</td>
+</tr>
+<tr>
+<td>userlist</td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充4 见<a href="./#contactgetuserinfo">contact.getUserInfo</a></td>
+<td>查询结果数据</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充4</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>用户号码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>用户名称</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="eventcontactuserinfochanged">event.contact.userInfoChanged</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client</li>
+<li><strong>Description:</strong><br />
+  客户端信息变更的通知  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>变更人的nid</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{// 通知
+    &quot;method&quot;: &quot;event.contact.userInfoChanged&quot;,
+    &quot;params&quot;: {
+      &quot;nid&quot;:&quot;234242424&quot;
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="callcreate">call.create</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  创建会话</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>beginTime</td>
+<td>string</td>
+<td>No</td>
+<td>"YYYY-MM-DD hh:mm:ss"<br>默认(字段不填):使用服务器当前时间</td>
+<td>会话的开始时间, 以服务器时间为准；创建即时会议的时候，beginTime应该不填，避免时间不同步的问题。</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>string</td>
+<td>Yes</td>
+<td>"YYYY-MM-DD hh:mm:ss"</td>
+<td>会话的结束时间, 以服务器时间为准</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>No</td>
+<td></td>
+<td>会话名称</td>
+</tr>
+<tr>
+<td>media</td>
+<td>object</td>
+<td>No</td>
+<td>见补充1</td>
+<td>媒体设置</td>
+</tr>
+<tr>
+<td>extend</td>
+<td>string</td>
+<td>No</td>
+<td>&lt;10kb</td>
+<td>扩展信息</td>
+</tr>
+<tr>
+<td>property</td>
+<td>object</td>
+<td>No</td>
+<td>见补充2 <a href="#callsetproperty">call.setProperty</a></td>
+<td>会议属性信息</td>
+</tr>
+<tr>
+<td>vid</td>
+<td>string</td>
+<td>No</td>
+<td>虚拟会议室号</td>
+<td>虚拟会议室号</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bmax</td>
+<td>int</td>
+<td>No</td>
+<td>单位:kb, 默认:不限制带宽</td>
+<td>限制该会议的最大带宽, 不同终端可以根据这个参数乘与一个系数, 比如:手机端可以在bmax上打个三折</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话号码</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="callgetinfo">call.getInfo</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  创建会话</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话号码</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<p>见<a href="#callcreate">call.create</a>的params</p>
+<hr />
+<h3 id="callsetmember">call.setMember</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  会话添加成员(增量式添加), 同一个用户不能同时为visitor和member
+    2次setMember同一个人, 以后一次为准  </li>
+<li><strong>Droit</strong>
+  会话创建者,会话owner, 会议系统管理员  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话号码</td>
+</tr>
+<tr>
+<td>visitors</td>
+<td>[string]</td>
+<td>No</td>
+<td>默认: 不添加观看者</td>
+<td>以观看者身份入会的用户id</td>
+</tr>
+<tr>
+<td>members</td>
+<td>[string]</td>
+<td>No</td>
+<td>默认: 不添加会议成员</td>
+<td>以会议成员身份入会的用户id</td>
+</tr>
+<tr>
+<td>moderator</td>
+<td>string</td>
+<td>No</td>
+<td></td>
+<td>会话主持人</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="callremovemember">call.removeMember</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  会话移除成员(增量式移除)</li>
+<li><strong>Droit</strong>
+  会话创建者,会话owner, 会议系统管理员  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话号码</td>
+</tr>
+<tr>
+<td>nids</td>
+<td>[string]</td>
+<td>Yes</td>
+<td></td>
+<td>要移除的用户号码列表</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="callgetmemberlist">call.getMemberList</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  获取会话成员</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认: 当前所在的会话</td>
+<td>会话号码</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>No</td>
+<td>visitors : 观看者<br>members: 会话成员<br>默认: visitors+members+moderator</td>
+<td>要获取的人员类型</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visitors</td>
+<td>array</td>
+<td>No</td>
+<td>[补充1]</td>
+<td>观看者人员列表</td>
+</tr>
+<tr>
+<td>members</td>
+<td>array</td>
+<td>No</td>
+<td>[补充1]</td>
+<td>会议成员列表</td>
+</tr>
+<tr>
+<td>moderator</td>
+<td>object</td>
+<td>No</td>
+<td>[补充1]</td>
+<td>主持人</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>用户号码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>用户名称</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="calldelete">call.delete</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  删除会话</li>
+<li><strong>Droit</strong>
+  会话创建者,会话owner, 会议系统管理员  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话号码</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="callmodify">call.modify</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  修改会话</li>
+<li><strong>Droit</strong>
+  会话创建者,会话owner, 会议系统管理员  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话号码</td>
+</tr>
+<tr>
+<td>beginTime</td>
+<td>string</td>
+<td>No</td>
+<td>"YYYY-MM-DD hh:mm:ss"<br>默认:不修改</td>
+<td>会话的开始时间, 以服务器时间为准</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>string</td>
+<td>No</td>
+<td>"YYYY-MM-DD hh:mm:ss"  <br>默认:不修改</td>
+<td>会话的结束时间, 以服务器时间为准</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>No</td>
+<td>默认:不修改</td>
+<td>会话名称</td>
+</tr>
+<tr>
+<td>media</td>
+<td>object</td>
+<td>No</td>
+<td>见补充1</td>
+<td>媒体设置</td>
+</tr>
+<tr>
+<td>extend</td>
+<td>string</td>
+<td>No</td>
+<td>&lt;10kb      <br>默认:不修改</td>
+<td>扩展信息</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bmax</td>
+<td>int</td>
+<td>No</td>
+<td>默认:不限制带宽</td>
+<td>限制该会议的最大带宽, 不同终端可以根据这个参数乘与一个系数, 比如:手机端可以在bmax上打个三折</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="calllaunch">call.launch</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  修改会话</li>
+<li><strong>Droit</strong>
+  会话创建者,会话owner, 主持人</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话号码</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">立即开始会议</h2>
+<pre><code class="javascript">{
+    &quot;id&quot;: 8,
+    &quot;method&quot;: &quot;call.launch&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;123123123&quot;
+    }
+}
+
+   {
+        &quot;id&quot;: 8,
+         &quot;result&quot;: {        
+        }
+    }
+</code></pre>
+
+<hr />
+<h3 id="calldial">call.dial</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  拨打会话</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话号码(个人号码)</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>No</td>
+<td></td>
+<td>会议密码</td>
+</tr>
+<tr>
+<td>controls</td>
+<td>array</td>
+<td>No</td>
+<td>见 <a href="./#callsetmembercontrols">call.setMemberControls</a></td>
+<td>终端期望的设备开关</td>
+</tr>
+</tbody>
+</table>
+<p>Note:<br />
+    call.dial 的 "controls" 选项，为空的时候，说明终端的设备开关由服务配置来决定。 
+    call.dial 的 "controls" 选项，不为空的时候，说明终端的设备开关需要特别配置，服务会根据这个配置及会议配置来生成终端设备开关。
+    在终端本地配置是"闭麦入会"的时候，需要在"controls" 选项 填上：
+    {
+          "key":"speaker",
+          "value":3,
+    }
+     否则保持call.dial协议 "controls"空。</p>
+<pre><code class="javascript">{// 请求
+    &quot;method&quot;: &quot;call.dial&quot;,
+    &quot;id&quot;:1
+    &quot;params&quot;: {
+      &quot;nid&quot;:&quot;23424525&quot;,
+      &quot;password&quot;:&quot;123456&quot;
+      &quot;controls&quot;:[
+        {
+          &quot;key&quot;:&quot;mic&quot;,
+          &quot;value&quot;:2,
+        },
+        {
+          &quot;key&quot;:&quot;speaker&quot;,
+          &quot;value&quot;:2,
+        }
+      ]
+    }
+}
+</code></pre>
+
+<hr />
+<hr />
+<h3 id="callhangup">call.hangup</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  挂断当前会话</li>
+</ul>
+<hr />
+<h3 id="callgetlist">call.getList</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  获取会话列表</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>member</td>
+<td>string</td>
+<td>No</td>
+<td>默认:自己</td>
+<td>和该用户相关的会话<br>查询和别人相关的会话需要管理员权限</td>
+</tr>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:不启用该条件</td>
+<td>创会人所在的的group<br>该查询条件需要管理员权限</td>
+</tr>
+<tr>
+<td>vid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:不启用该条件</td>
+<td>虚拟会议室下的会议</td>
+</tr>
+<tr>
+<td>location</td>
+<td>object</td>
+<td>no</td>
+<td>见补充1</td>
+<td>结果定位</td>
+</tr>
+<tr>
+<td>callType</td>
+<td>string</td>
+<td>No</td>
+<td>见补充2，默认不填，表示获取全部，</td>
+<td>获取的会议类型</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>begin</td>
+<td>int</td>
+<td>yes</td>
+<td>返回全部搜索数据中的开始位置</td>
+<td></td>
+</tr>
+<tr>
+<td>end</td>
+<td>int</td>
+<td>yes</td>
+<td>返回全部搜索数据中的结束位置</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>desc</th>
+<th>attachment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>present</td>
+<td>当前会议</td>
+<td></td>
+</tr>
+<tr>
+<td>scheduling</td>
+<td>预约会议</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Note:<br />
+  1.gid有数据时, member失效</p>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>calls</td>
+<td>array</td>
+<td>Yes</td>
+<td>[补充2]</td>
+<td>会话列表</td>
+</tr>
+<tr>
+<td>total</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>数据库中符合查询条件的结果总数</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话号码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话名称</td>
+</tr>
+<tr>
+<td>beginTime</td>
+<td>string</td>
+<td>Yes</td>
+<td>"YYYY-MM-DD hh:mm:ss"</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>string</td>
+<td>Yes</td>
+<td>"YYYY-MM-DD hh:mm:ss"</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td>creator</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>创建者</td>
+</tr>
+<tr>
+<td>creatorName</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>创建者的名称</td>
+</tr>
+<tr>
+<td>vid</td>
+<td>string</td>
+<td>No</td>
+<td></td>
+<td>虚拟会议室ID</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">
+{
+    &quot;id&quot;: 8,    
+    &quot;method&quot;: &quot;call.getList&quot;,
+    &quot;params&quot;: {
+        &quot;gid&quot;: &quot;2abc&quot;, 
+        &quot;vid&quot;: &quot;123456&quot;,
+        &quot;location&quot;: {
+            &quot;begin&quot;: 0,
+            &quot;end&quot;: 4
+        }       
+    }
+}
+
+{
+    &quot;id&quot;: 8,
+    &quot;result&quot;: {
+        &quot;calls&quot;: [
+            {
+                &quot;nid&quot;: &quot;12345678910&quot;,
+                &quot;vid&quot;: &quot;123456&quot;,
+                &quot;...&quot;: &quot;...&quot;
+            }
+        ],
+        &quot;total&quot;: 100
+    }
+}
+
+</code></pre>
+
+<hr />
+<h3 id="callfacechangesetting">call.face.changeSetting</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  设置人脸识别功能；
+ 签到，铭牌，简介；operator  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td>会议id号</td>
+<td>和该用户相关的会话<br>查询和别人相关的会话需要管理员权限</td>
+</tr>
+<tr>
+<td>features</td>
+<td>array</td>
+<td>Yes</td>
+<td>补充1</td>
+<td>功能设置</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1.1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>operator</td>
+<td>int</td>
+<td>yes</td>
+<td>1=签到  2=铭牌 3=简介</td>
+<td>指定某项功能</td>
+</tr>
+<tr>
+<td>active</td>
+<td>bool</td>
+<td>yes</td>
+<td></td>
+<td>激活状态</td>
+</tr>
+<tr>
+<td>streams</td>
+<td>object</td>
+<td>No</td>
+<td>补充1.1.1</td>
+<td>人脸识别使用的流</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1.1.1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>advises</td>
+<td>array</td>
+<td>No</td>
+<td>会议虚拟流的key，描述见<a href="#mediagetpublishedstream">media.getPublishedStream</a></td>
+<td>指定会议的虚拟流，目前使用speechExcit_1</td>
+</tr>
+<tr>
+<td>nids</td>
+<td>array</td>
+<td>No</td>
+<td>会议人员的nid</td>
+<td>使用指定会议人员的流，暂不支持</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">
+{
+    &quot;method&quot;: &quot;call.face.changeSetting&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;234234324&quot;,
+        &quot;features&quot;: [
+            {
+                &quot;operator&quot;: 1,
+                &quot;active&quot;:true,
+            },
+            {
+                &quot;operator&quot;: 2,
+                &quot;active&quot;:true,
+                &quot;streams&quot;: {
+                    &quot;advises&quot;: [
+                        &quot;speechExcit_1&quot;,
+                        &quot;rollCall_1&quot;
+                    ],
+                    &quot;nids&quot;: [&quot;12367898&quot;]
+                }
+            },
+            {
+                &quot;operator&quot;: 3,
+                &quot;active&quot;:true,
+                &quot;streams&quot;: {
+                    &quot;advises&quot;: [
+                        &quot;speechExcit_1&quot;,
+                        &quot;rollCall_1&quot;
+                    ],
+                    &quot;nids&quot;: [&quot;12367898&quot;]
+                }
+            }
+        ]
+    }
+}
+
+</code></pre>
+
+<hr />
+<h3 id="callsetadvisemedia">call.setAdviseMedia</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent   </li>
+<li><strong>Description:</strong><br />
+  申请自己(或别人)成为推荐流
+  该协议是差量协议， 一次只能操作一种类型  </li>
+<li><strong>Params:</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:当前会话</td>
+<td>会话的号码</td>
+</tr>
+<tr>
+<td>medias</td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充1</td>
+<td>推荐的媒体资源</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>operation</td>
+<td>int</td>
+<td>Yes</td>
+<td>见补充2</td>
+<td>操作行为</td>
+</tr>
+<tr>
+<td>streams</td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充4</td>
+<td>对应推荐流描述</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>desc</th>
+<th>attachment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>演示</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>点名</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>轮巡</td>
+<td>见补充3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充3</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rect</td>
+<td>int</td>
+<td>Yes</td>
+<td>{x,y,z,w,h}</td>
+<td>该流显示的位置</td>
+</tr>
+<tr>
+<td>nids</td>
+<td>array</td>
+<td>Yes</td>
+<td></td>
+<td>该轮巡的客户端列表</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>int</td>
+<td>Yes</td>
+<td>[5,)</td>
+<td>轮巡的间隔时间</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充4</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Yes</td>
+<td>"main","extra"</td>
+<td>标识主流或辅流</td>
+</tr>
+<tr>
+<td>attachment</td>
+<td>object</td>
+<td>No</td>
+<td>见补充2</td>
+<td>附加信息</td>
+</tr>
+</tbody>
+</table>
+<p>Note:</p>
+<ul>
+<li>key的描述见<a href="#mediagetpublishedstream">media.getPublishedStream</a></li>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{// 请求  发送演示流
+    &quot;method&quot;: &quot;call.setAdviseMedia&quot;,
+    &quot;id&quot;:1
+    &quot;params&quot;: {
+      &quot;nid&quot;:&quot;234242424&quot;,
+      &quot;medias&quot;: [
+            {
+                &quot;operator&quot;: 1,
+                &quot;streams&quot;: [
+                    {
+                        &quot;key&quot;: &quot;demo_1&quot;,
+                        &quot;type&quot;: &quot;extra&quot;,
+                        &quot;token&quot;: &quot;abc123&quot;,
+                        &quot;nid&quot;: 12345678901
+                    },                    
+                ]
+            },           
+        ]
+    }
+}
+
+{// 请求  发送点名
+    &quot;method&quot;: &quot;call.setAdviseMedia&quot;,
+    &quot;id&quot;:1
+    &quot;params&quot;: {
+      &quot;nid&quot;:&quot;234242424&quot;,
+      &quot;medias&quot;: [            
+            {
+                &quot;operator&quot;: 3,
+                &quot;streams&quot;: [
+                    {
+                        &quot;key&quot;: &quot;rollCall_1&quot;,
+                        &quot;type&quot;: &quot;extra&quot;,
+                        &quot;token&quot;: &quot;abc123&quot;,
+                        &quot;nid&quot;: 12345678901
+                    },                    
+                ]
+            },           
+        ]
+    }
+}
+
+{// 请求 设置轮巡
+    &quot;method&quot;: &quot;call.setAdviseMedia&quot;,
+    &quot;id&quot;:1
+    &quot;params&quot;: {
+      &quot;nid&quot;:&quot;12345678901&quot;, // 会话ID
+     &quot;medias&quot;: [ 
+            {
+                &quot;operator&quot;: 4,
+                &quot;streams&quot;: [
+                    {                        
+                        &quot;key&quot;: &quot;patrol_1&quot;,
+                        &quot;type&quot;: &quot;main&quot;,                        
+                        &quot;attachment&quot;: {
+                            &quot;rect&quot;: [
+                                0,
+                                0,
+                                0,
+                                0.5,
+                                0.5
+                            ],
+                            &quot;nids&quot;: [
+                                &quot;111111&quot;,
+                                &quot;222222&quot;
+                            ],
+                            &quot;interval&quot;: 5
+                        }
+                    },
+                    {
+                        &quot;key&quot;: &quot;patrol_2&quot;,
+                        &quot;type&quot;: &quot;main&quot;,                      
+                        &quot;attachment&quot;: {
+                            &quot;rect&quot;: [
+                                0.5,
+                                0,
+                                0.5,
+                                0.5
+                            ],
+                            &quot;nids&quot;: [
+                                &quot;111111&quot;,
+                                &quot;222222&quot;
+                            ],
+                            &quot;interval&quot;: 5
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+{// 回复  同意(成功)
+  &quot;result&quot;:{}
+  &quot;id&quot;:1
+}
+
+{// 回复  无权限 (服务端回复客户端)
+  &quot;method&quot;: &quot;call.setAdviseMedia&quot;,
+  &quot;id&quot;:1,
+  &quot;error&quot;:{
+    &quot;code&quot;:0x00000004,
+    &quot;message&quot;:&quot;not authorized&quot;
+  }
+}
+
+</code></pre>
+
+<hr />
+<h3 id="callsetcontrols">call.setControls</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+  设置会话的控制项数据  </li>
+<li>
+<p><strong>Droit</strong><br />
+  会话创建者,会话主持人, 会议系统管理员  </p>
+</li>
+<li>
+<p><strong>Params</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:当前会话</td>
+<td>要操控的会话</td>
+</tr>
+<tr>
+<td>controls</td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充1</td>
+<td>当前要操控的控制项， 不填的保持原样</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Yes</td>
+<td>见补充3</td>
+<td>控制项</td>
+</tr>
+<tr>
+<td>value</td>
+<td>int</td>
+<td>Yes</td>
+<td>见补充2</td>
+<td>值</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>自由</td>
+</tr>
+<tr>
+<td>2</td>
+<td>全部打开 / 生效</td>
+</tr>
+<tr>
+<td>3</td>
+<td>全部关闭 / 失效</td>
+</tr>
+<tr>
+<td>4</td>
+<td>全部禁用</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充3</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mic</td>
+<td>是否关闭麦克风</td>
+</tr>
+<tr>
+<td>speaker</td>
+<td>是否关闭扬声器</td>
+</tr>
+<tr>
+<td>camera</td>
+<td>是否关闭摄像头</td>
+</tr>
+<tr>
+<td>extra</td>
+<td>演示流</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{// 请求
+    &quot;method&quot;: &quot;call.setControls&quot;,
+    &quot;id&quot;:1
+    &quot;params&quot;: {
+      &quot;nid&quot;:23424525
+      &quot;controls&quot;:[
+        {
+          &quot;key&quot;:&quot;mic&quot;,
+          &quot;force&quot;:true,
+          &quot;value&quot;:1,
+        }
+      ]
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="callsetmembercontrols">call.setMemberControls</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+  设置某些人在会话中的控制项数据  </li>
+<li>
+<p><strong>Droit</strong><br />
+  会话创建者,会话主持人, 会议系统管理员  </p>
+</li>
+<li>
+<p><strong>Params</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:当前会话</td>
+<td>要操控的会话</td>
+</tr>
+<tr>
+<td>members</td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充1</td>
+<td>要操控的人</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>要操控的人的号码</td>
+</tr>
+<tr>
+<td>controls</td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充2</td>
+<td>要操作的项目</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Yes</td>
+<td>见补充4</td>
+<td>要操控的项目名</td>
+</tr>
+<tr>
+<td>value</td>
+<td></td>
+<td></td>
+<td>见补充3</td>
+<td>要操控的项目值</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充3</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>自由</td>
+</tr>
+<tr>
+<td>2</td>
+<td>打开 / 生效/ 启动(云台控制)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>关闭 / 失效 / 停止(云台控制)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>禁用</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充4</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mic</td>
+<td>是否关闭麦克风</td>
+</tr>
+<tr>
+<td>speaker</td>
+<td>是否关闭扬声器</td>
+</tr>
+<tr>
+<td>camera</td>
+<td>是否关闭摄像头</td>
+</tr>
+<tr>
+<td>ptz.left</td>
+<td>向左</td>
+</tr>
+<tr>
+<td>ptz.right</td>
+<td>向右</td>
+</tr>
+<tr>
+<td>ptz.up</td>
+<td>向上</td>
+</tr>
+<tr>
+<td>ptz.down</td>
+<td>向下</td>
+</tr>
+<tr>
+<td>ptz</td>
+<td>停止转向</td>
+</tr>
+<tr>
+<td>camera.zoomin</td>
+<td>放大</td>
+</tr>
+<tr>
+<td>camera.zoomout</td>
+<td>缩小</td>
+</tr>
+<tr>
+<td>camera.zoom</td>
+<td>停止放大缩小</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<pre><code class="javascript">{// 请求  客户端-&gt;服务端, 要求22222222222会话中的1111111111这个人关闭麦克风
+  &quot;method&quot;:&quot;call.setMemberControls&quot;,
+  &quot;id&quot;:1,
+  &quot;params&quot;:{
+    &quot;nid&quot;:&quot;22222222222&quot;, // 如果自己在该会话中, nid可以不填
+    &quot;members&quot;:[
+      {
+        &quot;nid&quot;:&quot;1111111111&quot;,
+        &quot;controls&quot;:[
+          {
+            &quot;key&quot;:&quot;mic&quot;,
+            &quot;value&quot;:1
+          },
+          {
+            &quot;key&quot;:&quot;ptz.left&quot;,
+            &quot;value&quot;:2
+          },
+          {
+            &quot;key&quot;:&quot;camera.zoomin&quot;,
+            &quot;value&quot;:3
+          },
+        ]
+      }
+    ]
+  }
+}
+
+{// 回复: 成功
+  &quot;id&quot;:1
+}
+
+{// 回复: 无权限  (如: 我是普通观看者, 想操控主持人不要说话)
+  &quot;id&quot;:1,
+  &quot;error&quot;:{
+    &quot;code&quot;:0x00000004,
+    &quot;message&quot;:&quot;not authorized&quot;
+  }
+}
+</code></pre>
+
+<hr />
+<h3 id="callrequestmembercontrol">call.requestMemberControl</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+  用于主持人向服务请求某些终端开启视频  </li>
+<li>
+<p><strong>Droit</strong><br />
+  会话创建者,会话主持人, 会议系统管理员  </p>
+</li>
+<li>
+<p><strong>Params</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:当前会话</td>
+<td>要操控的会话</td>
+</tr>
+<tr>
+<td>controls</td>
+<td>array</td>
+<td>Yes</td>
+<td>见call.setMemberControls</td>
+<td>请求的操作</td>
+</tr>
+<tr>
+<td>isAll</td>
+<td>bool</td>
+<td>No</td>
+<td>true ：表示 请求所有嘉宾，false：向users中的人请求， 默认false</td>
+<td></td>
+</tr>
+<tr>
+<td>users</td>
+<td>array</td>
+<td>No</td>
+<td>会议成员nid 列表</td>
+<td></td>
+</tr>
+<tr>
+<td>## 说明</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>目前需求上只有开启摄像头的请求</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<pre><code class="javascript">  // isAll 表示对所有人员成效，默认false
+// users 指定接受者  isAll 和 users选填一个
+{
+    &quot;method&quot;: &quot;call.requestMemberControl&quot;,
+    &quot;id&quot;: 1,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;22222222222&quot;,
+        &quot;controls&quot;: [
+            {
+                &quot;key&quot;: &quot;mic&quot;,
+                &quot;value&quot;: 1
+            },
+            {
+                &quot;key&quot;: &quot;camera&quot;,
+                &quot;value&quot;: 2
+            },
+            {
+                &quot;key&quot;: &quot;camera.zoomin&quot;,
+                &quot;value&quot;: 3
+            }
+        ],
+        &quot;isAll&quot;:false
+        &quot;users&quot;: [&quot;nid1&quot;,&quot;nid2&quot;,&quot;nid2&quot;]
+    }
+}
+
+
+{// 回复: 成功
+  &quot;id&quot;:1
+}
+
+
+</code></pre>
+
+<hr />
+<h3 id="notifycallrequestmembercontrol">notify.call.requestMemberControl</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client  </li>
+<li><strong>Description:</strong><br />
+  通知请求操作</li>
+<li><strong>Params:</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话的号码</td>
+</tr>
+<tr>
+<td>controls</td>
+<td>array</td>
+<td>Yes</td>
+<td>见call.requestMemberControl</td>
+<td>请求的操作</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{
+    &quot;method&quot;: &quot;notify.call.requestMemberControl&quot;,
+    &quot;id&quot;: 1,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;22222222222&quot;,
+        &quot;controls&quot;: [
+            {
+                &quot;key&quot;: &quot;mic&quot;,
+                &quot;value&quot;: 1
+            },
+            {
+                &quot;key&quot;: &quot;camera&quot;,
+                &quot;value&quot;: 2
+            },
+            {
+                &quot;key&quot;: &quot;camera.zoomin&quot;,
+                &quot;value&quot;: 3
+            }
+        ],
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="notifyattach">notify.attach</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+   绑定数据(可以获取全量数据+变更通知)的通用协议 <br />
+   会话中才能调用该协议   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充1</td>
+<td>订阅的消息列表</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td>见补充1.2</td>
+<td>订阅的消息名称</td>
+</tr>
+<tr>
+<td>get</td>
+<td>bool</td>
+<td>Yes</td>
+<td></td>
+<td>是否本次获取该消息的全量数据</td>
+</tr>
+<tr>
+<td>update</td>
+<td>bool</td>
+<td>Yes</td>
+<td></td>
+<td>是否接收更新, 更新数据会以订阅的消息名称来差量更新</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>object</td>
+<td>No</td>
+<td>见补充1.1</td>
+<td>部分key需要有过滤数据</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1.1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>role</td>
+<td>array</td>
+<td>No</td>
+<td>”member”，”vistor” ，默认：不按角色过滤</td>
+<td>过滤角色</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1.2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notify.call.adviseMediaChanged</td>
+<td></td>
+<td></td>
+<td></td>
+<td>推荐流变更</td>
+</tr>
+<tr>
+<td>notify.call.speechExcit</td>
+<td></td>
+<td></td>
+<td></td>
+<td>语音激励</td>
+</tr>
+<tr>
+<td>notify.call.memberStatusChanged</td>
+<td></td>
+<td></td>
+<td></td>
+<td>成员状态变更</td>
+</tr>
+<tr>
+<td>notify.call.remainTime</td>
+<td></td>
+<td></td>
+<td></td>
+<td>会议剩余时间提醒通知</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<p>请求中get=true:<br />
+    result的内容和对应消息的内容一致<br />
+  请求中get=false:<br />
+    result为空</p>
+<p>Note:
+- params补充1中get为true的key会出现在中result, 表示attach时, 先获取全量数据
+- result中所获取的全量数据, 如果想进行过滤, 那么填写filter字段</p>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<pre><code class="javascript">{// 请求
+    &quot;method&quot;: &quot;notify.attach&quot;,
+    &quot;id&quot;:1,
+    &quot;params&quot;: {
+            &quot;items&quot;:[
+                {
+                    &quot;name&quot;:&quot;notify.call.memberStatusChanged&quot;,
+                    &quot;get&quot;:true, // 我需要在result中返回全量数据
+                    &quot;update&quot;, true  // 如果有更新请实时通知我
+                }
+            ]
+
+
+    }
+}
+
+{// 回复
+  &quot;id&quot;:1,
+  &quot;result&quot;:{
+        &quot;notify.call.memberStatusChanged&quot;:{....}
+  }
+}
+</code></pre>
+
+<hr />
+<h3 id="notifydetach">notify.detach</h3>
+<ul>
+<li><strong>Model:</strong><br />
+  All</li>
+<li>
+<p><strong>Description:</strong><br />
+  取消订阅通知, 该接口是增量型的</p>
+</li>
+<li>
+<p><strong>Params</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>Yes</td>
+<td>字符串数组</td>
+<td>取消订阅的消息名称数组</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example:</strong>  </li>
+</ul>
+<pre><code class="javascript">{// 请求
+  &quot;method&quot;:&quot;notify.detach&quot;,
+  &quot;id&quot;:1,
+  &quot;params&quot;:{
+    &quot;items&quot;:[
+        &quot;notify.call.adviseMediaChanged&quot;
+    ]
+
+  }
+}
+
+{// 回复
+  &quot;id&quot;:1
+}
+</code></pre>
+
+<hr />
+<h3 id="notifycallstart">notify.call.start</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client  </li>
+<li><strong>Description:</strong><br />
+  通知某个会议开始</li>
+<li><strong>Params:</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话的号码</td>
+</tr>
+</tbody>
+</table>
+<p>Note:<br />
+   - 当会议开始，服务端会通知所有在线的成员(包括vistor)，但只通知一次，也就是说：
+   - 当会议开始后，终端再登录进来，终端不会收到这条消息</p>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{
+    &quot;method&quot;: &quot;notify.call.start&quot;,
+    &quot;id&quot;: 1,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;22222222222&quot;,
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="callcreatelive">call.createLive</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+   创建的通用协议 <br />
+   会话中才能调用该协议   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>members</td>
+<td>object</td>
+<td>No</td>
+<td>见补充1</td>
+<td>订阅成员状态</td>
+</tr>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:当前会话</td>
+<td>会话的号码</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>成员号码</td>
+</tr>
+<tr>
+<td>streams</td>
+<td>object</td>
+<td>No</td>
+<td>见补充2</td>
+<td>指定流</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Yes</td>
+<td>"audio"/"video"</td>
+<td></td>
+</tr>
+<tr>
+<td>key</td>
+<td>bool</td>
+<td>Yes</td>
+<td></td>
+<td>该成员发布的流</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Result</strong></p>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>members</td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充3</td>
+<td>成员状态信息</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充3</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td>直播成员nid</td>
+<td></td>
+</tr>
+<tr>
+<td>rtmp_url</td>
+<td>string</td>
+<td>Yes</td>
+<td>rtmp播放地址</td>
+<td></td>
+</tr>
+<tr>
+<td>hls_url</td>
+<td>string</td>
+<td>Yes</td>
+<td>hls播放地址</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<pre><code class="javascript">
+{// 请求
+    &quot;method&quot;: &quot;call.createLive&quot;,
+    &quot;id&quot;: 2019,
+    &quot;params&quot;: {
+        &quot;members&quot;: {
+            &quot;nid&quot;: &quot;1375256241&quot;,
+            &quot;streams&quot;: [
+                {
+                    &quot;key&quot;: &quot;videokey&quot;,
+                    &quot;type&quot;: &quot;video&quot;
+                },
+                {
+                    &quot;key&quot;: &quot;audiokey&quot;,
+                    &quot;type&quot;: &quot;audio&quot;
+                }
+            ]
+        },
+        &quot;nid&quot;: &quot;73584213769&quot;
+    }
+}
+
+
+{// 回复
+    &quot;id&quot;: 2019,
+    &quot;result&quot;: {
+        &quot;members&quot;: {
+            &quot;nid&quot;: &quot;1375256241&quot;,            
+            &quot;rtmp_url&quot;: &quot;rtmp://10.1.13.127/stream/73584213769&quot;,
+            &quot;hls_url&quot;: &quot;http://10.1.13.127/stream/73584213769/index.m3u8&quot;
+        }
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="callhandsup">call.handsUp</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+   举手 <br />
+   会话中才能调用该协议   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>operation</td>
+<td>string</td>
+<td>yes</td>
+<td>"add","del","set"</td>
+<td>add:新增举手,del:放下举手，set:全量设置举手的nid，</td>
+</tr>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:当前会话</td>
+<td>会话的号码</td>
+</tr>
+<tr>
+<td>nids</td>
+<td>array</td>
+<td>No</td>
+<td>nid数组, 默认["自己的nid"]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Result</strong></p>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>handsUp</td>
+<td>array</td>
+<td>not</td>
+<td></td>
+<td>nid</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong>*  </li>
+</ul>
+<pre><code class="javascript">
+{// 请求
+    &quot;method&quot;: &quot;call.handsUp&quot;,
+    &quot;id&quot;: 2019,
+    &quot;params&quot;: {
+
+        &quot;nid&quot;: &quot;1375256241&quot;,
+        &quot;operation&quot;:&quot;add&quot;,
+        &quot;nids&quot;: [
+            &quot;12312&quot;
+           ]
+    }
+}
+
+
+{// 回复
+    &quot;id&quot;: 2019,
+    &quot;result&quot;: &quot;ok&quot;,    
+}
+
+</code></pre>
+
+<hr />
+<h3 id="callgethandsup">call.getHandsUp</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+   获取举手列表  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:当前会话</td>
+<td>会话的号码</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">
+{// 请求
+     &quot;method&quot;: &quot;call.getHandsUp&quot;,
+    &quot;id&quot;: 2019,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;1231231&quot;,        
+    }
+}
+
+
+{
+    &quot;result&quot;: {
+        &quot;handsUp&quot;:[&quot;11&quot;,&quot;22&quot;, &quot;33&quot;]
+    }
+}
+
+</code></pre>
+
+<hr />
+<h3 id="callsetproperty">call.setProperty</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+   获取举手列表  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:当前会话</td>
+<td>会话的号码</td>
+</tr>
+<tr>
+<td>closeMicWhenJoin</td>
+<td>bool</td>
+<td>No</td>
+<td></td>
+<td>闭麦入会，默认开麦</td>
+</tr>
+<tr>
+<td>openMicBySelf</td>
+<td>bool</td>
+<td>No</td>
+<td></td>
+<td>被主席闭麦后，是否可以自我开麦，默认允许</td>
+</tr>
+<tr>
+<td>demoPermission</td>
+<td>string</td>
+<td>No</td>
+<td>"moderatorOnly", "all"</td>
+<td>演示流权限 moderatorOnly：只有主席能发送 all：所有成员都能发送。默认所有成员</td>
+</tr>
+<tr>
+<td>patrolEnable</td>
+<td>bool</td>
+<td>No</td>
+<td></td>
+<td>轮巡是否开启, 配置 patrolEnable = true 的时候，服务会判断当前轮训配置是否有效， 无效的轮训配置服务端会返回错误码(65580  EmptyPatrol)</td>
+</tr>
+<tr>
+<td>allowJoinWithoutInvited</td>
+<td>bool</td>
+<td>No</td>
+<td>默认：true</td>
+<td>允许主动入会</td>
+</tr>
+<tr>
+<td>allowJoinBeforeModerator</td>
+<td>bool</td>
+<td>No</td>
+<td>默认：true</td>
+<td>允许主持人入会前加入会议</td>
+</tr>
+<tr>
+<td>autoMute</td>
+<td>bool</td>
+<td>No</td>
+<td>默认：true</td>
+<td>智能静音【第9位以后的入会者自动闭麦入会】</td>
+</tr>
+<tr>
+<td>record</td>
+<td>object</td>
+<td>No</td>
+<td>见补充1</td>
+<td>录像配置</td>
+</tr>
+<tr>
+<td>speechExcit</td>
+<td>object</td>
+<td>No</td>
+<td>见补充2</td>
+<td>语音激励配置</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>No</td>
+<td></td>
+<td>会议密码，主持人或者创建者或者高级用户可以设置和获取</td>
+</tr>
+<tr>
+<td>initRole</td>
+<td>string</td>
+<td>No</td>
+<td>默认:visitor,取值visitor或者member</td>
+<td>入会的默认角色</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enable</td>
+<td>bool</td>
+<td>No</td>
+<td>默认:false</td>
+<td>使能</td>
+</tr>
+<tr>
+<td>accessPermission</td>
+<td>string</td>
+<td>No</td>
+<td>"public","private",默认"private"</td>
+<td>录像访问权限,公开：企业内部所有终端都可以进行点播。部分公开：企业内部部分人员有权限进行点播，为配置的终端无法进行会议录像进行点播；私密：只有企业管理员可以进行会议录像点播和下载；</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enable</td>
+<td>string</td>
+<td>No</td>
+<td>默认:true</td>
+<td>用户号码</td>
+</tr>
+<tr>
+<td>sensitivity</td>
+<td>string</td>
+<td>No</td>
+<td>默认:"middle","low","middle","high",</td>
+<td>"low/middle/high",语音激励灵敏度</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">
+{// 请求
+     &quot;method&quot;: &quot;call.setProperty&quot;,
+    &quot;id&quot;: 2019,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;1231231&quot;,   
+        &quot;closeMicWhenJoin&quot;:false,
+        &quot;openMicBySelf&quot;:false,
+        &quot;demoPermission&quot;:&quot;moderatorOnly&quot;,
+        &quot;patrolEnable&quot;: false,
+        &quot;allowJoinWithoutInvited&quot;: &quot;true&quot;,// 允许主动入会
+        &quot;allowJoinBeforeModerator&quot;: &quot;true&quot;,//  允许主持人入会前加入会议
+        &quot;autoMute&quot;:&quot;true&quot;,  // 智能静音【第9位以后的入会者自动闭麦入会】,
+        &quot;password&quot;:&quot;123123&quot;,// 主持人或者创建者或者高级用户可以设置和获取
+        &quot;record&quot;: {
+            &quot;enable&quot;: &quot;false&quot;,    // 录像开关   
+            &quot;accessPermission&quot;: &quot;public&quot; // 录像访问权限
+        },
+        &quot;speechExcit&quot;:{
+            &quot;enable&quot;: &quot;true&quot;, // 语音激励开关   
+            &quot;sensitivity&quot;: &quot;low/middle/high&quot;, // 语音激励灵敏度   
+        }       
+    }
+}
+
+
+{
+    &quot;result&quot;: &quot;ok&quot;
+}
+
+</code></pre>
+
+<hr />
+<h3 id="callsetcustomstreamcontent">call.setCustomStreamContent</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+  手动设置虚拟视频源  </li>
+<li>
+<p><strong>Droit</strong>  </p>
+</li>
+<li>
+<p><strong>Params</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:当前会话</td>
+<td>要设置的会话</td>
+</tr>
+<tr>
+<td>streams</td>
+<td>object</td>
+<td>Yes</td>
+<td>[补充1]</td>
+<td>要设置虚拟视频源信息</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>yes</td>
+<td>会议发布的自定义虚拟流key</td>
+<td>虚拟流的key</td>
+</tr>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>空表示取消设置，恢复默认值</td>
+<td>视频源客户端nid</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>key的描述见<a href="#mediagetpublishedstream">media.getPublishedStream</a></p>
+</li>
+<li>
+<p><strong>Result</strong></p>
+</li>
+</ul>
+<pre><code class="javascript">{
+    &quot;id&quot;: 8,
+    &quot;method&quot;: &quot;call.setCustomStreamContent&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;12345678901&quot;,
+        &quot;streams&quot;: [
+            {
+                &quot;key&quot;: &quot;custom_3_video&quot;,
+                &quot;nid&quot;: &quot;123456&quot;
+            }
+        ]
+    }
+}
+
+
+// 应答
+{
+    &quot;id&quot;: 8,
+    &quot;result&quot;: {       
+    }
+}
+
+</code></pre>
+
+<hr />
+<h3 id="callswitchcustomstreamcontent">call.switchCustomStreamContent</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+  自动设置虚拟视频源, 实现翻页功能  </li>
+<li>
+<p><strong>Droit</strong>  </p>
+</li>
+<li>
+<p><strong>Params</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:当前会话</td>
+<td>要设置的会话</td>
+</tr>
+<tr>
+<td>keys</td>
+<td>array</td>
+<td>No</td>
+<td>虚拟流的key</td>
+<td>可以不填，服务自动替换，填了表示服务器替换内容的指定key，可以实现某个画面固定，其它画面翻页功能</td>
+</tr>
+<tr>
+<td>location</td>
+<td>object</td>
+<td>No</td>
+<td>见补充1</td>
+<td>结果定位</td>
+</tr>
+<tr>
+<td>exclude</td>
+<td>array</td>
+<td>No</td>
+<td>排除的nid</td>
+<td>表示切换的流里，排除的视频源的nid</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>begin</td>
+<td>int</td>
+<td>yes</td>
+<td>返回全部搜索数据中的开始位置</td>
+<td></td>
+</tr>
+<tr>
+<td>end</td>
+<td>int</td>
+<td>yes</td>
+<td>返回全部搜索数据中的结束位置</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>key的描述见<a href="#mediagetpublishedstream">media.getPublishedStream</a></p>
+</li>
+<li>
+<p><strong>Result</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>videos</td>
+<td>array</td>
+<td>Yes</td>
+<td>[补充2]</td>
+<td>会话列表</td>
+</tr>
+<tr>
+<td>total</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>数据库中符合查询条件的结果总数</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>int</td>
+<td>yes</td>
+<td>虚拟流的key</td>
+<td></td>
+</tr>
+<tr>
+<td>nid</td>
+<td>int</td>
+<td>yes</td>
+<td>该虚拟流上的nid</td>
+<td></td>
+</tr>
+<tr>
+<td>token</td>
+<td>int</td>
+<td>yes</td>
+<td>虚拟流的token</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{
+    &quot;id&quot;: 8,
+    &quot;method&quot;: &quot;call.switchCustomStreamContent&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;12345678901&quot;,
+        &quot;keys&quot;:[&quot;custom_1_video&quot;,&quot;custom_2_video&quot;], // 可以不填，服务自动替换，填了表示服务器替换内容的指定key，可以实现某个画面固定，其它画面翻页功能
+        &quot;location&quot;: {
+            &quot;begin&quot;: 0,
+            &quot;end&quot;: 4
+        },
+        &quot;except&quot;:[&quot;123123&quot;]
+    }
+}
+
+
+// 应答
+{
+    &quot;id&quot;: 8,
+    &quot;result&quot;: {
+        &quot;videos&quot;: [
+            {
+                &quot;key&quot;: &quot;custom_1_video&quot;,
+                &quot;nid&quot;: &quot;123456&quot;,
+                &quot;token&quot;: 123123
+            },
+            {
+                &quot;key&quot;: &quot;custom_2_video&quot;,
+                &quot;nid&quot;: &quot;123456&quot;,
+                &quot;token&quot;: 123123
+            }
+        ],
+        &quot;total&quot;:100,
+    }
+}
+
+</code></pre>
+
+<hr />
+<h3 id="callgetproperty">call.getProperty</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+   获取举手列表  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:当前会话</td>
+<td>会话的号码</td>
+</tr>
+</tbody>
+</table>
+<p>result见<a href="#callsetProperty">call.setProperty </a>的params</p>
+<hr />
+<h3 id="notifycallhangup">notify.call.hangup</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client  </li>
+<li><strong>Description:</strong><br />
+  通知您被挂断了(您在某个会话中)</li>
+<li><strong>Params:</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话的号码</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>int</td>
+<td>Yes</td>
+<td>见补充1</td>
+<td>挂断原因</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>No</td>
+<td></td>
+<td>某些挂断原因会附带详情数据</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>desc</th>
+<th>附带的data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>未知原因</td>
+<td>无</td>
+</tr>
+<tr>
+<td>1</td>
+<td>会话到达结束时间</td>
+<td>无</td>
+</tr>
+<tr>
+<td>2</td>
+<td>被人为挂断</td>
+<td>见补充2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>欠费</td>
+<td>无</td>
+</tr>
+<tr>
+<td>4</td>
+<td>系统维护</td>
+<td>见补充3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>操作人的nid</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>操作人的名称</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充3</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startTime</td>
+<td>string</td>
+<td>Yes</td>
+<td>"YYYY-MM-DD hh:mm:ss"</td>
+<td>维护开始时间</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>string</td>
+<td>Yes</td>
+<td>"YYYY-MM-DD hh:mm:ss"</td>
+<td>预计维护结束时间</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{
+  &quot;method&quot;:&quot;notify.call.hangup&quot;,
+  &quot;params&quot;: {
+      &quot;nid&quot;:&quot;234242424&quot;,
+      &quot;reason&quot;:1   // 会话到时间了
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="notifycalldelete">notify.call.delete</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client  </li>
+<li><strong>Description:</strong><br />
+  通知某个会话被挂断了(所有在会话列表中的会话,不管什么原因,会话消失都会发送该通知)  </li>
+<li><strong>Params:</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会话的号码</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>int</td>
+<td>Yes</td>
+<td>见补充1</td>
+<td>删除原因</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>No</td>
+<td></td>
+<td>某些挂断原因会附带详情数据</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>desc</th>
+<th>附带的data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>未知原因</td>
+<td>无</td>
+</tr>
+<tr>
+<td>1</td>
+<td>会话到达结束时间</td>
+<td>无</td>
+</tr>
+<tr>
+<td>2</td>
+<td>被人为删除</td>
+<td>见补充2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>欠费</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>操作人的nid</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>操作人的名称</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{
+  &quot;method&quot;:&quot;notify.call.delete&quot;,
+  &quot;params&quot;: {
+      &quot;nid&quot;:&quot;234242424&quot;,
+      &quot;reason&quot;:1   // 会话到时间了
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="notifycallcreate">notify.call.create</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client  </li>
+<li><strong>Description:</strong><br />
+  新增会话的通知（自己相关）  </li>
+<li><strong>Params:</strong>  </li>
+</ul>
+<p>见<a href="#callcreate">call.create </a>的params</p>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{
+    &quot;method&quot;: &quot;notify.call.create&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;96098516918&quot;,
+        &quot;endTime&quot;: &quot;2018-12-20 15:24:00&quot;,
+        &quot;beginTime&quot;: &quot;2018-12-20 15:24:00&quot;,
+        &quot;creator&quot;: &quot;abcbcb&quot;,
+        &quot;creatorName&quot;: &quot;abc&quot;，
+        &quot;name&quot;: &quot;视频会议&quot;
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="notifycallmodify">notify.call.modify</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client  </li>
+<li><strong>Description:</strong><br />
+  修改会话的通知（自己相关）  </li>
+<li><strong>Params:</strong>  </li>
+</ul>
+<p>见<a href="#callcreate">call.create </a>的params</p>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{
+    &quot;method&quot;: &quot;notify.call.modify&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;96098516918&quot;,
+        &quot;endTime&quot;: &quot;2018-12-20 15:24:00&quot;,
+        &quot;beginTime&quot;: &quot;2018-12-20 15:24:00&quot;,
+        &quot;creator&quot;: &quot;abcbcb&quot;,
+        &quot;creatorName&quot;: &quot;abc&quot;，
+        &quot;name&quot;: &quot;视频会议&quot;
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="eventcallfacesettingchanged">event.call.face.settingChanged</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client</li>
+<li><strong>Description:</strong><br />
+  通知人脸识别功能的设置</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会议号</td>
+</tr>
+<tr>
+<td>features</td>
+<td>string</td>
+<td>Yes</td>
+<td><a href="#callfacechangesetting">call.face.changeSetting </a></td>
+<td>变更的功能</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{
+    &quot;method&quot;: &quot;event.call.face.settingChanged&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;234234324&quot;,
+        &quot;features&quot;: [
+            {
+                &quot;operator&quot;: 1,
+                &quot;active&quot;:true,
+            },
+            {
+                &quot;operator&quot;: 2,
+                &quot;active&quot;:true,
+                &quot;streams&quot;: {
+                    &quot;advises&quot;: [
+                        &quot;speechExcit_1&quot;,
+                        &quot;rollCall_1&quot;
+                    ],
+                    &quot;nids&quot;: [&quot;12367898&quot;]
+                }
+            },
+            {
+                &quot;operator&quot;: 3,
+                &quot;active&quot;:true,
+                &quot;streams&quot;: {
+                    &quot;advises&quot;: [
+                        &quot;speechExcit_1&quot;,
+                        &quot;rollCall_1&quot;
+                    ],
+                    &quot;nids&quot;: [&quot;12367898&quot;]
+                }
+            }
+        ]
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="eventcallfaceactive">event.call.face.active</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client</li>
+<li><strong>Description:</strong><br />
+  通知正在人脸识别的会场, 会场是否正在被人脸识别</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会议号</td>
+</tr>
+<tr>
+<td>operators</td>
+<td>string</td>
+<td>Yes</td>
+<td><a href="#callfacechangesetting">call.face.changeSetting </a></td>
+<td>数组有值表示， 正在被人脸识别, 值代表识别的操作。空: 没有在人脸识别了。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{
+    &quot;method&quot;: &quot;event.call.face.active&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;234234324&quot;,
+        &quot;operators&quot;:[1,2,3]
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="eventcallpublishstream">event.call.publishStream</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client</li>
+<li><strong>Description:</strong><br />
+  通知客户端发布流   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>将流发布到的会话</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{// 通知
+    &quot;method&quot;: &quot;event.call.publishStream&quot;,
+    &quot;params&quot;: {
+      &quot;nid&quot;:&quot;234242424&quot;
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="eventcallunpublishstream">event.call.unpublishStream</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client</li>
+<li><strong>Description:</strong><br />
+  通知客户端反发布流   </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>将流从该会话中反发布</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{// 通知
+    &quot;method&quot;: &quot;event.call.unpublishStream&quot;,
+    &quot;params&quot;: {
+      &quot;nid&quot;:&quot;234242424&quot;
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="notifycalladvisemediachanged">notify.call.adviseMediaChanged</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client  </li>
+<li><strong>Description:</strong><br />
+  通知别人推荐流的信息变更了<br />
+  这里包含2个行为, 如果推荐流里面的流是别人的, 那么就是推荐我看<br />
+  如果推荐流里面的流是自己的, 那么上行这个推荐流  </li>
+<li><strong>Params:</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>当前会话的号码</td>
+</tr>
+<tr>
+<td>medias</td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充1</td>
+<td>推荐的媒体资源</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>Yes</td>
+<td>同 <a href="#callsetadvisemedia">call.setAdviseMedia</a>中params的补充1</td>
+<td></td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>可以用这个令牌直接去拉流, 注:有效期60秒</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{
+    &quot;id&quot;: 8,
+    &quot;method&quot;: &quot;notify.call.adviseMediaChanged&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;234242424&quot;,
+        &quot;medias&quot;: [
+        {
+            &quot;operator&quot;: 1,
+            &quot;streams&quot;: [
+                {
+                    &quot;nid&quot;: &quot;1234567022&quot;,
+                    &quot;mid&quot;: 3507987840,
+                    &quot;key&quot;: &quot;demo_1&quot;,
+                    &quot;type&quot;: &quot;extra&quot;,
+                    &quot;token&quot;: &quot;3507987840&quot;,                    
+                }
+            ]
+        },
+        {
+            &quot;operator&quot;: 3,
+            &quot;streams&quot;: [
+                {
+                    &quot;nid&quot;: &quot;1234567022&quot;,                    
+                    &quot;key&quot;: &quot;rollCall_1&quot;,
+                    &quot;token&quot;: &quot;3809884324&quot;,
+                    &quot;type&quot;: &quot;extra&quot;
+                }
+            ]
+        }
+    ],
+
+            {
+                &quot;operator&quot;: 4,
+                &quot;streams&quot;: [
+                    {                       
+                        &quot;key&quot;: &quot;patrol_1&quot;,
+                        &quot;type&quot;: &quot;main&quot;,
+                        &quot;operator&quot;: 4,
+                        &quot;attachment&quot;: {
+                            &quot;rect&quot;: [
+                                0,
+                                0,
+                                0,
+                                0.5,
+                                0.5
+                            ],
+                            &quot;nids&quot;: [
+                                &quot;111111&quot;,
+                                &quot;222222&quot;
+                            ],
+                            &quot;interval&quot;: 5
+                        }
+                    },
+                    {                        
+                        &quot;key&quot;: &quot;patrol_2&quot;,
+                        &quot;type&quot;: &quot;main&quot;,
+                        &quot;operator&quot;: 4,
+                        &quot;attachment&quot;: {
+                            &quot;rect&quot;: [
+                                0.5,
+                                0,
+                                0.5,
+                                0.5
+                            ],
+                            &quot;nids&quot;: [
+                                &quot;111111&quot;,
+                                &quot;222222&quot;
+                            ],
+                            &quot;interval&quot;: 5
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="notifycallfaceidentification">notify.call.face.identification</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+   人脸识别：电子铭牌、简介 通知    </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td>会议号</td>
+<td>会议号</td>
+</tr>
+<tr>
+<td>operators</td>
+<td>array</td>
+<td>Yes</td>
+<td>2=铭牌 3=简介</td>
+<td>通知的操作符</td>
+</tr>
+<tr>
+<td>describes</td>
+<td>array</td>
+<td>No</td>
+<td>补充1</td>
+<td>识别结果</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>advise</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>该人的号码</td>
+</tr>
+<tr>
+<td>faceInfos</td>
+<td>array</td>
+<td>No</td>
+<td>补充1.1</td>
+<td>人脸数据描述</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1.1</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>人脸人员名称</td>
+</tr>
+<tr>
+<td>faceid</td>
+<td>人脸id</td>
+</tr>
+<tr>
+<td>nid</td>
+<td>人脸人员nid</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<pre><code class="javascript">{   
+    &quot;method&quot;: &quot;notify.call.face.identification&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;232323&quot;,       
+
+        &quot;operators&quot;: [2,3],
+        &quot;describes&quot;: [
+            {
+                &quot;advise&quot;: &quot;rollCall_1&quot;,
+                &quot;faceInfos&quot;: [
+                    {
+                        &quot;name&quot;: &quot;faw3efwf&quot;,
+                        &quot;faceid&quot;: &quot;waefef&quot;,
+                        &quot;nid&quot;: &quot;2343243&quot;
+                    }
+                ]
+            }，
+            {
+                &quot;advise&quot;: &quot;rollCall_1&quot;,        
+                &quot;faceInfos&quot;: [
+                    {
+                        &quot;name&quot;: &quot;faw3efwf&quot;,
+                        &quot;faceid&quot;: &quot;waefef&quot;,
+                        &quot;nid&quot;: &quot;2343243&quot;
+                    }
+                ]
+            }
+        ]
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="notifycallfacefaceidchanged">notify.call.face.faceIdChanged</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+   通过notify.attch 获取及订阅 指定会议的faceid    </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td>会议号</td>
+<td>会议号</td>
+</tr>
+<tr>
+<td>all</td>
+<td>array</td>
+<td>Yes</td>
+<td>faceid</td>
+<td>全量通知</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<pre><code class="javascript">{   
+    &quot;method&quot;: &quot;notify.call.face.faceIdChanged&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;232323&quot;,              
+        &quot;all&quot;: [&quot;waefef1&quot;,&quot;waefef2&quot;,&quot;3waefef3&quot;]            
+    }
+} 
+</code></pre>
+
+<hr />
+<h3 id="notifycallfacesign">notify.call.face.sign</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+   人脸识别：签到通知    </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td>会议号</td>
+<td>会议号</td>
+</tr>
+<tr>
+<td>describes</td>
+<td>array</td>
+<td>No</td>
+<td>补充1</td>
+<td>识别结果</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>advise</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>该人的号码</td>
+</tr>
+<tr>
+<td>faceInfos</td>
+<td>array</td>
+<td>No</td>
+<td>补充1.1</td>
+<td>人脸数据描述</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<pre><code class="javascript">{   
+    &quot;method&quot;: &quot;notify.call.face.sign&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;232323&quot;,        
+        &quot;statistics&quot;: {
+            &quot;total&quot;: 1, faceid总数
+            &quot;cur&quot;: 1,
+        },
+        &quot;describes&quot;: [
+            {
+                &quot;nid&quot;: &quot;232323&quot;,               
+                &quot;faceInfos&quot;: [
+                    {
+                        &quot;name&quot;: &quot;faw3efwf&quot;,
+                        &quot;faceid&quot;: &quot;waefef&quot;,
+                        &quot;nid&quot;: &quot;2343243&quot;
+                    }
+                ]
+            }，
+            {
+                &quot;nid&quot;: &quot;232323&quot;,             
+                &quot;faceInfos&quot;: [
+                    {
+                        &quot;name&quot;: &quot;faw3efwf&quot;,
+                        &quot;faceid&quot;: &quot;waefef&quot;,
+                        &quot;nid&quot;: &quot;2343243&quot;
+                    }
+                ]
+            }
+        ]
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="notifycallremaintime">notify.call.remainTime</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client  </li>
+<li><strong>Description:</strong><br />
+  会议最后10分钟提醒 </li>
+<li><strong>Params:</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>当前会话的号码</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>int</td>
+<td>Yes</td>
+<td>离会议的最大时长的剩余秒数</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>int</td>
+<td>Yes</td>
+<td>离会议结束时间的倒数秒数</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{
+    &quot;method&quot;: &quot;notify.call.remainTime&quot;,
+    &quot;id&quot;: 1,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;22222222222&quot;,
+        &quot;deadline&quot;: 1111,
+        &quot;endTime&quot;: 112312
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="eventcallmembercontrols">event.call.memberControls</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+  通知客户端执行操作, 客户端出入会,服务端会补发该消息   </li>
+<li>
+<p><strong>Params</strong><br />
+  同<a href="#callsetmembercontrols">call.setMemberControls </a></p>
+</li>
+<li>
+<p><strong>Example</strong>  </p>
+</li>
+</ul>
+<pre><code class="javascript">{// 通知客户端执行操作
+  &quot;method&quot;:&quot;event.call.memberControls&quot;,
+  &quot;id&quot;:1,
+  &quot;params&quot;:{
+    &quot;nid&quot;:&quot;22222222222&quot;, // 这个肯定是自己目前在的会议
+    &quot;members&quot;:[// 这里虽然是个数组, 里面实际就只有自己
+      {
+        &quot;nid&quot;:&quot;1111111111&quot;, // 这个肯定是自己
+        &quot;controls&quot;:[
+          {
+            &quot;key&quot;:&quot;mic&quot;,
+            &quot;value&quot;:1
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+
+<hr />
+<h3 id="notifycallspeechexcit">notify.call.speechExcit</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+   绑定数据变更通知     </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ConfNid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会议号</td>
+</tr>
+<tr>
+<td>excitNid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>语音激励生效对象</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<pre><code class="javascript">{
+    &quot;method&quot;: &quot;notify.call.speechExcit&quot;,
+    &quot;id&quot;: 1,
+    &quot;params&quot;: {
+        &quot;ConfNid&quot;: &quot;234242424&quot;, // 会议号
+        &quot;excitNid&quot;: &quot;123123&quot; // 语音激励生效对象
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="notifycallmemberstatuschanged">notify.call.memberStatusChanged</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+   绑定数据变更通知     </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>memberStatus</td>
+<td>object</td>
+<td>Yes</td>
+<td>补充1</td>
+<td>成员状态</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>该人的号码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>该人的名称</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Yes</td>
+<td>见补充1.1</td>
+<td>该人的状态</td>
+</tr>
+<tr>
+<td>role</td>
+<td>string</td>
+<td>Yes</td>
+<td>见补充1.2</td>
+<td>该人在会话中的角色</td>
+</tr>
+<tr>
+<td>mic</td>
+<td>int</td>
+<td>No</td>
+<td>见  <a href="#callsetmembercontrols">call.setMemberControls </a></td>
+<td>该人的麦克风是否开启</td>
+</tr>
+<tr>
+<td>camera</td>
+<td>int</td>
+<td>No</td>
+<td>见  <a href="#callsetmembercontrols">call.setMemberControls </a></td>
+<td>该人的摄像头是否开启</td>
+</tr>
+<tr>
+<td>speaker</td>
+<td>int</td>
+<td>No</td>
+<td>见  <a href="#callsetmembercontrols">call.setMemberControls </a></td>
+<td>该人的扬声器是否开启</td>
+</tr>
+<tr>
+<td>handsUp</td>
+<td>int</td>
+<td>No</td>
+<td>&gt;0: 举手  默认：不举手</td>
+<td>举手状态</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1.1</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>present</td>
+<td>会话中</td>
+</tr>
+<tr>
+<td>online</td>
+<td>在线</td>
+</tr>
+<tr>
+<td>offline</td>
+<td>离线</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1.2</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visitor</td>
+<td>观看者(无音视频上传)</td>
+</tr>
+<tr>
+<td>member</td>
+<td>会话成员(有音视频上传)</td>
+</tr>
+<tr>
+<td>moderator</td>
+<td>会话主持人</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong>  </li>
+</ul>
+<pre><code class="javascript">{// 通知
+  &quot;method&quot;: &quot;notify.call.memberStatusChanged&quot;,
+  &quot;params&quot;:{
+     &quot;memberStatus&quot;:[
+        {
+         &quot;nid&quot;:&quot;1111111111&quot;,
+         &quot;name&quot;:&quot;张3&quot;,
+         &quot;status&quot;:&quot;present&quot;,
+         &quot;role&quot;:&quot;member&quot;,
+         &quot;mic&quot;:1
+       }
+      ]
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="mediapublishstream">media.publishStream</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  向服务器发布流信息, 上传音视频流到媒体资源服务器上先要通过该协议获取到上传信息<br />
+  该协议多次调用:  </li>
+<li>key相同, 覆盖  </li>
+<li>key不相同, 又发布了新的媒体资源  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充1</td>
+<td>媒体列表(一个补充1对象代表一个媒体内容源</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Yes</td>
+<td>不能和自己的其他资源key冲突</td>
+<td>该媒体资源的唯一标识</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>No</td>
+<td></td>
+<td>该媒体资源的名称</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Yes</td>
+<td>video,audio</td>
+<td>媒体类型, 如果该资源即有音频又有视频,如mp4, 那么该值为video</td>
+</tr>
+<tr>
+<td>group</td>
+<td>string</td>
+<td>No</td>
+<td>默认:没有和自己相关的音频或视频一起编组</td>
+<td>成对的音频和视频可以取一个唯一的group标识</td>
+</tr>
+<tr>
+<td>streams</td>
+<td>object</td>
+<td>No</td>
+<td>见补充2<br>默认:不支持多码率同时上传</td>
+<td>该字段用于网络自适应,如果支持多码率同时上传就填该字段<br>(目前只有video支持多码率)</td>
+</tr>
+<tr>
+<td>Note:</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>- 如果用在视频会议中, 发布主流,group填main.  发布辅流(演示流),group填extra</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>high</td>
+<td>object</td>
+<td>No</td>
+<td>见补充3,该流的比特率的最小值一定比middle的最大值大</td>
+<td>高码率的视频</td>
+</tr>
+<tr>
+<td>middle</td>
+<td>object</td>
+<td>No</td>
+<td>见补充3,该流的比特率的最小值一定比low的最大值大</td>
+<td>中码率的视频</td>
+</tr>
+<tr>
+<td>low</td>
+<td>object</td>
+<td>No</td>
+<td>见补充3</td>
+<td>低码率的视频</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充3</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bmax</td>
+<td>int</td>
+<td>Yes</td>
+<td>单位:kb</td>
+<td>码率的最大值</td>
+</tr>
+<tr>
+<td>bmin</td>
+<td>int</td>
+<td>Yes</td>
+<td>单位:kb</td>
+<td>码率的最小值</td>
+</tr>
+</tbody>
+</table>
+<p>Note:<br />
+- 如果该流不允许<a href="#notifymediamodifybitrate">服务器来调节</a>, 就不要有bmax和bmin字段<br />
+- 如果该流允许<a href="#notifymediamodifybitrate">服务器来调节</a>, bmax和bmin字段需要一起出现<br />
+- 发布流大小流的时候不要跳跃发布, 即: 发布双流时, 不能是low和high, 跳过middle  </p>
+<ul>
+<li><strong>Result</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cookie</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>媒体鉴权信息</td>
+</tr>
+<tr>
+<td>streams</td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充1</td>
+<td>返回流的媒体上传信息, 数组的数据顺序和请求时的params数组的数据一一对应</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hmid</td>
+<td>int</td>
+<td>No</td>
+<td></td>
+<td>高码率流的id</td>
+</tr>
+<tr>
+<td>mmid</td>
+<td>int</td>
+<td>No</td>
+<td></td>
+<td>中码率流的id</td>
+</tr>
+<tr>
+<td>lmid</td>
+<td>int</td>
+<td>No</td>
+<td></td>
+<td>低码率流的id</td>
+</tr>
+<tr>
+<td>mid</td>
+<td>int</td>
+<td>No</td>
+<td>该值不会和hmid,mmid,lmid一起出现</td>
+<td>固定并只有单路流的id</td>
+</tr>
+<tr>
+<td>* <strong>Example</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{//请求
+    &quot;method&quot;: &quot;media.publishStream&quot;,
+    &quot;id&quot;:1,
+    &quot;params&quot;: [
+        {// 第一个媒体源, 视频3流, 属于main组
+            &quot;key&quot;: &quot;camera&quot;,
+            &quot;name&quot;: &quot;主摄像头&quot;,
+            &quot;type&quot;: &quot;video&quot;,
+            &quot;group&quot;: &quot;main&quot;,
+            &quot;streams&quot;: {
+                &quot;high&quot;: {
+                    &quot;bmax&quot;: 2048,
+                    &quot;bmin&quot;: 1024
+                },
+                &quot;middle&quot;: {
+                    &quot;bmax&quot;: 500,
+                    &quot;bmin&quot;: 200
+                },
+                &quot;low&quot;: {}
+            }
+        },
+        {// 第二个媒体源, 音频单流, 属于main组
+            &quot;key&quot;: &quot;audio&quot;,
+            &quot;name&quot;: &quot;主mic&quot;,
+            &quot;type&quot;: &quot;audio&quot;,
+            &quot;group&quot;: &quot;main&quot;
+        },
+        {// 第三个媒体源, 视频单流, 属于extra组, 不允许服务端来修改码率
+            &quot;key&quot;: &quot;extraCamera&quot;,
+            &quot;name&quot;: &quot;辅摄像头&quot;,
+            &quot;type&quot;: &quot;video&quot;,
+            &quot;group&quot;: &quot;extra&quot;
+        },
+        {// 第四个媒体源, 视频单流,允许服务端来修改码率
+            &quot;key&quot;: &quot;extraCameraxxx&quot;,
+            &quot;name&quot;: &quot;xxx摄像头&quot;,
+            &quot;type&quot;: &quot;video&quot;,
+            &quot;streams&quot;: {
+                &quot;middle&quot;: {// 只有一股可变码率的视频流
+                    &quot;bmax&quot;: 500,
+                    &quot;bmin&quot;: 200
+                }
+            }
+        }
+    ]
+}
+
+{//回复
+    &quot;id&quot;: 1,
+    &quot;reslult&quot;: {
+        &quot;cookie&quot;: &quot;awefwafa2w3fasegfawar3wf&quot;,
+        &quot;streams&quot;: [// 刚才发布的4个媒体资源的流的上传信息(总计6股流)
+            {
+                &quot;hmid&quot;: 233122343,
+                &quot;mmid&quot;: 123123234,
+                &quot;lmid&quot;: 342434234
+            },
+            {
+                &quot;mid&quot;: 234234
+            },
+            {
+                &quot;mid&quot;: 534232344
+            },
+            {
+                &quot;mmid&quot;: 734223434
+            }
+        ]
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="mediaunpublishstream">media.unpublishStream</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  取消发布流</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>array</td>
+<td>Yes</td>
+<td>媒体key的数组</td>
+<td>媒体key列表</td>
+</tr>
+<tr>
+<td>* <strong>Example</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{// 请求
+  &quot;method&quot;:&quot;media.unpublishStream&quot;,
+  &quot;id&quot;:1
+  &quot;params&quot;:[
+    &quot;camera&quot;,
+    &quot;extraCamera&quot;,
+    &quot;audio&quot;
+  ]
+}
+
+{// 回复
+  &quot;id&quot;:1
+}
+</code></pre>
+
+<hr />
+<h3 id="mediagetpublishedstream">media.getPublishedStream</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+  获取媒体信息</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>No</td>
+<td>默认: 获取自己发布的流信息</td>
+<td>获取nid对应的流信息(nid可以是个人的也可以是会议的)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充1</td>
+<td>用户资源列表</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>用户号码或会议号码</td>
+</tr>
+<tr>
+<td>streams</td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充2</td>
+<td>该用户或会议的资源列表</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td></td>
+<td>Yes</td>
+<td>见<a href="#mediapublishstream">media.publishStream</a>的params的补充1</td>
+<td>用户号码或会议号码</td>
+</tr>
+<tr>
+<td>streams</td>
+<td>string</td>
+<td>Yes</td>
+<td>见补充3</td>
+<td></td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>媒体资源token,如果该流是个可变码流,那么token是个自适应的流</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充3</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>high</td>
+<td>object</td>
+<td>No</td>
+<td>见补充4,该流的比特率的最小值一定比middle的最大值大</td>
+<td>高码率的视频</td>
+</tr>
+<tr>
+<td>middle</td>
+<td>object</td>
+<td>No</td>
+<td>见补充4,该流的比特率的最小值一定比low的最大值大</td>
+<td>中码率的视频</td>
+</tr>
+<tr>
+<td>low</td>
+<td>object</td>
+<td>No</td>
+<td>见补充4</td>
+<td>低码率的视频</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充4</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td></td>
+<td>Yes</td>
+<td>见<a href="#mediapublishstream">media.publishStream</a>的params的补充3</td>
+<td></td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>媒体资源令牌</td>
+</tr>
+</tbody>
+</table>
+<p>Note:
+  - 每次media.getPublishedStream后, 所获得的token, 必须在60秒内使用, 不然会失效
+  - nid如果是会议的号码，它的streams中的有这些：
+      - "rollCall_[n]<em>video"-点名的视频key，n目前为1
+      - "speechExcit</em>[n]<em>video"-语音激励视频key,n目前为1
+      - "patrol</em>[n]<em>video"   - 轮训视频key，n目前为1-9,
+      - "custom</em>[n]<em>video"   - 自定义虚拟流视频key，n目前为1-9,
+      - "speaker</em>[n]<em>audio"   - 自定义虚拟流视频key，n目前为1-4,
+      - "demo</em>[n]_video"   - 演示流视频key，n目前为1,</p>
+<ul>
+<li><strong>Example1</strong><br />
+拉取某个人的资源列表  </li>
+</ul>
+<pre><code class="javascript">{// 请求
+  &quot;method&quot;:&quot;media.getPublishedStream&quot;,
+  &quot;id&quot;:1,
+  &quot;params&quot;:{
+    &quot;nid&quot;:&quot;3846274564&quot; // 自己或别人的号码, 如果想获取自己发布的媒体信息, nid也可以不填
+  }
+}
+
+{// 回复
+  &quot;id&quot;:1,
+  &quot;result&quot;:[// 数组中只有一个人的媒体信息
+    {
+      &quot;nid&quot;:&quot;3846274564&quot;,
+      &quot;streams&quot;:[
+        {// 第一个媒体资源
+            &quot;key&quot;: &quot;camera&quot;,
+            &quot;type&quot;: &quot;video&quot;,
+            &quot;group&quot;: &quot;main&quot;
+            &quot;token&quot;:&quot;23423awfwaef432&quot;, // 自适应流, 会在streams中进行动态选择和调整
+            &quot;streams&quot;:{
+              &quot;middle&quot;: {
+                    &quot;bmax&quot;: 500,
+                    &quot;bmin&quot;: 200,
+                    &quot;token&quot;:&quot;wa345ef2342wef34324&quot;
+                },
+                &quot;low&quot;: {&quot;token&quot;:&quot;waef2342wef34324&quot;}
+            }
+        },
+        {// 第二个媒体资源
+            &quot;key&quot;: &quot;mic&quot;,
+            &quot;type&quot;: &quot;audio&quot;,
+            &quot;group&quot;: &quot;main&quot;,
+            &quot;token&quot;:&quot;23423awfwaef432&quot;
+        },
+        {// 第三个媒体资源
+            &quot;key&quot;: &quot;mic&quot;,
+            &quot;type&quot;: &quot;video&quot;,
+            &quot;token&quot;:&quot;345523423awfwaef432&quot; // 固定流的token
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+
+<ul>
+<li><strong>Example2</strong><br />
+拉取某个会话的资源列表</li>
+</ul>
+<pre><code class="javascript">{// 请求
+  &quot;method&quot;:&quot;media.getPublishedStream&quot;,
+  &quot;id&quot;:1,
+  &quot;params&quot;:{
+    &quot;nid&quot;:&quot;78784696036&quot; // 会话的号码
+  }
+}
+
+{// 回复
+  &quot;id&quot;:1,
+  &quot;result&quot;:[
+    {// 第一个人
+      &quot;nid&quot;:&quot;3846274564&quot;,
+      &quot;streams&quot;:[
+        {// 第一个媒体资源
+            &quot;key&quot;: &quot;camera&quot;,
+            &quot;type&quot;: &quot;video&quot;,
+            &quot;group&quot;: &quot;main&quot;,
+            &quot;token&quot;:&quot;234345523423awfwaef432&quot; // 固定流的token
+        },
+        {// 第二个媒体资源
+            &quot;key&quot;: &quot;mic&quot;,
+            &quot;type&quot;: &quot;audio&quot;,
+            &quot;group&quot;: &quot;main&quot;,
+            &quot;token&quot;:&quot;25534345523423awfwaef432&quot;
+        }
+      ]
+    },
+    {// 第二个人
+      &quot;nid&quot;:&quot;9844274564&quot;,
+      &quot;streams&quot;:[
+        {// 第一个媒体资源
+            &quot;key&quot;: &quot;camera&quot;,
+            &quot;type&quot;: &quot;video&quot;,
+            &quot;group&quot;: &quot;main&quot;
+            &quot;token&quot;:&quot;hgfg6345523423a456wfwaef432&quot; // 固定流的token
+        },
+        {// 第二个媒体资源
+            &quot;key&quot;: &quot;mic&quot;,
+            &quot;type&quot;: &quot;audio&quot;,
+            &quot;group&quot;: &quot;main&quot;,
+            &quot;token&quot;:&quot;hreh37fh45523423awfwaef432&quot;
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+
+<hr />
+<h3 id="mediasubscribestream">media.subscribeStream</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+  订阅流, 拉取别人的码流  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>[补充1]</td>
+<td>Yes</td>
+<td></td>
+<td>媒体资源数组</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>媒体资源令牌</td>
+</tr>
+<tr>
+<td>bexpect</td>
+<td>int</td>
+<td>No</td>
+<td>单位:kb<br>默认:由服务端策略决定</td>
+<td>期望该流的大小<br>只有在该流是个可变的视频流, 才会起效</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cookie</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>媒体链接的临时cookie, hitrymediartp中使用</td>
+</tr>
+<tr>
+<td>streams</td>
+<td>[补充1]</td>
+<td>Yes</td>
+<td></td>
+<td>每一路的上行码流的信息, 数组顺序和请求时一一对应</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mid</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>下行码流同步源id, 如果订阅失败, mid=0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{// 请求
+  &quot;method&quot;:&quot;media.subscribeStream&quot;,
+  &quot;id&quot;:1,
+  &quot;params&quot;:[
+    {
+      &quot;token&quot;:&quot;awef23f23f&quot;,
+      &quot;bexpect&quot;:50
+    },
+    {
+      &quot;token&quot;:&quot;a23424wef23f23f&quot;,
+      &quot;bexpect&quot;:1024
+    }
+  ]
+}
+
+{// 回复
+  &quot;id&quot;:1
+  &quot;result&quot;:{
+    &quot;cookie&quot;:&quot;242fa23f235agf34taf23r2ra23rfa32ra23rf&quot;,
+    &quot;streams&quot;:[
+      {&quot;mid&quot;:88534536633}, //awef23f23f的mid
+      {&quot;mid&quot;:53434536633}  //a23424wef23f23f的mid
+    ]
+  }
+}
+</code></pre>
+
+<hr />
+<h3 id="mediamodifyexpectedbitrate">media.modifyExpectedBitrate</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+  修改订阅流的期望码率, 目前只有可变的视频流调用该协议有效<br />
+  当你在看一股可变视频流时,觉得带宽太大或者不够清晰,可以用该协议进行调整, 而无需重启视频解码器</li>
+<li><strong>Params</strong>  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>array</td>
+<td>Yes</td>
+<td>见补充1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mid</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>媒体流的id</td>
+</tr>
+<tr>
+<td>bexpect</td>
+<td>int</td>
+<td>Yes</td>
+<td>单位:kb</td>
+<td>期望的流的比特率</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{// 请求
+  &quot;method&quot;:&quot;media.modifyExpectedBitrate&quot;,
+  &quot;id&quot;:1,
+  &quot;params&quot;:[
+    {
+      &quot;mid&quot;:3453476234,
+      &quot;bexpect&quot;:50
+    },{
+      &quot;mid&quot;:7483476334,
+      &quot;bexpect&quot;:500
+    }
+  ]
+}
+
+{// 回复
+  &quot;id&quot;:1
+}
+</code></pre>
+
+<hr />
+<h3 id="mediaunsubscribestream">media.unsubscribeStream</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  反订阅流</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>array</td>
+<td>Yes</td>
+<td></td>
+<td>媒体mid数组</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{// 请求
+  &quot;method&quot;:&quot;media.unsubscribeStream&quot;,
+  &quot;id&quot;:1,
+  &quot;params&quot;:[
+    342342345,
+    657345324,
+  ]
+}
+
+{// 回复
+  &quot;id&quot;:1
+}
+</code></pre>
+
+<hr />
+<h3 id="eventmediamodifybitrate">event.media.modifyBitrate</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client</li>
+<li><strong>Description:</strong><br />
+  如果客户端只做了<a href="media.publishStream">发布流</a>,没有上行流,收到该协议就上行流<br />
+  如果已经上行, 修改上行流的bitrate</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>要修改流的媒体key</td>
+</tr>
+<tr>
+<td>mid</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>要修改流的实际上行mid</td>
+</tr>
+<tr>
+<td>bitrate</td>
+<td>int</td>
+<td>No</td>
+<td>单位:kb<br>默认:客户端采用该流最合适的码率</td>
+<td>要修改的目的码率</td>
+</tr>
+<tr>
+<td>* <strong>Example</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{
+  &quot;method&quot;:&quot;event.media.modifyBitrate&quot;,
+  &quot;params&quot;:{
+      &quot;key&quot;:&quot;camera&quot;,
+      &quot;mid&quot;:234562345,
+      &quot;bitrate&quot;:500
+  }
+}
+</code></pre>
+
+<hr />
+<h3 id="eventmediaforceiframe">event.media.forceIFrame</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client  </li>
+<li><strong>Description:</strong><br />
+  强制视频的I帧  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>要强制I帧的媒体key</td>
+</tr>
+<tr>
+<td>mid</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>要强制I帧的实际上行mid</td>
+</tr>
+<tr>
+<td>* <strong>Example</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{
+  &quot;method&quot;:&quot;event.media.forceIFrame&quot;,
+  &quot;params&quot;:{
+      &quot;key&quot;:&quot;camera&quot;,
+      &quot;mid&quot;:234562345
+  }
+}
+</code></pre>
+
+<hr />
+<h3 id="eventmediapublishedstreamchanged">event.media.publishedStreamChanged</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  agent-&gt;client</li>
+<li><strong>Description:</strong><br />
+  当你所在的会话中流信息更改时, 会有该通知<br />
+  该通知里面的数据只包含变更的数据  </li>
+<li><strong>Params</strong></li>
+</ul>
+<p>params的数据格式见<a href="#mediagetpublishedstream">media.getPublishedStream</a>的result</p>
+<hr />
+<h3 id="vroomgetlist">vroom.getList</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  获取会话列表</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:不启用该条件</td>
+<td>创会人所在的的group<br>该查询条件需要管理员权限</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vrooms</td>
+<td>array</td>
+<td>Yes</td>
+<td>[补充2]</td>
+<td>会话列表</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>虚拟会议室号码</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>虚拟会议室名称</td>
+</tr>
+<tr>
+<td>creator</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>创建者nid</td>
+</tr>
+<tr>
+<td>creatorName</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>创建者的名称</td>
+</tr>
+<tr>
+<td>capacity</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>虚拟会议室容量</td>
+</tr>
+<tr>
+<td>gname</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>所属公司的名称</td>
+</tr>
+<tr>
+<td>status</td>
+<td>int</td>
+<td>Yes</td>
+<td>0:空闲，1预约中，2，会议中</td>
+<td>虚拟会议室状态</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{
+    &quot;id&quot;: 8,    
+    &quot;method&quot;: &quot;vroom.getList&quot;,
+    &quot;params&quot;: {
+        &quot;gid&quot;: &quot;2abvd&quot;,         
+    }
+}
+
+{
+    &quot;id&quot;: 8,    
+    &quot;result&quot;: {
+        &quot;vrooms&quot;:[
+            {
+                &quot;vid&quot;:&quot;123456&quot;,             
+                &quot;name&quot;:&quot;&quot;,
+                &quot;creator&quot;:&quot;nid&quot;
+                &quot;creatorName&quot;:&quot;aaa&quot;
+                &quot;capacity&quot;:123123
+            }
+        ]
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="vroomcreate">vroom.create</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  创建虚拟会议室</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>No</td>
+<td>默认:不启用该条件</td>
+<td>创会人所在的的group<br>该查询条件需要管理员权限</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>虚拟会议室名称</td>
+</tr>
+<tr>
+<td>capacity</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>虚拟会议室容量</td>
+</tr>
+<tr>
+<td>accessPermission</td>
+<td>string</td>
+<td>No</td>
+<td>"public","private",默认"private"</td>
+<td>虚拟会议室,公开或者私密，私密占不支持</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vid</td>
+<td>string</td>
+<td>Yes</td>
+<td>6位数</td>
+<td>虚拟会议室号</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{
+    &quot;id&quot;: 8,    
+    &quot;method&quot;: &quot;vroom.create&quot;,
+    &quot;params&quot;: {
+        &quot;gid&quot;: &quot;2abvd&quot;,
+        &quot;name&quot;:&quot;name&quot;,
+        &quot;capacity&quot;:100,
+        &quot;accessPermission&quot;:&quot;public&quot;         
+    }
+}
+
+{
+    &quot;id&quot;: 8,    
+    &quot;result&quot;: {
+      &quot;vid&quot;:&quot;123456&quot;
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="vroomdelete">vroom.delete</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  删除虚拟会议室</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>虚拟会议室号</td>
+</tr>
+<tr>
+<td>gid</td>
+<td>string</td>
+<td>Not</td>
+<td>可以不填，默认发送者的公司</td>
+<td>所属公司gid</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{
+    &quot;id&quot;: 8,    
+    &quot;method&quot;: &quot;vroom.delete&quot;,
+    &quot;params&quot;: {
+            &quot;vid&quot;:&quot;123456&quot;,
+
+    }
+}
+
+{
+    &quot;id&quot;: 8,    
+    &quot;result&quot;: {
+
+    }
+}
+</code></pre>
+
+<hr />
+<h3 id="vroomsetaccessuser">vroom.setAccessUser</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  私有虚拟会议室设置可访问用户</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>虚拟会议室号</td>
+</tr>
+<tr>
+<td>all</td>
+<td>array</td>
+<td>No</td>
+<td>add和del 可以同时存在，但all只能单独存在</td>
+<td>全部重置</td>
+</tr>
+<tr>
+<td>add</td>
+<td>array</td>
+<td>No</td>
+<td></td>
+<td>添加</td>
+</tr>
+<tr>
+<td>del</td>
+<td>array</td>
+<td>No</td>
+<td></td>
+<td>删除</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{
+    &quot;id&quot;: 8,    
+    &quot;method&quot;: &quot;vroom.setAccessUser&quot;,
+    &quot;params&quot;: {
+            &quot;vid&quot;:&quot;123456&quot;,
+            &quot;add&quot;:[&quot;1231231&quot;,&quot;1231232&quot;,&quot;1231233&quot;],
+            &quot;del&quot;:[&quot;1231234&quot;,&quot;1231235&quot;,&quot;1231236&quot;]
+
+    }
+}
+
+{
+    &quot;id&quot;: 8,    
+    &quot;result&quot;: {
+
+    }
+}
+
+
+{
+    &quot;id&quot;: 8,    
+    &quot;method&quot;: &quot;vroom.setAccessUser&quot;,
+    &quot;params&quot;: {
+            &quot;vid&quot;:&quot;123456&quot;,
+          &quot;all&quot;:[&quot;123123&quot;,&quot;123123&quot;,&quot;123123&quot;],
+    }
+}
+
+{
+    &quot;id&quot;: 8,    
+    &quot;result&quot;: {
+
+    }
+}
+
+</code></pre>
+
+<hr />
+<h3 id="vroomgetaccessuser">vroom.getAccessUser</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  私有虚拟会议室设置可访问用户</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>虚拟会议室号</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{
+    &quot;id&quot;: 8,    
+    &quot;method&quot;: &quot;vroom.getAccessUser&quot;,
+    &quot;params&quot;: {
+            &quot;vid&quot;:&quot;123456&quot;,
+    }
+}
+
+{
+    &quot;id&quot;: 8,    
+    &quot;result&quot;: {
+      &quot;allow&quot;:[&quot;123123&quot;,&quot;123123&quot;,&quot;123123&quot;],
+    }
+}
+
+
+
+</code></pre>
+
+<hr />
+<h3 id="vroommodify">vroom.modify</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent</li>
+<li><strong>Description:</strong><br />
+  私有虚拟会议室设置可访问用户</li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>虚拟会议室号</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="javascript">{
+    &quot;id&quot;: 8,    
+    &quot;method&quot;: &quot;vroom.modify&quot;,
+    &quot;params&quot;: {
+            &quot;vid&quot;:&quot;123456&quot;,
+            &quot;name&quot;:&quot;aaaa&quot;,
+            &quot;capacity&quot;:100,
+
+    }
+}
+
+{
+    &quot;id&quot;: 8,    
+    &quot;result&quot;: {
+     }
+}
+
+
+
+</code></pre>
+
+<hr />
+<h3 id="statisticscallnetwork">statistics.call.network</h3>
+<ul>
+<li><strong>Direction</strong><br />
+  client-&gt;agent  </li>
+<li><strong>Description:</strong><br />
+  获取会议的上下行带宽  </li>
+<li><strong>Params</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>params</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>会议号</td>
+</tr>
+<tr>
+<td>terminals</td>
+<td>array</td>
+<td>No</td>
+<td>空表示不获取终端的信息</td>
+<td>终端号码</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Result</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>total</td>
+<td>object</td>
+<td>Yes</td>
+<td>[补充1]</td>
+<td>会议所有终端的上下行带宽</td>
+</tr>
+<tr>
+<td>terminals</td>
+<td>array</td>
+<td>No</td>
+<td>[补充2]</td>
+<td>请求的终端上下行带宽</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充1</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>up</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>上行带宽</td>
+</tr>
+<tr>
+<td>down</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>下行带宽</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nid</td>
+<td>string</td>
+<td>Yes</td>
+<td></td>
+<td>上行带宽</td>
+</tr>
+<tr>
+<td>down</td>
+<td>object</td>
+<td>No</td>
+<td>[补充3]</td>
+<td>下行带宽</td>
+</tr>
+<tr>
+<td>up</td>
+<td>object</td>
+<td>No</td>
+<td>[补充3]</td>
+<td>上行带宽</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>补充2</th>
+<th>type</th>
+<th>non-empty</th>
+<th>range</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size</td>
+<td>int</td>
+<td>Yes</td>
+<td></td>
+<td>带宽</td>
+</tr>
+<tr>
+<td>mid</td>
+<td>int</td>
+<td>No</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td>No</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Example</strong></li>
+</ul>
+<pre><code class="javascript">{
+    &quot;id&quot;: 8,
+    &quot;method&quot;: &quot;statistics.call.network&quot;,
+    &quot;params&quot;: {
+        &quot;nid&quot;: &quot;12345678901&quot;,
+        &quot;terminals&quot;: [&quot;12345678901&quot;,&quot;12345678903&quot;,&quot;12345678902&quot;],
+
+    }
+}
+
+{
+    &quot;id&quot;: 8,
+    &quot;result&quot;: {
+        &quot;total&quot;: {
+            &quot;up&quot;: 123123123,
+            &quot;down&quot;: 123123123
+        },
+        &quot;terminals&quot;: [
+            {
+                &quot;nid&quot;: &quot;1234678901&quot;,
+                &quot;up&quot;: [
+                    {
+                        &quot;size&quot;: 123123,
+                        &quot;mid&quot;: 1,
+                        &quot;key&quot;: &quot;abc123&quot; //确认音频和视频的获取
+                    },
+                    {
+                        &quot;size&quot;: 123123,
+                        &quot;mid&quot;: 2,
+                        &quot;key&quot;: &quot;abc1234&quot;
+                    }
+                ],
+                &quot;down&quot;: [
+                    {
+                        &quot;size&quot;: 123123,
+                        &quot;mid&quot;: 1,
+                        &quot;key&quot;: &quot;abc123&quot;
+                    },
+                    {
+                        &quot;size&quot;: 123123,
+                        &quot;mid&quot;: 2,
+                        &quot;key&quot;: &quot;abc1234&quot;
+                    }
+                ]
+            }
+        ]
+    }
+}
+</code></pre>
+
+<hr />
+<h1 id="_5">错误码</h1>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>message</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00000000</td>
+<td>OK</td>
+<td>操作成功</td>
+</tr>
+<tr>
+<td>0x00000001</td>
+<td>WithExeption</td>
+<td>操作异常</td>
+</tr>
+<tr>
+<td>0x00000002</td>
+<td>JsonErr</td>
+<td>Json数据错误</td>
+</tr>
+<tr>
+<td>0x00000003</td>
+<td>UnknowMethod</td>
+<td>未知请求</td>
+</tr>
+<tr>
+<td>0x00000004</td>
+<td>NotAuthorized</td>
+<td>操作未授权</td>
+</tr>
+<tr>
+<td>0x00000005</td>
+<td>Busy</td>
+<td>系统繁忙</td>
+</tr>
+<tr>
+<td>0x00000006</td>
+<td>TimeOut</td>
+<td>系统超时</td>
+</tr>
+<tr>
+<td>0x00000007</td>
+<td>MethodNotSupport</td>
+<td>请求暂不支持</td>
+</tr>
+<tr>
+<td>0x00000008</td>
+<td>ParamsErr</td>
+<td>请求参数错误</td>
+</tr>
+<tr>
+<td>0x00000009</td>
+<td>UserNotExist</td>
+<td>用户不存在</td>
+</tr>
+<tr>
+<td>0x0000000a</td>
+<td>GroupNotExist</td>
+<td>组织非空</td>
+</tr>
+<tr>
+<td>0x0000000b</td>
+<td>RepeatErr</td>
+<td>数据重复错误</td>
+</tr>
+<tr>
+<td>0x0000000c</td>
+<td>NotFound</td>
+<td>目标找不到</td>
+</tr>
+<tr>
+<td>0x0000000d</td>
+<td>NetWorkErr</td>
+<td>网络错误</td>
+</tr>
+<tr>
+<td>0x0000000e</td>
+<td>AlreadyExist</td>
+<td>目标已经存在</td>
+</tr>
+<tr>
+<td>0x0000000f</td>
+<td>RedisErr</td>
+<td>Redis错误</td>
+</tr>
+<tr>
+<td>0x00000010</td>
+<td>NotReady</td>
+<td>未准备</td>
+</tr>
+<tr>
+<td>0x00000011</td>
+<td>StreamFull</td>
+<td>流为空</td>
+</tr>
+<tr>
+<td>0x00000012</td>
+<td>TargetNotExist</td>
+<td>目标不存在</td>
+</tr>
+<tr>
+<td>0x00000013</td>
+<td>Unknown</td>
+<td>未知错误</td>
+</tr>
+<tr>
+<td>0x00010000</td>
+<td>ConfAddFailed</td>
+<td>会议添加失败</td>
+</tr>
+<tr>
+<td>0x00010002</td>
+<td>ConfAddRespFailed</td>
+<td>会议添加失败</td>
+</tr>
+<tr>
+<td>0x00010003</td>
+<td>NotExistCallId</td>
+<td>会议不存在</td>
+</tr>
+<tr>
+<td>0x00010004</td>
+<td>AddTerminalFailed</td>
+<td>添加终端失败</td>
+</tr>
+<tr>
+<td>0x00010005</td>
+<td>MediaTerminalIdFailed</td>
+<td>媒体终端ID失败</td>
+</tr>
+<tr>
+<td>0x00010006</td>
+<td>MediaPublishFailed</td>
+<td>媒体流发布失败</td>
+</tr>
+<tr>
+<td>0x00010007</td>
+<td>MediaPublishFResultFailed</td>
+<td>媒体流发布失败</td>
+</tr>
+<tr>
+<td>0x00010008</td>
+<td>MediaSubStreamFailed</td>
+<td>媒体订阅流失败</td>
+</tr>
+<tr>
+<td>0x00010009</td>
+<td>MediaUnsubStreamFailed</td>
+<td>媒体取消订阅流失败</td>
+</tr>
+<tr>
+<td>0x0001000a</td>
+<td>CreateConfFailed</td>
+<td>创建会议失败</td>
+</tr>
+<tr>
+<td>0x0001000b</td>
+<td>InviteHttpCallFailed</td>
+<td>邀请http会话失败</td>
+</tr>
+<tr>
+<td>0x0001000c</td>
+<td>KickHttpCallFailed</td>
+<td>KickHttpCallFailed</td>
+</tr>
+<tr>
+<td>0x0001000d</td>
+<td>ConfIsClosed</td>
+<td>会议被关闭</td>
+</tr>
+<tr>
+<td>0x0001000e</td>
+<td>ConfInnerErr</td>
+<td>会议内部错误</td>
+</tr>
+<tr>
+<td>0x0001000f</td>
+<td>InviteDBFailed</td>
+<td>InviteDBFailed</td>
+</tr>
+<tr>
+<td>0x00010010</td>
+<td>ConfNoExistClient</td>
+<td>会议不存在客户端</td>
+</tr>
+<tr>
+<td>0x00010011</td>
+<td>ModiftyConfTimeErr</td>
+<td>修改会议时间错误</td>
+</tr>
+<tr>
+<td>0x00010012</td>
+<td>ConfInfoSetFailed</td>
+<td>会议信息设置失败</td>
+</tr>
+<tr>
+<td>0x00010013</td>
+<td>CallMediaFailed</td>
+<td>呼叫媒体失败</td>
+</tr>
+<tr>
+<td>0x00010014</td>
+<td>MediaNotResult</td>
+<td>媒体无结果</td>
+</tr>
+<tr>
+<td>0x00010015</td>
+<td>ClientStateErr</td>
+<td>客户端状态错误</td>
+</tr>
+<tr>
+<td>0x00010016</td>
+<td>ConfEndTimeTooLong</td>
+<td>会议结束时间过长</td>
+</tr>
+<tr>
+<td>0x00010017</td>
+<td>CongIsStarting</td>
+<td>会议已经开始</td>
+</tr>
+<tr>
+<td>0x00010018</td>
+<td>ConfIsStop</td>
+<td>会议已经结束</td>
+</tr>
+<tr>
+<td>0x00010019</td>
+<td>ConfIsBusy</td>
+<td>会议繁忙</td>
+</tr>
+<tr>
+<td>0x0001001a</td>
+<td>TooManyUids</td>
+<td>太多uid</td>
+</tr>
+<tr>
+<td>0x0001001b</td>
+<td>NotOnLine</td>
+<td>不在线</td>
+</tr>
+<tr>
+<td>0x0001001c</td>
+<td>UserInAdviseMedia</td>
+<td>该用户正在轮巡列表中</td>
+</tr>
+<tr>
+<td>0x0001001d</td>
+<td>UserInRollCall</td>
+<td>该用户正在点名</td>
+</tr>
+<tr>
+<td>0x0001001e</td>
+<td>UserInDemo</td>
+<td>该用户正在演示</td>
+</tr>
+<tr>
+<td>0x0001001f</td>
+<td>UserInPatrol</td>
+<td>该用户正在轮巡列表中</td>
+</tr>
+<tr>
+<td>0x00010020</td>
+<td>ReachCallCapacity</td>
+<td>达到会话最大容量</td>
+</tr>
+<tr>
+<td>0x00010021</td>
+<td>ModeratorNotReady</td>
+<td>主席未准备</td>
+</tr>
+<tr>
+<td>0x00010022</td>
+<td>CallWrongPwd</td>
+<td>呼叫错误密码</td>
+</tr>
+<tr>
+<td>0x00010023</td>
+<td>MediaStreamNoFound</td>
+<td>媒体流未找到</td>
+</tr>
+<tr>
+<td>0x00010024</td>
+<td>RecordFailed</td>
+<td>记录失败</td>
+</tr>
+<tr>
+<td>0x00010025</td>
+<td>RecordStartFailed</td>
+<td>记录开始失败</td>
+</tr>
+<tr>
+<td>0x00010026</td>
+<td>RecordStopFailed</td>
+<td>记录结束失败</td>
+</tr>
+<tr>
+<td>0x00010027</td>
+<td>NotExistVId</td>
+<td>不存在虚拟会议室ID</td>
+</tr>
+<tr>
+<td>0x00010028</td>
+<td>ConflictTime</td>
+<td>会议时间冲突</td>
+</tr>
+<tr>
+<td>0x00010029</td>
+<td>VRoomBusy</td>
+<td>虚拟会议室繁忙</td>
+</tr>
+<tr>
+<td>0x0001002a</td>
+<td>NotReachConfTime</td>
+<td>未到达会议时间</td>
+</tr>
+<tr>
+<td>0x0001002b</td>
+<td>SessionErr</td>
+<td>Session错误</td>
+</tr>
+<tr>
+<td>0x0001002c</td>
+<td>EmptyPatrol</td>
+<td>未配置轮巡参数，不能开启轮巡</td>
+</tr>
+<tr>
+<td>0x0001002d</td>
+<td>DelFromVroomFailed</td>
+<td>虚拟会议室删除失败</td>
+</tr>
+<tr>
+<td>0x0001002e</td>
+<td>VroomConfNotAuthorized</td>
+<td>虚拟会议室会议未授权</td>
+</tr>
+<tr>
+<td>0x0001002f</td>
+<td>ConfEndTimeErrAfterStart</td>
+<td>会议时长缩短</td>
+</tr>
+<tr>
+<td>0x00010030</td>
+<td>ConfTimeTooShort</td>
+<td>会议时间太短</td>
+</tr>
+<tr>
+<td>0x00100000</td>
+<td>ParentGroupNotExist</td>
+<td>父组织不存在</td>
+</tr>
+<tr>
+<td>0x00100001</td>
+<td>GroupNotEmpty</td>
+<td>组织非空</td>
+</tr>
+<tr>
+<td>0x00100003</td>
+<td>MobileRepeat</td>
+<td>电话号码被占用</td>
+</tr>
+<tr>
+<td>0x00100004</td>
+<td>GroupIndepFailed</td>
+<td>独立组织失败</td>
+</tr>
+<tr>
+<td>0x00100005</td>
+<td>GroupLevelTooBig</td>
+<td>组织登记太大</td>
+</tr>
+<tr>
+<td>0x00100006</td>
+<td>CapacityTooBig</td>
+<td>容量过大</td>
+</tr>
+<tr>
+<td>0x00100007</td>
+<td>EmailRepeat</td>
+<td>邮箱重复</td>
+</tr>
+<tr>
+<td>0x00100008</td>
+<td>DelTopGroup</td>
+<td>顶级组织不能删除</td>
+</tr>
+<tr>
+<td>0x00100009</td>
+<td>UserLevelLimited</td>
+<td>用户等级不够</td>
+</tr>
+<tr>
+<td>0x0010000a</td>
+<td>ChangeGroupParentToRoot</td>
+<td>迁移组织不能到root组织</td>
+</tr>
+<tr>
+<td>0x0010000b</td>
+<td>ChangeGroupParentFromRoot</td>
+<td>不能从root下组织迁移</td>
+</tr>
+<tr>
+<td>0x0010000c</td>
+<td>ChangeGroupParentInSame</td>
+<td>迁移组织的父组织相同</td>
+</tr>
+<tr>
+<td>0x0010000d</td>
+<td>ChangeGroupParentFromChild</td>
+<td>迁移组织不能迁移到子组织</td>
+</tr>
+<tr>
+<td>0x0010000e</td>
+<td>ChangeGroupParentNotRightIndep</td>
+<td>迁移组织的独立属性不相等</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="_6">会议参数</h1>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>如何理解</th>
+<th>如何设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>会议名称</td>
+<td>-</td>
+<td>call.create 或者call.modify的时候带上name</td>
+</tr>
+<tr>
+<td>最大会议时长(分钟)</td>
+<td>创建会议的时结束时间减去开始时间的最大时间长度</td>
+<td>缺省值：16*60, 目前不支持设置</td>
+</tr>
+<tr>
+<td>自动提醒会议结束时间通知(分钟)</td>
+<td>距离会议结束时间某个值的时候，服务会议发通知给会场，会议修改结束时间，也会通知个会场</td>
+<td>缺省值：10    目前不支持设置</td>
+</tr>
+<tr>
+<td>单个会议容量个数</td>
+<td>单个会议最大会场个数</td>
+<td>缺省值：100， 通过修改企业的容量，或者修改虚拟会议的容量 ，但修改的最大值为1000，最大值目前不支持设置</td>
+</tr>
+<tr>
+<td>最大延长会议时长(分钟)</td>
+<td>延长会议时，会议时长可以增加的最大值</td>
+<td>缺省值：8*60， 目前不支持设置</td>
+</tr>
+<tr>
+<td>最小会议时长(分钟)</td>
+<td>调度会议时，会议时长可以设置的最小值</td>
+<td>缺省值：30，目前不支持设置</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../about/" class="btn btn-neutral float-right" title="关于">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../conf/" class="btn btn-neutral" title="小程序"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../conf/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../about/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
