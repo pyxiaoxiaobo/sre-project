@@ -78,7 +78,7 @@
     <a class="current" href="./">小程序</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#_1">通讯录</a></li>
+    <li class="toctree-l2"><a href="#_1">鉴权</a></li>
     
         <ul>
         
@@ -139,6 +139,11 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../conf_control_api/">小程序外部调用</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../dahua/">大话</a>
 	    </li>
           
@@ -179,14 +184,22 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">通讯录</h1>
+                <h1 id="_1">鉴权</h1>
+<p>第一种方式 使用token<br>
+headers里 添加token 密钥请咨询管理员<br>
+第二种方式 使用openid【仅限微信小程序】<br>
+token:方式 仅限会控相关接口<br>
+- 发起会议
+- 取消预约会议
+- 编辑预约会议</p>
 <h3 id="_2">注册接口</h3>
 <p>url:/confapp/contact/registre/<br>
 方法:post<br>
 参数:<br>
 weixin_id:微信id 【必填】<br>
 phone:手机号【必填】<br>
-head_picture:头像【必填】<br></p>
+head_picture:头像【必填】<br>
+code:手机验证码【必填】</p>
 <pre><code>返回信息：
 {
     &quot;msg&quot;:&quot;success&quot;,
@@ -200,7 +213,7 @@ head_picture:头像【必填】<br></p>
 <p>url:/confapp/contact/search/<br>
 方法:get<br>
 参数:<br>
-id:用户id【必填】<br>
+openid:用户id【必填】<br>
 info: 可以是电话、手机号、部门信息【必填】<br></p>
 <pre><code>返回信息：
 如果搜索信息是姓名/手机号，返回信息只有name和phone,group和corporate信息为空；
@@ -241,7 +254,7 @@ info: 可以是电话、手机号、部门信息【必填】<br></p>
 <p>url:/confapp/contact/<br>
 方法:get<br>
 参数:<br>
-id 用户id【必填】<br>
+openid 用户id【必填】<br>
 type 1企业通讯录、2群、 3个人、不填默认全部【选填】<br></p>
 <pre><code>返回信息:
 {
@@ -282,11 +295,21 @@ type 1企业通讯录、2群、 3个人、不填默认全部【选填】<br></p>
 <p>url:/confapp/contact/create_conf/<br>
 方法:post<br>
 参数:<br>
-id:用户id 【必填】<br>
+{
+    "data":{
+        "attendee": [{"phone": "15268117291","name": "孙博",}],
+        "theme": "",
+        "password": "",
+        "chairman": {"phone": "15268117291","name": "孙博",},
+        "type": "",
+        "time": "",
+    } </p>
+<p>}
+openid:用户id 【必填】<br>
 attendee:与会人,[{"phone": "15268117291","name": "孙博",}] 【必填】<br>
 theme: 会议主题 默认是发起者的会议【选填】<br>
 password:密码【选填】<br>
-chairman:主席位 即会议发起人格式同与会人【必填】<br>
+chairman:主席位 【必填】<br>
 type: 1 立即会议 2 预约会议【选填 默认是1】<br>
 time: 预约会议开始时间 格式为2020-03-03 19:30:36【选填 预约会议必填】<br></p>
 <pre><code>返回信息:
@@ -301,7 +324,7 @@ time: 预约会议开始时间 格式为2020-03-03 19:30:36【选填 预约会�
 <p>url:/confapp/contact/myconf/<br>
 方法:get<br>
 参数:<br>
-id:用户id【必填】<br></p>
+openid:用户id【必填】<br></p>
 <pre><code>{
     &quot;msg&quot;: &quot;success&quot;,
     &quot;code&quot;: 1,
@@ -333,7 +356,7 @@ id:用户id【必填】<br></p>
 <p>url: /confapp/contact/cancel_meeting/<br>
 方法:post<br>
 参数:<br>
-id:用户id【必填】<br>
+openid或token:用户id【必填】<br>
 confid 会议id 【必填】<br></p>
 <pre><code>返回信息:
 {
@@ -370,12 +393,22 @@ confid:会议id【必填】<br></p>
 <p>url:/confapp/contact/edit_conf/<br>
 方法:post<br>
 参数:<br>
+{
+    "data":{
+        "attendee": [{"phone": "15268117291","name": "孙博",}],
+        "theme": "",
+        "password": "",
+        "chairman": {"phone": "15268117291","name": "孙博",},
+        "type": "",
+        "time": "",
+    } </p>
+<p>}
 confid:会议id【必填】<br>
 id:用户id【必填】<br>
 attendee:与会人,[{"phone": "15268117291","name": "孙博",}] 【选填】<br>
 theme: 会议主题 默认是发起者的会议【选填】<br>
 password:密码【选填】<br>
-chairman: 主席位: 即会议发起人格式同与会人【必填】<br>
+chairman: 主席位【必填】<br>
 type: 1 立即会议 2 预约会议【选填 默认是1】<br>
 time: 预约会议开始时间 格式为2020-03-03 19:30:36【选填 预约会议必填】<br></p>
 <pre><code>返回信息:
@@ -622,7 +655,7 @@ confid:会议id【必填】<br></p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../dahua/" class="btn btn-neutral float-right" title="大话">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../conf_control_api/" class="btn btn-neutral float-right" title="小程序外部调用">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../tool/" class="btn btn-neutral" title="工具"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -654,7 +687,7 @@ confid:会议id【必填】<br></p>
         <span><a href="../tool/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../dahua/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../conf_control_api/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
