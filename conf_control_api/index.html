@@ -291,15 +291,17 @@ attendee:成员[{"name":"张三", "phone":"15268117291"}] 选传 指定人员开
 <h3 id="_7">会议中途加人</h3>
 <p>url:/conapp/control/add_attendee/<br>
 方法: post<br>
-参数:<br>
-{
-    "data":{
-        "confid": "0570",
-        "attendee": [{"name":"张三", "phone":"15268117291"}],
-        "chairman": "李四",
+参数:<br></p>
+<pre><code>{
+    &quot;data&quot;:{
+        &quot;confid&quot;: &quot;0570&quot;,
+        &quot;attendee&quot;: [{&quot;name&quot;:&quot;张三&quot;, &quot;phone&quot;:&quot;15268117291&quot;}],
+        &quot;chairman&quot;: &quot;李四&quot;,
     }
 }
-confid: 会议id【必填】<br>
+</code></pre>
+
+<p>confid: 会议id【必填】<br>
 attendee: 人员 [{"name":"张三", "phone":"15268117291"}]【必填】<br>
 chairman: 操作人即主席只有主席可操作【必填】<br></p>
 <pre><code>返回信息:
