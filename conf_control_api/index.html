@@ -165,17 +165,14 @@ token:方式 仅限会控相关接口<br></p>
 <p>url:/confapp/contact/create_conf/<br>
 方法:post<br>
 参数:</p>
-<pre><code>{
-    &quot;data&quot;:{
+<pre><code>    data:{
         &quot;attendee&quot;: [{&quot;phone&quot;: &quot;15268117291&quot;,&quot;name&quot;: &quot;孙博&quot;,}],
         &quot;theme&quot;: &quot;&quot;,
         &quot;password&quot;: &quot;&quot;,
         &quot;chairman&quot;: {&quot;phone&quot;: &quot;15268117291&quot;,&quot;name&quot;: &quot;孙博&quot;,},
-        &quot;type&quot;: &quot;&quot;,
-        &quot;time&quot;: &quot;&quot;,
+        &quot;type&quot;: &quot;1&quot;,
     } 
 
-}
 </code></pre>
 
 <p>attendee:与会人,[{"phone": "15268117291","name": "孙博",}] 【必填】<br>
@@ -195,14 +192,16 @@ time: 预约会议开始时间 格式为2020-03-03 19:30:36【选填 预约会�
 <h3 id="_3">取消预约会议</h3>
 <p>url: /confapp/contact/cancel_meeting/<br>
 方法:post<br>
-参数:<br>
-confid:"0570" 会议id 【必填】<br>
-chairman: "张三" 操作人即主席只有主席可操作 【必填】<br></p>
+参数:<br></p>
+<pre><code>confid:&quot;0570&quot; 会议id 【必填】&lt;br&gt;
+chairman: &quot;孙博&quot; 操作人即主席只有主席可操作 【必填】&lt;br&gt;
+</code></pre>
+
 <pre><code>返回信息:
 {
     &quot;msg&quot;: &quot;success&quot;,
     &quot;code&quot;: 1,
-    &quot;data&quot;:&quot;&quot;
+    &quot;data&quot;:&quot;0570&quot;
 }
 </code></pre>
 
@@ -210,17 +209,14 @@ chairman: "张三" 操作人即主席只有主席可操作 【必填】<br></p>
 <p>url:/confapp/contact/edit_conf/<br>
 方法:post<br>
 参数:<br></p>
-<pre><code>{
-    &quot;data&quot;:{
+<pre><code>    data:{
         &quot;attendee&quot;: [{&quot;phone&quot;: &quot;15268117291&quot;,&quot;name&quot;: &quot;孙博&quot;,}],
         &quot;theme&quot;: &quot;&quot;,
         &quot;password&quot;: &quot;&quot;,
         &quot;chairman&quot;: {&quot;phone&quot;: &quot;15268117291&quot;,&quot;name&quot;: &quot;孙博&quot;,},
         &quot;type&quot;: &quot;&quot;,
-        &quot;time&quot;: &quot;&quot;,
     } 
 
-}
 </code></pre>
 
 <p>confid:会议id【必填】<br>
@@ -264,15 +260,13 @@ confid 会议id<br></p>
 <p>url:/conapp/control/mike/<br>
 方法:post<br>
 参数:<br></p>
-<pre><code>{
-    &quot;data&quot;:{
+<pre><code>    data:{
         &quot;confid&quot;:&quot;0570&quot;,
         &quot;attendee&quot;: [{&quot;name&quot;:&quot;张三&quot;, &quot;phone&quot;:&quot;15268117291&quot;}]
         &quot;type&quot;:&quot;3&quot;
         &quot;ex_chairman&quot;: True,
         &quot;chairman&quot;:&quot;张三&quot;
     }
-}
 </code></pre>
 
 <p>confid:会议id【必填】<br>
@@ -292,13 +286,11 @@ attendee:成员[{"name":"张三", "phone":"15268117291"}] 选传 指定人员开
 <p>url:/conapp/control/add_attendee/<br>
 方法: post<br>
 参数:<br></p>
-<pre><code>{
-    &quot;data&quot;:{
+<pre><code>    data:{
         &quot;confid&quot;: &quot;0570&quot;,
         &quot;attendee&quot;: [{&quot;name&quot;:&quot;张三&quot;, &quot;phone&quot;:&quot;15268117291&quot;}],
         &quot;chairman&quot;: &quot;李四&quot;,
     }
-}
 </code></pre>
 
 <p>confid: 会议id【必填】<br>
@@ -317,13 +309,11 @@ chairman: 操作人即主席只有主席可操作【必填】<br></p>
 <p>url:/confapp/control/hangup/<br>
 方法:post<br>
 参数:<br></p>
-<pre><code>{
-    &quot;data&quot;:{
+<pre><code>    data:{
         &quot;attendee&quot;:[{&quot;name&quot;:&quot;张三&quot;, &quot;phone&quot;:&quot;15268117291&quot;}],
         &quot;confid&quot;: &quot;0570&quot;,
         &quot;chairman&quot;: &quot;李四&quot; 操作人即主席只有主席可操作
     }
-}
 </code></pre>
 
 <h3 id="_9">结束会议</h3>
