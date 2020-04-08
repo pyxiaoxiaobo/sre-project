@@ -93,19 +93,17 @@
         
             <li><a class="toctree-l3" href="#_4">编辑预约会议</a></li>
         
-            <li><a class="toctree-l3" href="#_5">获取参会人员</a></li>
+            <li><a class="toctree-l3" href="#_5">开麦闭麦</a></li>
         
-            <li><a class="toctree-l3" href="#_6">开麦闭麦</a></li>
+            <li><a class="toctree-l3" href="#_6">会议中途加人</a></li>
         
-            <li><a class="toctree-l3" href="#_7">会议中途加人</a></li>
+            <li><a class="toctree-l3" href="#_7">将某人移出会议</a></li>
         
-            <li><a class="toctree-l3" href="#_8">将某人移出会议</a></li>
+            <li><a class="toctree-l3" href="#_8">结束会议</a></li>
         
-            <li><a class="toctree-l3" href="#_9">结束会议</a></li>
+            <li><a class="toctree-l3" href="#_9">复制会议连接</a></li>
         
-            <li><a class="toctree-l3" href="#_10">复制会议连接</a></li>
-        
-            <li><a class="toctree-l3" href="#_11">指定发言位</a></li>
+            <li><a class="toctree-l3" href="#_10">指定发言位</a></li>
         
             <li><a class="toctree-l3" href="#code">关于code</a></li>
         
@@ -234,30 +232,7 @@ time: 预约会议开始时间 格式为2020-03-03 19:30:36【选填 预约会�
 }
 </code></pre>
 
-<h3 id="_5">获取参会人员</h3>
-<p>url: /confapp/control/attendee_info/<br>
-方法:get<br>
-参数: <br>
-confid 会议id<br></p>
-<pre><code>返回信息
-{
-    &quot;msg&quot;:&quot;success&quot;,
-    &quot;code&quot;: 1,
-    &quot;data&quot;:[{
-        &quot;id&quot;:1,
-        &quot;name&quot;:&quot;成员1&quot;,
-        &quot;phone&quot;:&quot;15268117291&quot;,
-        &quot;img&quot;:&quot;http&quot;,
-        &quot;chairman&quot;: True,
-        &quot;speaker&quot;: True,
-        &quot;mike&quot;: True,
-        &quot;hands&quot;: True,
-        &quot;approval&quot;: True
-    }]
-}
-</code></pre>
-
-<h3 id="_6">开麦闭麦</h3>
+<h3 id="_5">开麦闭麦</h3>
 <p>url:/conapp/control/mike/<br>
 方法:post<br>
 参数:<br></p>
@@ -282,7 +257,7 @@ attendee:成员[{"name":"张三", "phone":"15268117291"}] 选传 指定人员开
 }
 </code></pre>
 
-<h3 id="_7">会议中途加人</h3>
+<h3 id="_6">会议中途加人</h3>
 <p>url:/conapp/control/add_attendee/<br>
 方法: post<br>
 参数:<br></p>
@@ -305,7 +280,7 @@ chairman: 操作人即主席只有主席可操作【必填】<br></p>
 }
 </code></pre>
 
-<h3 id="_8">将某人移出会议</h3>
+<h3 id="_7">将某人移出会议</h3>
 <p>url:/confapp/control/hangup/<br>
 方法:post<br>
 参数:<br></p>
@@ -316,7 +291,7 @@ chairman: 操作人即主席只有主席可操作【必填】<br></p>
     }
 </code></pre>
 
-<h3 id="_9">结束会议</h3>
+<h3 id="_8">结束会议</h3>
 <p>url:/conapp/control/end/<br>
 方法: post<br>
 参数:<br>
@@ -331,7 +306,7 @@ chairman: 操作人即主席只有主席可操作 【必填】<br></p>
 }
 </code></pre>
 
-<h3 id="_10">复制会议连接</h3>
+<h3 id="_9">复制会议连接</h3>
 <p>url:/confapp/control/address/<br>
 方法:get<br>
 参数:<br>
@@ -346,7 +321,7 @@ confid:会议id【必填】<br></p>
 }
 </code></pre>
 
-<h3 id="_11">指定发言位</h3>
+<h3 id="_10">指定发言位</h3>
 <p>url:/conapp/control/speaker/<br>
 方法: post<br>
 参数：<br>
