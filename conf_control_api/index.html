@@ -214,7 +214,7 @@ chairman: &quot;孙博&quot; 操作人即主席只有主席可操作 【必填�
         &quot;theme&quot;: &quot;&quot;,
         &quot;password&quot;: &quot;&quot;,
         &quot;chairman&quot;: {&quot;phone&quot;: &quot;15268117291&quot;,&quot;name&quot;: &quot;孙博&quot;,},
-        &quot;type&quot;: &quot;&quot;,
+        &quot;type&quot;: &quot;2&quot;,
     } 
 
 </code></pre>
@@ -239,7 +239,8 @@ time: 预约会议开始时间 格式为2020-03-03 19:30:36【选填 预约会�
 方法:get<br>
 参数: <br>
 confid 会议id<br></p>
-<pre><code>{
+<pre><code>返回信息
+{
     &quot;msg&quot;:&quot;success&quot;,
     &quot;code&quot;: 1,
     &quot;data&quot;:[{
@@ -263,8 +264,7 @@ confid 会议id<br></p>
 <pre><code>    data:{
         &quot;confid&quot;:&quot;0570&quot;,
         &quot;attendee&quot;: [{&quot;name&quot;:&quot;张三&quot;, &quot;phone&quot;:&quot;15268117291&quot;}]
-        &quot;type&quot;:&quot;3&quot;
-        &quot;ex_chairman&quot;: True,
+        &quot;type&quot;:&quot;3&quot;,
         &quot;chairman&quot;:&quot;张三&quot;
     }
 </code></pre>
@@ -272,7 +272,7 @@ confid 会议id<br></p>
 <p>confid:会议id【必填】<br>
 type: 3全部闭麦 4全部开麦 【必填】<br>
 chairman: 操作人即主席只有主席可操作【必填】<br>
-ex_chariman: True 除主席和发言人全部闭麦【选填】<br>
+ex_chariman: True 除主席和发言人外【选填】<br>
 attendee:成员[{"name":"张三", "phone":"15268117291"}] 选传 指定人员开麦闭麦【选填】<br></p>
 <pre><code>返回信息:
 {
