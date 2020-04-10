@@ -93,17 +93,19 @@
         
             <li><a class="toctree-l3" href="#_4">编辑预约会议</a></li>
         
-            <li><a class="toctree-l3" href="#_5">开麦闭麦</a></li>
+            <li><a class="toctree-l3" href="#_5">获取指定会议人员信息</a></li>
         
-            <li><a class="toctree-l3" href="#_6">会议中途加人</a></li>
+            <li><a class="toctree-l3" href="#_6">开麦闭麦</a></li>
         
-            <li><a class="toctree-l3" href="#_7">将某人移出会议</a></li>
+            <li><a class="toctree-l3" href="#_7">会议中途加人</a></li>
         
-            <li><a class="toctree-l3" href="#_8">结束会议</a></li>
+            <li><a class="toctree-l3" href="#_8">将某人移出会议</a></li>
         
-            <li><a class="toctree-l3" href="#_9">复制会议连接</a></li>
+            <li><a class="toctree-l3" href="#_9">结束会议</a></li>
         
-            <li><a class="toctree-l3" href="#_10">指定发言位</a></li>
+            <li><a class="toctree-l3" href="#_10">复制会议连接</a></li>
+        
+            <li><a class="toctree-l3" href="#_11">指定发言位</a></li>
         
             <li><a class="toctree-l3" href="#code">关于code</a></li>
         
@@ -232,7 +234,84 @@ time: 预约会议开始时间 格式为2020-03-03 19:30:36【选填 预约会�
 }
 </code></pre>
 
-<h3 id="_5">开麦闭麦</h3>
+<h3 id="_5">获取指定会议人员信息</h3>
+<p>url:/confapp/control/attendee_info_out/<br>
+方法:get<br>
+参数:<br></p>
+<pre><code>confid 会议id
+</code></pre>
+
+<p>返回信息</p>
+<pre><code>{
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;code&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;isSpeakerOpen&quot;: true,
+            &quot;isMessagingOpen&quot;: true,
+            &quot;isCameraOpen&quot;: true,
+            &quot;isCalled&quot;: false,
+            &quot;isOwner&quot;: true,
+            &quot;isPresenting&quot;: false,
+            &quot;clientID&quot;: &quot;61000179&quot;,
+            &quot;isDisplayOpen&quot;: true,
+            &quot;isMicOpen&quot;: true,
+            &quot;hasAttended&quot;: true,
+            &quot;inBlackList&quot;: false,
+            &quot;alr&quot;: true,
+            &quot;isRegistered&quot;: true,
+            &quot;name&quot;: &quot;彭威&quot;,
+            &quot;phone&quot;: &quot;15116148131&quot;
+        },
+        {
+            &quot;isSpeakerOpen&quot;: true,
+            &quot;isMessagingOpen&quot;: true,
+            &quot;isCameraOpen&quot;: true,
+            &quot;isCalled&quot;: false,
+            &quot;isOwner&quot;: false,
+            &quot;be&quot;: 1,
+            &quot;isPresenting&quot;: false,
+            &quot;clientID&quot;: &quot;61000177&quot;,
+            &quot;isDisplayOpen&quot;: true,
+            &quot;isMicOpen&quot;: false,
+            &quot;hasAttended&quot;: false,
+            &quot;inBlackList&quot;: false,
+            &quot;alr&quot;: true,
+            &quot;isRegistered&quot;: false,
+            &quot;name&quot;: &quot;刘亚苏&quot;,
+            &quot;phone&quot;: &quot;13875897654&quot;
+        },
+        {
+            &quot;isSpeakerOpen&quot;: true,
+            &quot;isMessagingOpen&quot;: true,
+            &quot;isCameraOpen&quot;: true,
+            &quot;isCalled&quot;: false,
+            &quot;isOwner&quot;: false,
+            &quot;be&quot;: 1,
+            &quot;isPresenting&quot;: false,
+            &quot;clientID&quot;: &quot;61000182&quot;,
+            &quot;isDisplayOpen&quot;: true,
+            &quot;isMicOpen&quot;: true,
+            &quot;hasAttended&quot;: false,
+            &quot;inBlackList&quot;: false,
+            &quot;alr&quot;: true,
+            &quot;isRegistered&quot;: false,
+            &quot;name&quot;: &quot;殷署&quot;,
+            &quot;phone&quot;: &quot;13755003637&quot;
+        }
+    ]
+}
+字段说明:
+isOwner        是否是主席
+hasAttended    是否入会
+isSpeakerOpen  是否是发言人
+isCameraOpen   是否开摄像头
+isMicOpen      是否开麦
+name           姓名
+phone          手机号
+</code></pre>
+
+<h3 id="_6">开麦闭麦</h3>
 <p>url:/confapp/control/mike/<br>
 方法:post<br>
 参数:<br></p>
@@ -257,7 +336,7 @@ attendee:成员[{"name":"张三", "phone":"15268117291"}] 选传 指定人员开
 }
 </code></pre>
 
-<h3 id="_6">会议中途加人</h3>
+<h3 id="_7">会议中途加人</h3>
 <p>url:/conapp/control/add_attendee/<br>
 方法: post<br>
 参数:<br></p>
@@ -280,7 +359,7 @@ chairman: 操作人即主席只有主席可操作【必填】<br></p>
 }
 </code></pre>
 
-<h3 id="_7">将某人移出会议</h3>
+<h3 id="_8">将某人移出会议</h3>
 <p>url:/confapp/control/hangup/<br>
 方法:post<br>
 参数:<br></p>
@@ -291,7 +370,7 @@ chairman: 操作人即主席只有主席可操作【必填】<br></p>
     }
 </code></pre>
 
-<h3 id="_8">结束会议</h3>
+<h3 id="_9">结束会议</h3>
 <p>url:/conapp/control/end/<br>
 方法: post<br>
 参数:<br>
@@ -306,7 +385,7 @@ chairman: 操作人即主席只有主席可操作 【必填】<br></p>
 }
 </code></pre>
 
-<h3 id="_9">复制会议连接</h3>
+<h3 id="_10">复制会议连接</h3>
 <p>url:/confapp/control/address/<br>
 方法:get<br>
 参数:<br>
@@ -321,7 +400,7 @@ confid:会议id【必填】<br></p>
 }
 </code></pre>
 
-<h3 id="_10">指定发言位</h3>
+<h3 id="_11">指定发言位</h3>
 <p>url:/conapp/control/speaker/<br>
 方法: post<br>
 参数：<br>
