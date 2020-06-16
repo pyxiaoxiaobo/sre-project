@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>源数据查询 - SREUDP 接口文档</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u6e90\u6570\u636e\u67e5\u8be2";
+    var mkdocs_page_input_path = "sourcedata.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> SREUDP 接口文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../user/">用户</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../schedule/">调度</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../authority/">权限</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../tool/">工具</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../conf/">小程序</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../conf_control_api/">小程序外部调用</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">源数据查询</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#_1">源数据结构</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_2">查询</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_3">查询平台</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_4">查询数据库</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_5">查询表</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_6">删除平台</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_7">数据导入</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../dahua/">大话</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">关于</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">SREUDP 接口文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>源数据查询</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">源数据结构</h1>
+<p>url</p>
+<pre><code>/sourcedata/structure
+</code></pre>
+
+<p>method</p>
+<pre><code>get
+</code></pre>
+
+<p>return:</p>
+<pre><code>{
+    'status': 1,
+    'msg': 'success',
+    'result': [{
+        id: 1,
+        platform: '平台1',
+        children: [{
+            id: '1-1',
+            db: '数据库1',
+            children: [{
+                id: '1-1-1',
+                table: '表1',
+                children: [{
+                    id: '1-1-1-1',
+                    field: '字段1'}]
+                    }]
+                }]
+            }]
+        }
+</code></pre>
+
+<h1 id="_2">查询</h1>
+<p>url:</p>
+<pre><code>/sourcedata
+</code></pre>
+
+<p>method:</p>
+<pre><code>get
+</code></pre>
+
+<p>return:</p>
+<pre><code>{
+    'status': 1,
+    'msg': 'success',
+    'result': [{
+        &quot;platformId&quot;: 1,
+        &quot;platform&quot;: '平台1',
+        &quot;databaseId&quot;: 1,
+        &quot;database&quot;: '数据库1',
+        &quot;tableId&quot;: 1,
+        &quot;table&quot;: '数据库表1',
+        &quot;fieldId&quot;: 1,
+        &quot;field&quot;: '字段1'
+    }, {
+        &quot;platformId&quot;: 2,
+        &quot;platform&quot;: '平台2',
+        &quot;databaseId&quot;: 2,
+        &quot;database&quot;: '数据库2',
+        &quot;tableId&quot;: 2,
+        &quot;table&quot;: '数据库表2',
+        &quot;fieldId&quot;: 2,
+        &quot;field&quot;: '字段2'
+    }]
+        }
+</code></pre>
+
+<h1 id="_3">查询平台</h1>
+<p>url</p>
+<pre><code>/sourcedata/platform/(pk)
+</code></pre>
+
+<p>注：pk为平台id</p>
+<p>method</p>
+<pre><code>get
+</code></pre>
+
+<p>return:</p>
+<pre><code>{
+    'status': 1,
+    'msg': success,
+    'result':{
+        &quot;name&quot;: '某平台',
+        &quot;data&quot;:[{
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;某数据库1&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;某数据库2&quot;
+        }
+        ]
+    }
+}
+</code></pre>
+
+<h1 id="_4">查询数据库</h1>
+<p>url</p>
+<pre><code>/sourcedata/database/(pk)
+</code></pre>
+
+<p>method</p>
+<pre><code>get
+</code></pre>
+
+<p>return</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;result&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;xx数据库&quot;,
+        &quot;data&quot;:[
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;表一&quot;，
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;表二&quot;
+        }
+        ]
+    }
+}
+</code></pre>
+
+<h1 id="_5">查询表</h1>
+<p>url</p>
+<pre><code>/sourcedata/table/(pk)
+</code></pre>
+
+<p>method</p>
+<pre><code>get
+</code></pre>
+
+<p>return</p>
+<pre><code>{
+    'status': 0,
+    &quot;msg&quot;: &quot;success&quot;,
+    &quot;result&quot;: {
+        &quot;plarform_name&quot;: &quot;xx平台&quot;，
+        &quot;type&quot;: &quot;mysql&quot;,
+        &quot;table_name&quot;: &quot;xx表&quot;,
+        &quot;field&quot;: &quot;字段&quot;,
+        &quot;other&quot;: &quot;&quot;,
+        &quot;explain&quot;: &quot;&quot;,
+        &quot;example&quot;: &quot;&quot;
+    }   
+}
+</code></pre>
+
+<h1 id="_6">删除平台</h1>
+<p>url</p>
+<pre><code>/sourcedata/platform/(pk)
+</code></pre>
+
+<p>method</p>
+<pre><code>delete
+</code></pre>
+
+<p>return</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;success&quot;
+}
+</code></pre>
+
+<h1 id="_7">数据导入</h1>
+<p>url</p>
+<pre><code>/sourcedata/upload
+</code></pre>
+
+<p>method</p>
+<pre><code>post
+</code></pre>
+
+<p>return </p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: success
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../dahua/" class="btn btn-neutral float-right" title="大话">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../conf_control_api/" class="btn btn-neutral" title="小程序外部调用"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../conf_control_api/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../dahua/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
