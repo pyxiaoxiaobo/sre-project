@@ -91,22 +91,43 @@
     <li class="toctree-l2"><a href="#_1">源数据结构</a></li>
     
 
-    <li class="toctree-l2"><a href="#_2">查询</a></li>
+    <li class="toctree-l2"><a href="#_2">查询平台</a></li>
     
 
-    <li class="toctree-l2"><a href="#_3">查询平台</a></li>
+    <li class="toctree-l2"><a href="#_3">修改平台</a></li>
     
 
     <li class="toctree-l2"><a href="#_4">查询数据库</a></li>
     
 
-    <li class="toctree-l2"><a href="#_5">查询表</a></li>
+    <li class="toctree-l2"><a href="#_5">修改数据库</a></li>
     
 
-    <li class="toctree-l2"><a href="#_6">删除平台</a></li>
+    <li class="toctree-l2"><a href="#_6">删除数据库</a></li>
     
 
-    <li class="toctree-l2"><a href="#_7">数据导入</a></li>
+    <li class="toctree-l2"><a href="#_7">查询表</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_8">修改表</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_9">删除表</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_10">查询字段</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_11">修改字段</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_12">删除字段</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_13">查询展示表</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_14">数据导入</a></li>
     
 
     </ul>
@@ -156,7 +177,7 @@
               
                 <h1 id="_1">源数据结构</h1>
 <p>url</p>
-<pre><code>/sourcedata/structure
+<pre><code>/sourcedata/structure/
 </code></pre>
 
 <p>method</p>
@@ -165,64 +186,65 @@
 
 <p>return:</p>
 <pre><code>{
-    'status': 1,
-    'msg': 'success',
-    'result': [{
-        id: 1,
-        platform: '平台1',
-        children: [{
-            id: '1-1',
-            db: '数据库1',
-            children: [{
-                id: '1-1-1',
-                table: '表1',
-                children: [{
-                    id: '1-1-1-1',
-                    field: '字段1'}]
-                    }]
-                }]
-            }]
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;ok&quot;,
+    &quot;results&quot;: [
+        {
+            &quot;index&quot;: 1,
+            &quot;id&quot;: 1,
+            &quot;label_name&quot;: &quot;测试平台&quot;,
+            &quot;children&quot;: [
+                {
+                    &quot;index&quot;: &quot;1-1&quot;,
+                    &quot;id&quot;: 1,
+                    &quot;label&quot;: &quot;测试数据库&quot;,
+                    &quot;children&quot;: [
+                        {
+                            &quot;index&quot;: &quot;1-1-1&quot;,
+                            &quot;id&quot;: 1,
+                            &quot;label&quot;: &quot;测试数据表&quot;,
+                            &quot;children&quot;: [
+                                {
+                                    &quot;index&quot;: &quot;1-1-1-1&quot;,
+                                    &quot;id&quot;: 1,
+                                    &quot;label&quot;: &quot;测试字段&quot;
+                                },
+                                {
+                                    &quot;index&quot;: &quot;1-1-1-2&quot;,
+                                    &quot;id&quot;: 2,
+                                    &quot;label&quot;: &quot;element&quot;
+                                }
+                            ]
+                        },
+                        {
+                            &quot;index&quot;: &quot;1-1-2&quot;,
+                            &quot;id&quot;: 2,
+                            &quot;label&quot;: &quot;网元性能表&quot;,
+                            &quot;children&quot;: []
+                        }
+                    ]
+                },
+                {
+                    &quot;index&quot;: &quot;1-2&quot;,
+                    &quot;id&quot;: 2,
+                    &quot;label&quot;: &quot;source_data&quot;,
+                    &quot;children&quot;: []
+                }
+            ]
+        },
+        {
+            &quot;index&quot;: 2,
+            &quot;id&quot;: 2,
+            &quot;label_name&quot;: &quot;游龙平台&quot;,
+            &quot;children&quot;: []
         }
+    ]
+}
 </code></pre>
 
-<h1 id="_2">查询</h1>
-<p>url:</p>
-<pre><code>/sourcedata
-</code></pre>
-
-<p>method:</p>
-<pre><code>get
-</code></pre>
-
-<p>return:</p>
-<pre><code>{
-    'status': 1,
-    'msg': 'success',
-    'result': [{
-        &quot;platformId&quot;: 1,
-        &quot;platform&quot;: '平台1',
-        &quot;databaseId&quot;: 1,
-        &quot;database&quot;: '数据库1',
-        &quot;tableId&quot;: 1,
-        &quot;table&quot;: '数据库表1',
-        &quot;fieldId&quot;: 1,
-        &quot;field&quot;: '字段1'
-    }, {
-        &quot;platformId&quot;: 2,
-        &quot;platform&quot;: '平台2',
-        &quot;databaseId&quot;: 2,
-        &quot;database&quot;: '数据库2',
-        &quot;tableId&quot;: 2,
-        &quot;table&quot;: '数据库表2',
-        &quot;fieldId&quot;: 2,
-        &quot;field&quot;: '字段2'
-    }]
-        }
-</code></pre>
-
-<h1 id="_3">查询平台</h1>
+<h1 id="_2">查询平台</h1>
 <p>url</p>
-<pre><code>/sourcedata/platform/(pk)
+<pre><code>/sourcedata/platforms/(pk)/
 </code></pre>
 
 <p>注：pk为平台id</p>
@@ -232,18 +254,52 @@
 
 <p>return:</p>
 <pre><code>{
-    'status': 1,
-    'msg': success,
-    'result':{
-        &quot;name&quot;: '某平台',
-        &quot;database_list&quot;:[{
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;某数据库1&quot;
-        },
-        {
-            &quot;id&quot;: 2,
-            &quot;name&quot;: &quot;某数据库2&quot;
-        }
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;ok&quot;,
+    &quot;results&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;测试平台&quot;,
+        &quot;databases_list&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;测试数据库&quot;
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;source_data&quot;
+            }
+        ]
+    }
+}
+</code></pre>
+
+<h1 id="_3">修改平台</h1>
+<p>url</p>
+<pre><code>/sourcedata/platforms/(pk)/
+</code></pre>
+
+<p>method</p>
+<pre><code>patch
+</code></pre>
+
+<p>request data</p>
+<pre><code>{
+    &quot;name&quot;: &quot;平台1&quot;
+}
+</code></pre>
+
+<p>return</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;ok&quot;,
+    &quot;results&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;平台1&quot;,
+        &quot;databases_list&quot;: [
+            {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;source_data&quot;
+            }
         ]
     }
 }
@@ -251,7 +307,7 @@
 
 <h1 id="_4">查询数据库</h1>
 <p>url</p>
-<pre><code>/sourcedata/database/(pk)
+<pre><code>/sourcedata/databases/(pk)/
 </code></pre>
 
 <p>method</p>
@@ -261,66 +317,395 @@
 <p>return</p>
 <pre><code>{
     &quot;status&quot;: 1,
-    &quot;msg&quot;: &quot;success&quot;,
-    &quot;result&quot;: {
+    &quot;msg&quot;: &quot;ok&quot;,
+    &quot;results&quot;: {
         &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;xx数据库&quot;,
-        &quot;data&quot;:[
-        {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;表一&quot;，
-        },
-        {
-            &quot;id&quot;: 2,
-            &quot;name&quot;: &quot;表二&quot;
-        }
+        &quot;name&quot;: &quot;测试数据库&quot;,
+        &quot;category&quot;: &quot;mysql&quot;,
+        &quot;tables_list&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;name_zh&quot;: &quot;测试数据表&quot;,
+                &quot;name_en&quot;: &quot;test table&quot;
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;name_zh&quot;: &quot;网元性能表&quot;,
+                &quot;name_en&quot;: &quot;network element&quot;
+            }
         ]
     }
 }
 </code></pre>
 
-<h1 id="_5">查询表</h1>
+<h1 id="_5">修改数据库</h1>
 <p>url</p>
-<pre><code>/sourcedata/table/(pk)
+<pre><code>/sourcedata/databases/(pk)/
 </code></pre>
 
 <p>method</p>
-<pre><code>get
+<pre><code>patch
+</code></pre>
+
+<p>request data</p>
+<pre><code>{
+    &quot;name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;
+}
 </code></pre>
 
 <p>return</p>
 <pre><code>{
-    'status': 0,
-    &quot;msg&quot;: &quot;success&quot;,
-    &quot;result&quot;: {
-        &quot;plarform_name&quot;: &quot;xx平台&quot;，
-        &quot;type&quot;: &quot;mysql&quot;,
-        &quot;table_name&quot;: &quot;xx表&quot;,
-        &quot;field&quot;: &quot;字段&quot;,
-        &quot;other&quot;: &quot;&quot;,
-        &quot;explain&quot;: &quot;&quot;,
-        &quot;example&quot;: &quot;&quot;
-    }   
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;ok&quot;,
+    &quot;results&quot;: {
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+        &quot;category&quot;: &quot;数据库&quot;,
+        &quot;tables_list&quot;: [
+            {
+                &quot;id&quot;: 3,
+                &quot;name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
+                &quot;name_en&quot;: &quot;A_FT_RE_MSS_H_99998&quot;
+            },
+            {
+                &quot;id&quot;: 4,
+                &quot;name_zh&quot;: &quot;S-CSCF关键性能指标报表&quot;,
+                &quot;name_en&quot;: &quot;A_FT_RE_CSCF_15M_99999&quot;
+            },
+            {
+                &quot;id&quot;: 5,
+                &quot;name_zh&quot;: &quot;HLR用户数报表&quot;,
+                &quot;name_en&quot;: &quot;A_FT_RE_LAC_H_99998&quot;
+            },
+            {
+                &quot;id&quot;: 6,
+                &quot;name_zh&quot;: &quot;VoLTE用户数报表&quot;,
+                &quot;name_en&quot;: &quot;A_FT_RE_IMSHSS_15M_99999&quot;
+            }
+        ]
+    }
 }
 </code></pre>
 
-<h1 id="_6">删除平台</h1>
+<h1 id="_6">删除数据库</h1>
 <p>url</p>
-<pre><code>/sourcedata/platform/(pk)
+<pre><code>/sourcedata/databases/(pk)/
 </code></pre>
 
 <p>method</p>
 <pre><code>delete
 </code></pre>
 
-<p>return</p>
+<p>request data</p>
 <pre><code>{
-    &quot;status&quot;: 1,
-    &quot;msg&quot;: &quot;success&quot;
+    &quot;pks&quot;: [1, 2, 3]
 }
 </code></pre>
 
-<h1 id="_7">数据导入</h1>
+<p><strong>注：单删传pk, 全删传data</strong></p>
+<p>return </p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;ok&quot;,
+}
+</code></pre>
+
+<h1 id="_7">查询表</h1>
+<p>url</p>
+<pre><code>/sourcedata/tables/(pk)/
+</code></pre>
+
+<p>method</p>
+<pre><code>get
+</code></pre>
+
+<p>return</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;ok&quot;,
+    &quot;results&quot;: {
+        &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
+        &quot;creator&quot;: &quot;&quot;,
+        &quot;create_time&quot;: &quot;&quot;,
+        &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+        &quot;database_category&quot;: &quot;数据库&quot;,
+        &quot;name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
+        &quot;name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
+        &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
+        &quot;fields_list&quot;: [
+            {
+                &quot;id&quot;: 3,
+                &quot;name_zh&quot;: &quot;省份&quot;,
+                &quot;name_en&quot;: &quot;PROVINCE_ID&quot;,
+                &quot;other&quot;: &quot;字段的说明性文字&quot;
+            }
+        ],
+        &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;
+    }
+}
+</code></pre>
+
+<h1 id="_8">修改表</h1>
+<p>url</p>
+<pre><code>/sourcedata/tables/(pk)/
+</code></pre>
+
+<p>method</p>
+<pre><code>patch
+</code></pre>
+
+<p>request data</p>
+<pre><code>{
+    &quot;name_zh&quot;:&quot;GSM数字移动通信系统工作报告B表&quot;,
+    &quot;name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;
+}
+</code></pre>
+
+<p>return </p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;ok&quot;,
+    &quot;results&quot;: {
+        &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
+        &quot;creator&quot;: &quot;&quot;,
+        &quot;create_time&quot;: &quot;&quot;,
+        &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+        &quot;database_category&quot;: &quot;数据库&quot;,
+        &quot;name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
+        &quot;name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
+        &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
+        &quot;fields_list&quot;: [
+            {
+                &quot;id&quot;: 3,
+                &quot;name_zh&quot;: &quot;省份&quot;,
+                &quot;name_en&quot;: &quot;PROVINCE_ID&quot;,
+                &quot;other&quot;: &quot;字段的说明性文字&quot;
+            }
+        ],
+        &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;
+    }
+}
+</code></pre>
+
+<h1 id="_9">删除表</h1>
+<p>url</p>
+<pre><code>/sourcedata/tables/(pk)/
+</code></pre>
+
+<p>method</p>
+<pre><code>delete
+</code></pre>
+
+<p>request data</p>
+<pre><code>{
+    &quot;pks&quot;: [1, 2, 3]
+}
+</code></pre>
+
+<p><strong>注：单删传pk, 全删传data</strong></p>
+<p>return </p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;ok&quot;,
+}
+</code></pre>
+
+<h1 id="_10">查询字段</h1>
+<p>url</p>
+<pre><code>/sourcedata/fields/(pk)
+</code></pre>
+
+<p>method</p>
+<pre><code>get
+</code></pre>
+
+<p>return</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;ok&quot;,
+    &quot;results&quot;: {
+        &quot;id&quot;: 3,
+        &quot;data_detail&quot;: {
+            &quot;platform_id&quot;: 3,
+            &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
+            &quot;database_id&quot;: 3,
+            &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+            &quot;database_category&quot;: &quot;数据库&quot;,
+            &quot;table_id&quot;: 3,
+            &quot;table_name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
+            &quot;table_name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
+            &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
+            &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;,
+            &quot;field_id&quot;: 3,
+            &quot;field_zh_name&quot;: &quot;省份&quot;,
+            &quot;field_en_name&quot;: &quot;PROVINCE_ID&quot;,
+            &quot;other&quot;: &quot;字段的说明性文字&quot;
+        }
+    }
+}
+</code></pre>
+
+<h1 id="_11">修改字段</h1>
+<p>url</p>
+<pre><code>/sourcedata/fields/(pk)
+</code></pre>
+
+<p>method</p>
+<pre><code>patch
+</code></pre>
+
+<p>request data</p>
+<pre><code>{
+    &quot;name_zh&quot;:&quot;省份&quot;, 
+    &quot;name_en&quot;: &quot;province_id&quot;,
+    &quot;other&quot;:&quot;字段测试&quot;
+}
+</code></pre>
+
+<p>return </p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;ok&quot;,
+    &quot;results&quot;: {
+        &quot;id&quot;: 3,
+        &quot;data_detail&quot;: {
+            &quot;platform_id&quot;: 3,
+            &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
+            &quot;database_id&quot;: 3,
+            &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+            &quot;database_category&quot;: &quot;数据库&quot;,
+            &quot;table_id&quot;: 3,
+            &quot;table_name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
+            &quot;table_name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
+            &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
+            &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;,
+            &quot;field_id&quot;: 3,
+            &quot;field_zh_name&quot;: &quot;省份&quot;,
+            &quot;field_en_name&quot;: &quot;province_id&quot;,
+            &quot;other&quot;: &quot;字段测试&quot;
+        }
+    }
+}
+</code></pre>
+
+<h1 id="_12">删除字段</h1>
+<p>url</p>
+<pre><code>/sourcedata/fields/(pk)/
+</code></pre>
+
+<p>method</p>
+<pre><code>delete
+</code></pre>
+
+<p>request data</p>
+<pre><code>{
+    &quot;pks&quot;: [1, 2, 3]
+}
+</code></pre>
+
+<p><strong>注：单删传pk, 全删传data</strong></p>
+<p>return </p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;ok&quot;
+}
+</code></pre>
+
+<h1 id="_13">查询展示表</h1>
+<p>url</p>
+<pre><code>/sourcedata/fields/
+</code></pre>
+
+<p>method</p>
+<pre><code>get
+</code></pre>
+
+<p>return</p>
+<pre><code>{
+    &quot;status&quot;: 1,
+    &quot;msg&quot;: &quot;ok&quot;,
+    &quot;results&quot;: [
+        {
+            &quot;id&quot;: 3,
+            &quot;data_detail&quot;: {
+                &quot;platform_id&quot;: 3,
+                &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
+                &quot;database_id&quot;: 3,
+                &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+                &quot;database_category&quot;: &quot;数据库&quot;,
+                &quot;table_id&quot;: 3,
+                &quot;table_name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
+                &quot;table_name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
+                &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
+                &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;,
+                &quot;field_id&quot;: 3,
+                &quot;field_zh_name&quot;: &quot;省份&quot;,
+                &quot;field_en_name&quot;: &quot;PROVINCE_ID&quot;,
+                &quot;other&quot;: &quot;字段的说明性文字&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;data_detail&quot;: {
+                &quot;platform_id&quot;: 3,
+                &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
+                &quot;database_id&quot;: 3,
+                &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+                &quot;database_category&quot;: &quot;数据库&quot;,
+                &quot;table_id&quot;: 4,
+                &quot;table_name_zh&quot;: &quot;S-CSCF关键性能指标报表&quot;,
+                &quot;table_name_en&quot;: &quot;A_FT_RE_CSCF_15M_99999&quot;,
+                &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
+                &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;,
+                &quot;field_id&quot;: 4,
+                &quot;field_zh_name&quot;: &quot;地市&quot;,
+                &quot;field_en_name&quot;: &quot;REGION_ID&quot;,
+                &quot;other&quot;: &quot;&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;data_detail&quot;: {
+                &quot;platform_id&quot;: 3,
+                &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
+                &quot;database_id&quot;: 3,
+                &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+                &quot;database_category&quot;: &quot;数据库&quot;,
+                &quot;table_id&quot;: 5,
+                &quot;table_name_zh&quot;: &quot;HLR用户数报表&quot;,
+                &quot;table_name_en&quot;: &quot;A_FT_RE_LAC_H_99998&quot;,
+                &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
+                &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;,
+                &quot;field_id&quot;: 5,
+                &quot;field_zh_name&quot;: &quot;SGs关联用户数&quot;,
+                &quot;field_en_name&quot;: &quot;SGS_CON_USER_NUM&quot;,
+                &quot;other&quot;: &quot;&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;data_detail&quot;: {
+                &quot;platform_id&quot;: 3,
+                &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
+                &quot;database_id&quot;: 3,
+                &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+                &quot;database_category&quot;: &quot;数据库&quot;,
+                &quot;table_id&quot;: 6,
+                &quot;table_name_zh&quot;: &quot;VoLTE用户数报表&quot;,
+                &quot;table_name_en&quot;: &quot;A_FT_RE_IMSHSS_15M_99999&quot;,
+                &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
+                &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;,
+                &quot;field_id&quot;: 6,
+                &quot;field_zh_name&quot;: &quot;MSS名称&quot;,
+                &quot;field_en_name&quot;: &quot;NE_ID&quot;,
+                &quot;other&quot;: &quot;&quot;
+            }
+        }
+    ]
+}
+</code></pre>
+
+<h1 id="_14">数据导入</h1>
 <p>url</p>
 <pre><code>/sourcedata/upload
 </code></pre>
