@@ -142,17 +142,25 @@
 
     <li class="toctree-l2"><a href="#_16">修改字段</a></li>
     
-
-    <li class="toctree-l2"><a href="#_17">删除字段</a></li>
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_17">单改</a></li>
+        
+            <li><a class="toctree-l3" href="#_18">群改</a></li>
+        
+        </ul>
     
 
-    <li class="toctree-l2"><a href="#_18">查询展示表</a></li>
+    <li class="toctree-l2"><a href="#_19">删除字段</a></li>
     
 
-    <li class="toctree-l2"><a href="#_19">数据导入</a></li>
+    <li class="toctree-l2"><a href="#_20">查询展示表</a></li>
     
 
-    <li class="toctree-l2"><a href="#_20">详细信息修改</a></li>
+    <li class="toctree-l2"><a href="#_21">数据导入</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_22">详细信息修改</a></li>
     
 
     </ul>
@@ -486,7 +494,7 @@
 </code></pre>
 
 <p>request data</p>
-<pre><code>    [
+<pre><code>[
         {
             &quot;id&quot;:1,
             &quot;name&quot;:&quot;数据目录&quot;,
@@ -537,14 +545,22 @@
     &quot;status&quot;: 1,
     &quot;msg&quot;: &quot;ok&quot;,
     &quot;results&quot;: {
-        &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
+        &quot;id&quot;: 3,
         &quot;creator&quot;: &quot;&quot;,
         &quot;create_time&quot;: &quot;&quot;,
-        &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
-        &quot;database_category&quot;: &quot;数据库&quot;,
         &quot;name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
         &quot;name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
+        &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;,
         &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
+        &quot;platform_info&quot;: {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;性能中心BI报表&quot;
+        },
+        &quot;database_info&quot;: {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+            &quot;category&quot;: &quot;数据类型&quot;
+        },
         &quot;children_list&quot;: [
             {
                 &quot;id&quot;: 3,
@@ -552,8 +568,7 @@
                 &quot;name_en&quot;: &quot;province_id&quot;,
                 &quot;other&quot;: &quot;字段测试&quot;
             }
-        ],
-        &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;
+        ]
     }
 }
 </code></pre>
@@ -667,27 +682,31 @@
     &quot;msg&quot;: &quot;ok&quot;,
     &quot;results&quot;: {
         &quot;id&quot;: 3,
-        &quot;data_detail&quot;: {
-            &quot;platform_id&quot;: 3,
-            &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
-            &quot;database_id&quot;: 3,
-            &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
-            &quot;database_category&quot;: &quot;数据库&quot;,
-            &quot;table_id&quot;: 3,
-            &quot;table_name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
-            &quot;table_name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
+        &quot;name_zh&quot;: &quot;省份&quot;,
+        &quot;name_en&quot;: &quot;province_id&quot;,
+        &quot;other&quot;: &quot;字段测试&quot;,
+        &quot;platform_info&quot;: {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;性能中心BI报表&quot;
+        },
+        &quot;database_info&quot;: {
+            &quot;id&quot;: 3,
+            &quot;name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+            &quot;category&quot;: &quot;数据类型&quot;
+        },
+        &quot;table_info&quot;: {
+            &quot;id&quot;: 3,
+            &quot;name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
+            &quot;name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
             &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
-            &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;,
-            &quot;field_id&quot;: 3,
-            &quot;field_zh_name&quot;: &quot;省份&quot;,
-            &quot;field_en_name&quot;: &quot;PROVINCE_ID&quot;,
-            &quot;other&quot;: &quot;字段的说明性文字&quot;
+            &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;
         }
     }
 }
 </code></pre>
 
 <h1 id="_16">修改字段</h1>
+<h3 id="_17">单改</h3>
 <p>url</p>
 <pre><code>/sourcedata/fields/(pk)
 </code></pre>
@@ -730,7 +749,28 @@
 }
 </code></pre>
 
-<h1 id="_17">删除字段</h1>
+<h3 id="_18">群改</h3>
+<p>url</p>
+<pre><code>/sourcedata/fields/(
+</code></pre>
+
+<p>method</p>
+<pre><code>patch
+</code></pre>
+
+<p>request data</p>
+<pre><code>[   {
+    &quot;id&quot;: 4,
+    &quot;name_zh&quot;: &quot;字段中文名&quot;,
+    &quot;name_en&quot;: &quot;字段英文名&quot;,
+    &quot;other&quot;: &quot;其他补充说明&quot;
+    },
+    {},
+    {}
+]
+</code></pre>
+
+<h1 id="_19">删除字段</h1>
 <p>url</p>
 <pre><code>/sourcedata/fields/(pk)/
 </code></pre>
@@ -753,7 +793,7 @@
 }
 </code></pre>
 
-<h1 id="_18">查询展示表</h1>
+<h1 id="_20">查询展示表</h1>
 <p>url</p>
 <pre><code>/sourcedata/fields/
 </code></pre>
@@ -769,85 +809,97 @@
     &quot;results&quot;: [
         {
             &quot;id&quot;: 3,
-            &quot;data_detail&quot;: {
-                &quot;platform_id&quot;: 3,
-                &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
-                &quot;database_id&quot;: 3,
-                &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
-                &quot;database_category&quot;: &quot;数据库&quot;,
-                &quot;table_id&quot;: 3,
-                &quot;table_name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
-                &quot;table_name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
+            &quot;name_zh&quot;: &quot;省份&quot;,
+            &quot;name_en&quot;: &quot;province_id&quot;,
+            &quot;other&quot;: &quot;字段测试&quot;,
+            &quot;platform_info&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;性能中心BI报表&quot;
+            },
+            &quot;database_info&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+                &quot;category&quot;: &quot;数据类型&quot;
+            },
+            &quot;table_info&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
+                &quot;name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
                 &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
-                &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;,
-                &quot;field_id&quot;: 3,
-                &quot;field_zh_name&quot;: &quot;省份&quot;,
-                &quot;field_en_name&quot;: &quot;PROVINCE_ID&quot;,
-                &quot;other&quot;: &quot;字段的说明性文字&quot;
+                &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;
             }
         },
         {
             &quot;id&quot;: 4,
-            &quot;data_detail&quot;: {
-                &quot;platform_id&quot;: 3,
-                &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
-                &quot;database_id&quot;: 3,
-                &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
-                &quot;database_category&quot;: &quot;数据库&quot;,
-                &quot;table_id&quot;: 4,
-                &quot;table_name_zh&quot;: &quot;S-CSCF关键性能指标报表&quot;,
-                &quot;table_name_en&quot;: &quot;A_FT_RE_CSCF_15M_99999&quot;,
+            &quot;name_zh&quot;: &quot;地市&quot;,
+            &quot;name_en&quot;: &quot;REGION_ID&quot;,
+            &quot;other&quot;: &quot;&quot;,
+            &quot;platform_info&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;性能中心BI报表&quot;
+            },
+            &quot;database_info&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+                &quot;category&quot;: &quot;数据类型&quot;
+            },
+            &quot;table_info&quot;: {
+                &quot;id&quot;: 4,
+                &quot;name_zh&quot;: &quot;S-CSCF关键性能指标报表&quot;,
+                &quot;name_en&quot;: &quot;A_FT_RE_CSCF_15M_99999&quot;,
                 &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
-                &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;,
-                &quot;field_id&quot;: 4,
-                &quot;field_zh_name&quot;: &quot;地市&quot;,
-                &quot;field_en_name&quot;: &quot;REGION_ID&quot;,
-                &quot;other&quot;: &quot;&quot;
+                &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;
             }
         },
         {
             &quot;id&quot;: 5,
-            &quot;data_detail&quot;: {
-                &quot;platform_id&quot;: 3,
-                &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
-                &quot;database_id&quot;: 3,
-                &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
-                &quot;database_category&quot;: &quot;数据库&quot;,
-                &quot;table_id&quot;: 5,
-                &quot;table_name_zh&quot;: &quot;HLR用户数报表&quot;,
-                &quot;table_name_en&quot;: &quot;A_FT_RE_LAC_H_99998&quot;,
+            &quot;name_zh&quot;: &quot;SGs关联用户数&quot;,
+            &quot;name_en&quot;: &quot;SGS_CON_USER_NUM&quot;,
+            &quot;other&quot;: &quot;&quot;,
+            &quot;platform_info&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;性能中心BI报表&quot;
+            },
+            &quot;database_info&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+                &quot;category&quot;: &quot;数据类型&quot;
+            },
+            &quot;table_info&quot;: {
+                &quot;id&quot;: 5,
+                &quot;name_zh&quot;: &quot;HLR用户数报表&quot;,
+                &quot;name_en&quot;: &quot;A_FT_RE_LAC_H_99998&quot;,
                 &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
-                &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;,
-                &quot;field_id&quot;: 5,
-                &quot;field_zh_name&quot;: &quot;SGs关联用户数&quot;,
-                &quot;field_en_name&quot;: &quot;SGS_CON_USER_NUM&quot;,
-                &quot;other&quot;: &quot;&quot;
+                &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;
             }
         },
         {
             &quot;id&quot;: 6,
-            &quot;data_detail&quot;: {
-                &quot;platform_id&quot;: 3,
-                &quot;platform_name&quot;: &quot;性能中心BI报表&quot;,
-                &quot;database_id&quot;: 3,
-                &quot;database_name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
-                &quot;database_category&quot;: &quot;数据库&quot;,
-                &quot;table_id&quot;: 6,
-                &quot;table_name_zh&quot;: &quot;VoLTE用户数报表&quot;,
-                &quot;table_name_en&quot;: &quot;A_FT_RE_IMSHSS_15M_99999&quot;,
+            &quot;name_zh&quot;: &quot;MSS名称&quot;,
+            &quot;name_en&quot;: &quot;NE_ID&quot;,
+            &quot;other&quot;: &quot;&quot;,
+            &quot;platform_info&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;性能中心BI报表&quot;
+            },
+            &quot;database_info&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+                &quot;category&quot;: &quot;数据类型&quot;
+            },
+            &quot;table_info&quot;: {
+                &quot;id&quot;: 6,
+                &quot;name_zh&quot;: &quot;VoLTE用户数报表&quot;,
+                &quot;name_en&quot;: &quot;A_FT_RE_IMSHSS_15M_99999&quot;,
                 &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
-                &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;,
-                &quot;field_id&quot;: 6,
-                &quot;field_zh_name&quot;: &quot;MSS名称&quot;,
-                &quot;field_en_name&quot;: &quot;NE_ID&quot;,
-                &quot;other&quot;: &quot;&quot;
+                &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;
             }
         }
     ]
 }
 </code></pre>
 
-<h1 id="_19">数据导入</h1>
+<h1 id="_21">数据导入</h1>
 <p>url</p>
 <pre><code>/sourcedata/upload
 </code></pre>
@@ -863,7 +915,7 @@
 }
 </code></pre>
 
-<h1 id="_20">详细信息修改</h1>
+<h1 id="_22">详细信息修改</h1>
 <p>url</p>
 <pre><code>/sourcedata/detail/
 </code></pre>
