@@ -192,42 +192,14 @@
         {
             &quot;index&quot;: 1,
             &quot;id&quot;: 1,
-            &quot;label_name&quot;: &quot;测试平台&quot;,
+            &quot;label&quot;: &quot;平台1&quot;,
+            &quot;type&quot;: &quot;platform&quot;,
             &quot;children&quot;: [
                 {
                     &quot;index&quot;: &quot;1-1&quot;,
-                    &quot;id&quot;: 1,
-                    &quot;label&quot;: &quot;测试数据库&quot;,
-                    &quot;children&quot;: [
-                        {
-                            &quot;index&quot;: &quot;1-1-1&quot;,
-                            &quot;id&quot;: 1,
-                            &quot;label&quot;: &quot;测试数据表&quot;,
-                            &quot;children&quot;: [
-                                {
-                                    &quot;index&quot;: &quot;1-1-1-1&quot;,
-                                    &quot;id&quot;: 1,
-                                    &quot;label&quot;: &quot;测试字段&quot;
-                                },
-                                {
-                                    &quot;index&quot;: &quot;1-1-1-2&quot;,
-                                    &quot;id&quot;: 2,
-                                    &quot;label&quot;: &quot;element&quot;
-                                }
-                            ]
-                        },
-                        {
-                            &quot;index&quot;: &quot;1-1-2&quot;,
-                            &quot;id&quot;: 2,
-                            &quot;label&quot;: &quot;网元性能表&quot;,
-                            &quot;children&quot;: []
-                        }
-                    ]
-                },
-                {
-                    &quot;index&quot;: &quot;1-2&quot;,
                     &quot;id&quot;: 2,
                     &quot;label&quot;: &quot;source_data&quot;,
+                    &quot;type&quot;: &quot;databases&quot;,
                     &quot;children&quot;: []
                 }
             ]
@@ -235,8 +207,81 @@
         {
             &quot;index&quot;: 2,
             &quot;id&quot;: 2,
-            &quot;label_name&quot;: &quot;游龙平台&quot;,
+            &quot;label&quot;: &quot;游龙平台&quot;,
+            &quot;type&quot;: &quot;platform&quot;,
             &quot;children&quot;: []
+        },
+        {
+            &quot;index&quot;: 3,
+            &quot;id&quot;: 3,
+            &quot;label&quot;: &quot;性能中心BI报表&quot;,
+            &quot;type&quot;: &quot;platform&quot;,
+            &quot;children&quot;: [
+                {
+                    &quot;index&quot;: &quot;3-1&quot;,
+                    &quot;id&quot;: 3,
+                    &quot;label&quot;: &quot;交换统计报表&quot;,
+                    &quot;type&quot;: &quot;databases&quot;,
+                    &quot;children&quot;: [
+                        {
+                            &quot;index&quot;: &quot;3-1-1&quot;,
+                            &quot;id&quot;: 3,
+                            &quot;label&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
+                            &quot;children&quot;: [
+                                {
+                                    &quot;index&quot;: &quot;3-1-1-1&quot;,
+                                    &quot;id&quot;: 3,
+                                    &quot;label&quot;: &quot;省份&quot;,
+                                    &quot;type&quot;: &quot;field&quot;
+                                }
+                            ],
+                            &quot;type&quot;: &quot;table&quot;
+                        },
+                        {
+                            &quot;index&quot;: &quot;3-1-2&quot;,
+                            &quot;id&quot;: 4,
+                            &quot;label&quot;: &quot;S-CSCF关键性能指标报表&quot;,
+                            &quot;children&quot;: [
+                                {
+                                    &quot;index&quot;: &quot;3-1-2-1&quot;,
+                                    &quot;id&quot;: 4,
+                                    &quot;label&quot;: &quot;地市&quot;,
+                                    &quot;type&quot;: &quot;field&quot;
+                                }
+                            ],
+                            &quot;type&quot;: &quot;table&quot;
+                        },
+                        {
+                            &quot;index&quot;: &quot;3-1-3&quot;,
+                            &quot;id&quot;: 5,
+                            &quot;label&quot;: &quot;HLR用户数报表&quot;,
+                            &quot;children&quot;: [
+                                {
+                                    &quot;index&quot;: &quot;3-1-3-1&quot;,
+                                    &quot;id&quot;: 5,
+                                    &quot;label&quot;: &quot;SGs关联用户数&quot;,
+                                    &quot;type&quot;: &quot;field&quot;
+                                }
+                            ],
+                            &quot;type&quot;: &quot;table&quot;
+                        },
+                        {
+                            &quot;index&quot;: &quot;3-1-4&quot;,
+                            &quot;id&quot;: 6,
+                            &quot;label&quot;: &quot;VoLTE用户数报表&quot;,
+                            &quot;children&quot;: [
+                                {
+                                    &quot;index&quot;: &quot;3-1-4-1&quot;,
+                                    &quot;id&quot;: 6,
+                                    &quot;label&quot;: &quot;MSS名称&quot;,
+                                    &quot;type&quot;: &quot;field&quot;
+                                }
+                            ],
+                            &quot;type&quot;: &quot;table&quot;
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
@@ -259,7 +304,7 @@
     &quot;results&quot;: {
         &quot;id&quot;: 1,
         &quot;name&quot;: &quot;测试平台&quot;,
-        &quot;databases_list&quot;: [
+        &quot;children_list&quot;: [
             {
                 &quot;id&quot;: 1,
                 &quot;name&quot;: &quot;测试数据库&quot;
@@ -295,7 +340,7 @@
     &quot;results&quot;: {
         &quot;id&quot;: 1,
         &quot;name&quot;: &quot;平台1&quot;,
-        &quot;databases_list&quot;: [
+        &quot;children_list&quot;: [
             {
                 &quot;id&quot;: 2,
                 &quot;name&quot;: &quot;source_data&quot;
@@ -322,7 +367,7 @@
         &quot;id&quot;: 1,
         &quot;name&quot;: &quot;测试数据库&quot;,
         &quot;category&quot;: &quot;mysql&quot;,
-        &quot;tables_list&quot;: [
+        &quot;children_list&quot;: [
             {
                 &quot;id&quot;: 1,
                 &quot;name_zh&quot;: &quot;测试数据表&quot;,
@@ -361,7 +406,7 @@
         &quot;id&quot;: 3,
         &quot;name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
         &quot;category&quot;: &quot;数据库&quot;,
-        &quot;tables_list&quot;: [
+        &quot;children_list&quot;: [
             {
                 &quot;id&quot;: 3,
                 &quot;name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
@@ -432,7 +477,7 @@
         &quot;name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
         &quot;name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
         &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
-        &quot;fields_list&quot;: [
+        &quot;children_list&quot;: [
             {
                 &quot;id&quot;: 3,
                 &quot;name_zh&quot;: &quot;省份&quot;,
@@ -474,7 +519,7 @@
         &quot;name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
         &quot;name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
         &quot;explanation&quot;: &quot;数据内容简介&amp;\n取数方法描述&quot;,
-        &quot;fields_list&quot;: [
+        &quot;children_list&quot;: [
             {
                 &quot;id&quot;: 3,
                 &quot;name_zh&quot;: &quot;省份&quot;,
