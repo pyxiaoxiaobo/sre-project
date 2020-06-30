@@ -96,38 +96,63 @@
 
     <li class="toctree-l2"><a href="#_3">修改平台</a></li>
     
-
-    <li class="toctree-l2"><a href="#_4">查询数据库</a></li>
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_4">单改</a></li>
+        
+        </ul>
     
 
-    <li class="toctree-l2"><a href="#_5">修改数据库</a></li>
+    <li class="toctree-l2"><a href="#_5">查询数据库</a></li>
     
 
-    <li class="toctree-l2"><a href="#_6">删除数据库</a></li>
+    <li class="toctree-l2"><a href="#_6">修改数据库</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_7">单改</a></li>
+        
+            <li><a class="toctree-l3" href="#_8">群改</a></li>
+        
+        </ul>
     
 
-    <li class="toctree-l2"><a href="#_7">查询表</a></li>
+    <li class="toctree-l2"><a href="#_9">删除数据库</a></li>
     
 
-    <li class="toctree-l2"><a href="#_8">修改表</a></li>
+    <li class="toctree-l2"><a href="#_10">查询表</a></li>
     
 
-    <li class="toctree-l2"><a href="#_9">删除表</a></li>
+    <li class="toctree-l2"><a href="#_11">修改表</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_12">单改</a></li>
+        
+            <li><a class="toctree-l3" href="#_13">群改</a></li>
+        
+        </ul>
     
 
-    <li class="toctree-l2"><a href="#_10">查询字段</a></li>
+    <li class="toctree-l2"><a href="#_14">删除表</a></li>
     
 
-    <li class="toctree-l2"><a href="#_11">修改字段</a></li>
+    <li class="toctree-l2"><a href="#_15">查询字段</a></li>
     
 
-    <li class="toctree-l2"><a href="#_12">删除字段</a></li>
+    <li class="toctree-l2"><a href="#_16">修改字段</a></li>
     
 
-    <li class="toctree-l2"><a href="#_13">查询展示表</a></li>
+    <li class="toctree-l2"><a href="#_17">删除字段</a></li>
     
 
-    <li class="toctree-l2"><a href="#_14">数据导入</a></li>
+    <li class="toctree-l2"><a href="#_18">查询展示表</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_19">数据导入</a></li>
+    
+
+    <li class="toctree-l2"><a href="#_20">详细信息修改</a></li>
     
 
     </ul>
@@ -302,16 +327,13 @@
     &quot;status&quot;: 1,
     &quot;msg&quot;: &quot;ok&quot;,
     &quot;results&quot;: {
-        &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;测试平台&quot;,
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;性能中心BI报表&quot;,
         &quot;children_list&quot;: [
             {
-                &quot;id&quot;: 1,
-                &quot;name&quot;: &quot;测试数据库&quot;
-            },
-            {
-                &quot;id&quot;: 2,
-                &quot;name&quot;: &quot;source_data&quot;
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+                &quot;category&quot;: &quot;数据库&quot;
             }
         ]
     }
@@ -319,6 +341,7 @@
 </code></pre>
 
 <h1 id="_3">修改平台</h1>
+<h3 id="_4">单改</h3>
 <p>url</p>
 <pre><code>/sourcedata/platforms/(pk)/
 </code></pre>
@@ -328,8 +351,10 @@
 </code></pre>
 
 <p>request data</p>
-<pre><code>{
-    &quot;name&quot;: &quot;平台1&quot;
+<pre><code>参数选填
+{
+    &quot;name&quot;: &quot;平台1&quot;，
+    &quot;category&quot;: &quot;数据库&quot;,
 }
 </code></pre>
 
@@ -338,19 +363,20 @@
     &quot;status&quot;: 1,
     &quot;msg&quot;: &quot;ok&quot;,
     &quot;results&quot;: {
-        &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;平台1&quot;,
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;性能中心BI报表&quot;,
         &quot;children_list&quot;: [
             {
-                &quot;id&quot;: 2,
-                &quot;name&quot;: &quot;source_data&quot;
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+                &quot;category&quot;: &quot;数据库&quot;
             }
         ]
     }
 }
 </code></pre>
 
-<h1 id="_4">查询数据库</h1>
+<h1 id="_5">查询数据库</h1>
 <p>url</p>
 <pre><code>/sourcedata/databases/(pk)/
 </code></pre>
@@ -364,26 +390,45 @@
     &quot;status&quot;: 1,
     &quot;msg&quot;: &quot;ok&quot;,
     &quot;results&quot;: {
-        &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;测试数据库&quot;,
-        &quot;category&quot;: &quot;mysql&quot;,
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;网管业务数据分析-交换业务分析-交换统计报表&quot;,
+        &quot;category&quot;: &quot;数据库&quot;,
         &quot;children_list&quot;: [
             {
-                &quot;id&quot;: 1,
-                &quot;name_zh&quot;: &quot;测试数据表&quot;,
-                &quot;name_en&quot;: &quot;test table&quot;
+                &quot;id&quot;: 3,
+                &quot;name_zh&quot;: &quot;GSM数字移动通信系统工作报告B表&quot;,
+                &quot;name_en&quot;: &quot;A_FT_RE_MSS_H_99998test&quot;,
+                &quot;creator&quot;: &quot;&quot;,
+                &quot;create_time&quot;: &quot;&quot;
             },
             {
-                &quot;id&quot;: 2,
-                &quot;name_zh&quot;: &quot;网元性能表&quot;,
-                &quot;name_en&quot;: &quot;network element&quot;
+                &quot;id&quot;: 4,
+                &quot;name_zh&quot;: &quot;S-CSCF关键性能指标报表&quot;,
+                &quot;name_en&quot;: &quot;A_FT_RE_CSCF_15M_99999&quot;,
+                &quot;creator&quot;: &quot;&quot;,
+                &quot;create_time&quot;: &quot;&quot;
+            },
+            {
+                &quot;id&quot;: 5,
+                &quot;name_zh&quot;: &quot;HLR用户数报表&quot;,
+                &quot;name_en&quot;: &quot;A_FT_RE_LAC_H_99998&quot;,
+                &quot;creator&quot;: &quot;&quot;,
+                &quot;create_time&quot;: &quot;&quot;
+            },
+            {
+                &quot;id&quot;: 6,
+                &quot;name_zh&quot;: &quot;VoLTE用户数报表&quot;,
+                &quot;name_en&quot;: &quot;A_FT_RE_IMSHSS_15M_99999&quot;,
+                &quot;creator&quot;: &quot;&quot;,
+                &quot;create_time&quot;: &quot;&quot;
             }
         ]
     }
 }
 </code></pre>
 
-<h1 id="_5">修改数据库</h1>
+<h1 id="_6">修改数据库</h1>
+<h3 id="_7">单改</h3>
 <p>url</p>
 <pre><code>/sourcedata/databases/(pk)/
 </code></pre>
@@ -432,7 +477,31 @@
 }
 </code></pre>
 
-<h1 id="_6">删除数据库</h1>
+<h3 id="_8">群改</h3>
+<p>url</p>
+<pre><code>/sourcedata/databases/
+</code></pre>
+
+<p>method</p>
+<pre><code>patch
+</code></pre>
+
+<p>request data</p>
+<pre><code>    [
+        {
+            &quot;id&quot;:1,
+            &quot;name&quot;:&quot;数据目录&quot;,
+            &quot;category&quot;: &quot;数据类型&quot;
+        }，
+        {
+            &quot;id&quot;: 2,
+            &quot;name&quot;: &quot;数据目录2&quot;，
+            &quot;category&quot;: &quot;数据类型2&quot;
+        }
+    ]
+</code></pre>
+
+<h1 id="_9">删除数据库</h1>
 <p>url</p>
 <pre><code>/sourcedata/databases/(pk)/
 </code></pre>
@@ -455,7 +524,7 @@
 }
 </code></pre>
 
-<h1 id="_7">查询表</h1>
+<h1 id="_10">查询表</h1>
 <p>url</p>
 <pre><code>/sourcedata/tables/(pk)/
 </code></pre>
@@ -481,8 +550,8 @@
             {
                 &quot;id&quot;: 3,
                 &quot;name_zh&quot;: &quot;省份&quot;,
-                &quot;name_en&quot;: &quot;PROVINCE_ID&quot;,
-                &quot;other&quot;: &quot;字段的说明性文字&quot;
+                &quot;name_en&quot;: &quot;province_id&quot;,
+                &quot;other&quot;: &quot;字段测试&quot;
             }
         ],
         &quot;example&quot;: &quot;取数方法样例，以其中一个字段为例&quot;
@@ -490,7 +559,8 @@
 }
 </code></pre>
 
-<h1 id="_8">修改表</h1>
+<h1 id="_11">修改表</h1>
+<h3 id="_12">单改</h3>
 <p>url</p>
 <pre><code>/sourcedata/tables/(pk)/
 </code></pre>
@@ -532,7 +602,35 @@
 }
 </code></pre>
 
-<h1 id="_9">删除表</h1>
+<h3 id="_13">群改</h3>
+<p>url</p>
+<pre><code>/sourcedata/tables/
+</code></pre>
+
+<p>method</p>
+<pre><code>patch
+</code></pre>
+
+<p>request data</p>
+<pre><code>[
+    {
+        &quot;id&quot;: 1,
+        &quot;name_zh&quot;: &quot;中文表名&quot;,
+        &quot;name_en&quot;: &quot;英文表名&quot;,
+        &quot;creator&quot;: &quot;创建人&quot;,
+        &quot;create_time&quot;: &quot;创建时间&quot;
+    }，
+    {
+        &quot;id&quot;: 1,
+        &quot;name_zh&quot;: &quot;中文表名&quot;,
+        &quot;name_en&quot;: &quot;英文表名&quot;,
+        &quot;creator&quot;: &quot;创建人&quot;,
+        &quot;create_time&quot;: &quot;创建时间&quot;
+    }
+]
+</code></pre>
+
+<h1 id="_14">删除表</h1>
 <p>url</p>
 <pre><code>/sourcedata/tables/(pk)/
 </code></pre>
@@ -555,7 +653,7 @@
 }
 </code></pre>
 
-<h1 id="_10">查询字段</h1>
+<h1 id="_15">查询字段</h1>
 <p>url</p>
 <pre><code>/sourcedata/fields/(pk)
 </code></pre>
@@ -590,7 +688,7 @@
 }
 </code></pre>
 
-<h1 id="_11">修改字段</h1>
+<h1 id="_16">修改字段</h1>
 <p>url</p>
 <pre><code>/sourcedata/fields/(pk)
 </code></pre>
@@ -633,7 +731,7 @@
 }
 </code></pre>
 
-<h1 id="_12">删除字段</h1>
+<h1 id="_17">删除字段</h1>
 <p>url</p>
 <pre><code>/sourcedata/fields/(pk)/
 </code></pre>
@@ -656,7 +754,7 @@
 }
 </code></pre>
 
-<h1 id="_13">查询展示表</h1>
+<h1 id="_18">查询展示表</h1>
 <p>url</p>
 <pre><code>/sourcedata/fields/
 </code></pre>
@@ -750,7 +848,7 @@
 }
 </code></pre>
 
-<h1 id="_14">数据导入</h1>
+<h1 id="_19">数据导入</h1>
 <p>url</p>
 <pre><code>/sourcedata/upload
 </code></pre>
@@ -763,6 +861,44 @@
 <pre><code>{
     &quot;status&quot;: 1,
     &quot;msg&quot;: success
+}
+</code></pre>
+
+<h1 id="_20">详细信息修改</h1>
+<p>url</p>
+<pre><code>/sourcedata/detail/
+</code></pre>
+
+<p>method</p>
+<pre><code>patch
+</code></pre>
+
+<p>request data</p>
+<pre><code>{
+    &quot;platform&quot;: {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;平台1&quot;
+    }，
+    &quot;database&quot;: {
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;数据库名&quot;,
+        &quot;category&quot;: &quot;数据库类型&quot;
+    },
+    &quot;table&quot;:{
+        &quot;id&quot;: 4,
+        &quot;creator&quot;: &quot;创建者&quot;,
+        &quot;name_zh&quot;: &quot;中文表名&quot;,
+        &quot;name_en&quot;: &quot;英文表名&quot;,
+        &quot;explanation&quot;: &quot;解释说明&quot;,
+        &quot;example&quot;: &quot;样例信息&quot;,
+        &quot;create_time&quot;: &quot;创建时间&quot;
+    },
+    &quot;field&quot;: {
+        &quot;id&quot;:2,
+        &quot;name_zh&quot;: &quot;中文字段名&quot;,
+        &quot;name_en&quot;: &quot;英文字段名&quot;,
+        &quot;other&quot;: &quot;其他&quot;
+    }
 }
 </code></pre>
               
